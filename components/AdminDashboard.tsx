@@ -31,24 +31,21 @@ export default function AdminDashboard() {
     const [leads, setLeads] = useState<any[]>([]);
     const [products, setProducts] = useState<any[]>([]); // Need products for live stock count
 
-    const [configError, setConfigError] = useState(false);
 
     useEffect(() => {
-        // Capture auth in local variable for TS narrowing
-        const _auth = auth;
-
-        if (!_auth) {
-            setConfigError(true);
+        if (!auth) {
             setIsAuthReady(true); // Offline mode
             return;
         }
 
-        const unsubscribe = onAuthStateChanged(_auth, async (user) => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUserId(user.uid);
             } else {
                 try {
-                    await signInAnonymously(_auth);
+                    if (auth) {
+                        await signInAnonymously(auth);
+                    }
                 } catch (error) {
                     console.error("Authentication failed:", error);
                 }
@@ -87,17 +84,7 @@ export default function AdminDashboard() {
 
     const canView = userId && isAuthReady;
 
-    if (configError) {
-        return (
-            <div className="flex flex-col items-center justify-center min-h-screen text-center p-4">
-                <Shield className="w-16 h-16 text-gray-300 mb-4" />
-                <h2 className="text-xl font-bold text-gray-800 mb-2">Configuration Missing</h2>
-                <p className="text-gray-600 max-w-md">
-                    Firebase Authentication is not initialized. Please checking your <code>NEXT_PUBLIC_FIREBASE_CONFIG</code> environment variable.
-                </p>
-            </div>
-        );
-    }
+
 
     if (!isAuthReady) return <div className="text-center p-12 text-gray-500">Loading authentication status...</div>;
     // In a real app we might redirect, but for now show access denied message
