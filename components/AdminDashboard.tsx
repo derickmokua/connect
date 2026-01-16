@@ -31,11 +31,14 @@ export default function AdminDashboard() {
     const [leads, setLeads] = useState<any[]>([]);
     const [products, setProducts] = useState<any[]>([]); // Need products for live stock count
 
+    const [configError, setConfigError] = useState(false);
+
     useEffect(() => {
         // Capture auth in local variable for TS narrowing
         const _auth = auth;
 
         if (!_auth) {
+            setConfigError(true);
             setIsAuthReady(true); // Offline mode
             return;
         }
@@ -84,6 +87,18 @@ export default function AdminDashboard() {
 
     const canView = userId && isAuthReady;
 
+    if (configError) {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-screen text-center p-4">
+                <Shield className="w-16 h-16 text-gray-300 mb-4" />
+                <h2 className="text-xl font-bold text-gray-800 mb-2">Configuration Missing</h2>
+                <p className="text-gray-600 max-w-md">
+                    Firebase Authentication is not initialized. Please checking your <code>NEXT_PUBLIC_FIREBASE_CONFIG</code> environment variable.
+                </p>
+            </div>
+        );
+    }
+
     if (!isAuthReady) return <div className="text-center p-12 text-gray-500">Loading authentication status...</div>;
     // In a real app we might redirect, but for now show access denied message
     if (!canView && auth) return <div className="text-center p-12 text-red-600 font-bold">Access Denied. Please ensure you are authenticated.</div>;
@@ -99,9 +114,9 @@ export default function AdminDashboard() {
                     </h1>
                     <a href="/" className="text-[#F4B400] hover:underline">Return to Home</a>
                 </div>
-                <p className="text-sm text-gray-500 mb-6">User ID: {userId || 'Offline'}</p>
+                <p className="text-sm text-gray-500 mb-6">User ID: {userId}</p>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div className="grid grid-cols-1 md://grid-cols-3 gap-6 mb-10">
                     <StatCard title="Total Leads" value={leads.length} icon={<Users />} color="bg-amber-100" />
                     <StatCard title="Live Stock (Chicks)" value={totalChicks.toLocaleString('en-KE')} icon={<Shield />} color="bg-green-100" />
                     <StatCard title="WhatsApp/Call Link" value="Active" icon={<Phone />} color="bg-red-100" />
