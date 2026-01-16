@@ -32,19 +32,20 @@ export default function AdminDashboard() {
     const [products, setProducts] = useState<any[]>([]); // Need products for live stock count
 
     useEffect(() => {
-        if (!auth) {
+        // Capture auth in local variable for TS narrowing
+        const _auth = auth;
+
+        if (!_auth) {
             setIsAuthReady(true); // Offline mode
             return;
         }
 
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+        const unsubscribe = onAuthStateChanged(_auth, async (user) => {
             if (user) {
                 setUserId(user.uid);
             } else {
                 try {
-                    if (auth) {
-                        await signInAnonymously(auth);
-                    }
+                    await signInAnonymously(_auth);
                 } catch (error) {
                     console.error("Authentication failed:", error);
                 }
