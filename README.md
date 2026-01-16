@@ -68,6 +68,27 @@ Built for **Speed, SEO, and Reliability**.
 
 ---
 
+## 🚀 Deployment
+
+The easiest way to deploy this Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+### Environment Variables
+
+For the application to function correctly in production (specifically the AI Assistant and Firebase connection), you must set the following environment variables in your Vercel Project Settings:
+
+| Variable | Description |
+| :--- | :--- |
+| `GEMINI_API_KEY` | Required for Kuku Assistant. Get it from [Google AI Studio](https://aistudio.google.com/). |
+| `NEXT_PUBLIC_APP_ID` | Your Firebase App ID (optional, defaults to mock if missing). |
+| `NEXT_PUBLIC_FIREBASE_CONFIG` | Full Firebase config JSON string (for Order persistence). |
+
+1.  Push your code to GitHub.
+2.  Import the repository into Vercel.
+3.  Add the Environment Variables.
+4.  Click **Deploy**.
+
+---
+
 ## 🤝 Contributing
 
 This project is built directly for farmers. If you want to contribute, focus on features that **reduce risk** or **increase clarity** for the end-user.
