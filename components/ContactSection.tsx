@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Phone, Mail, MapPin, Send, MessageCircle, Loader2 } from "lucide-react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db, appId } from "@/lib/firebase";
+import { db, appId } from "@/lib/firebase/client";
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });

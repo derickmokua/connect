@@ -1,23 +1,5 @@
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth, type Auth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+// DEPRECATED: Use @/lib/firebase/client instead
+// This file is kept for backwards compatibility only
+// All client components should import from @/lib/firebase/client
 
-const firebaseConfig = {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "AIzaSyDummyKeyForBuildProcess",
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "dummy-project.firebaseapp.com",
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "dummy-project",
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "dummy-project.appspot.com",
-    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "123456789",
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "1:123456789:web:abcdef123456",
-};
-
-// Initialize Firebase
-if (!getApps().length) {
-    initializeApp(firebaseConfig);
-}
-
-const app = getApp();
-
-export const auth: Auth = getAuth(app);
-export const db = getFirestore(app);
-export const appId = firebaseConfig.appId;
+export { auth, db, appId, app } from "./firebase/client";

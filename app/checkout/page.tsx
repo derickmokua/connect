@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import { useCart } from "@/components/context/CartContext";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db, appId } from "@/lib/firebase";
+import { db, appId } from "@/lib/firebase/client";
 import { useRouter } from "next/navigation";
 import { Phone, MapPin, Loader2, CheckCircle, TrendingUp, Truck, ShieldCheck } from "lucide-react";
 import Link from "next/link";
