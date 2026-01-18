@@ -19,15 +19,20 @@ export default function AdminDashboard() {
 
     // Authentication effect
     useEffect(() => {
-        const authInstance = auth;
-        if (!authInstance) return;
+        if (!auth) {
+            setIsAuthReady(true);
+            return;
+        }
 
-        const unsubscribe = onAuthStateChanged(authInstance, async (user) => {
+        const firebaseAuth = auth; // 🔒 narrowed to Auth
+
+        const unsubscribe = onAuthStateChanged(firebaseAuth, async (user) => {
             if (user) {
                 setUserId(user.uid);
             } else {
                 try {
-                    await signInAnonymously(authInstance);
+                    // ✅ USE THE NARROWED VARIABLE
+                    await signInAnonymously(firebaseAuth);
                 } catch (error) {
                     console.error("Authentication failed:", error);
                 }
