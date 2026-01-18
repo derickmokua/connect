@@ -12,7 +12,7 @@ const galleryItems = [
     {
         id: 1,
         category: "Infrastructure",
-        icon: "🏭", // Placeholder for photo
+        icon: "https://images.unsplash.com/photo-1488181190491-e74f9a9fccb7?w=500&h=400&fit=crop",
         title: "The Bio-Shield Environment",
         caption: "Controlled Environment. We manage the first 21 days under strict heat and hygiene protocols to eliminate early-stage mortality.",
         tag: "Brooding Facility"
@@ -20,7 +20,7 @@ const galleryItems = [
     {
         id: 2,
         category: "Growth Stages",
-        icon: "🐣", // Placeholder for photo
+        icon: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=400&fit=crop",
         title: "Phase 3: Hardened",
         caption: "Standardized Growth. A Phase 3 (1-month) Kuroiler. Fully feathered, vaccinated, and ready for any Kenyan climate.",
         tag: "Product Spec"
@@ -28,7 +28,7 @@ const galleryItems = [
     {
         id: 3,
         category: "Infrastructure",
-        icon: "🚛", // Placeholder for photo
+        icon: "https://images.unsplash.com/photo-1581084328282-8483c1d1c34e?w=500&h=400&fit=crop",
         title: "Logistics Integrity",
         caption: "We use specialized, ventilated crates to ensure 100% live arrival at your farm gate. No overcrowding.",
         tag: "Logistics"
@@ -36,7 +36,7 @@ const galleryItems = [
     {
         id: 4,
         category: "Success Stories",
-        icon: "⚖️", // Placeholder for photo
+        icon: "https://images.unsplash.com/photo-1495195134373-f2fb2fe326f3?w=500&h=400&fit=crop",
         title: "Proven Yields",
         caption: "Proven Results. Our males consistently hit 3.5kg+ by month 5 when the KukuConnect Success Routine is followed.",
         tag: "Milestone: Weight"
@@ -44,7 +44,7 @@ const galleryItems = [
     {
         id: 5,
         category: "Infrastructure",
-        icon: "💉", // Placeholder for photo
+        icon: "https://images.unsplash.com/photo-1576091160550-112173f7f869?w=500&h=400&fit=crop",
         title: "Verified Immunity",
         caption: "Every batch is logged. We don't guess with health; we verify every vaccine dose. Cold-chain verified.",
         tag: "Health Protocol"
@@ -52,7 +52,7 @@ const galleryItems = [
     {
         id: 6,
         category: "Growth Stages",
-        icon: "🐓", // Placeholder for photo
+        icon: "https://images.unsplash.com/photo-1488181190491-e74f9a9fccb7?w=500&h=400&fit=crop",
         title: "Mature Stock",
         caption: "The End Goal. Heavy, dual-purpose birds that fetch premium market prices.",
         tag: "Market Ready"

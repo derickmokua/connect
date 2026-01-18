@@ -57,7 +57,7 @@ export default function ContactSection() {
                             </p>
 
                             <a
-                                href="https://wa.me/254712345678"
+                                href="https://wa.me/254716883375"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 px-6 py-4 bg-[#25D366] text-white rounded-2xl font-bold hover:bg-[#128C7E] transition shadow-lg mb-12 w-full md:w-auto justify-center"
@@ -70,7 +70,7 @@ export default function ContactSection() {
                                     <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10">
                                         <Phone className="w-5 h-5 text-[#FFA64D]" />
                                     </div>
-                                    <span className="font-bold tracking-wide">+254 712 345 678</span>
+                                    <span className="font-bold tracking-wide">+254 716 883 375</span>
                                 </li>
                                 <li className="flex items-center gap-4">
                                     <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10">
