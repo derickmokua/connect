@@ -24,16 +24,12 @@ export default function AdminDashboard() {
             return;
         }
 
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+        const unsubscribe = onAuthStateChanged(auth!, async (user) => {
             if (user) {
                 setUserId(user.uid);
             } else {
                 try {
-                    if (auth) {
-                        await signInAnonymously(auth);
-                    } else {
-                        console.error("Auth is undefined, cannot sign in anonymously.");
-                    }
+                    await signInAnonymously(auth!);
                 } catch (error) {
                     console.error("Authentication failed:", error);
                 }
