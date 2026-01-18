@@ -24,14 +24,12 @@ export default function AdminDashboard() {
             return;
         }
 
-        const firebaseAuth = auth; // 🔒 Auth (not undefined)
-
-        const unsubscribe = onAuthStateChanged(firebaseAuth, async (user) => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUserId(user.uid);
             } else {
                 try {
-                    await signInAnonymously(firebaseAuth); // ✅ ONLY THIS
+                    await signInAnonymously(auth);
                 } catch (error) {
                     console.error("Authentication failed:", error);
                 }
@@ -44,7 +42,7 @@ export default function AdminDashboard() {
 
     // Data fetching effect
     useEffect(() => {
-        if (!isAuthReady) return;
+        if (!isAuthReady || !db) return;
 
         // Fetch Leads
         const leadsQuery = query(collection(db, getLeadsCollectionPath()));
