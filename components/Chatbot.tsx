@@ -48,11 +48,11 @@ export function Chatbot() {
             }
 
             setMessages((prev) => [...prev, { role: "model", text: data.reply }]);
-        } catch (error) {
+        } catch (error: any) {
             console.error("Chat Error:", error);
             setMessages((prev) => [
                 ...prev,
-                { role: "model", text: "Sorry, I'm having trouble connecting right now. Please try again later." },
+                { role: "model", text: error.message || "Sorry, I'm having trouble connecting right now. Please try again later." },
             ]);
         } finally {
             setIsLoading(false);

@@ -86,7 +86,7 @@ export default function VaccinationScheduler() {
                     <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#D97706] to-[#B45309]"></div>
 
                     <div className="max-w-3xl mx-auto">
-                        <div className="flex flex-col md:flex-row gap-4 items-end mb-8">
+                        <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-end mb-8">
                             <div className="flex-1 w-full">
                                 <label className="block text-sm font-bold text-[#431407] mb-2 uppercase tracking-wide">Arrival Date</label>
                                 <input
