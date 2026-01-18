@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { onAuthStateChanged, signInAnonymously } from "firebase/auth";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { Users, Shield, Phone, BarChart } from "lucide-react";
-import { auth, db, appId } from "@/lib/firebase";
+import { auth, db, appId } from "@/lib/firebase/client";
 
 const getPublicCollectionPath = (collectionName: string) =>
     `/artifacts/${appId}/public/data/${collectionName}`;
@@ -19,19 +19,14 @@ export default function AdminDashboard() {
 
     // Authentication effect
     useEffect(() => {
-        if (!auth) {
-            setIsAuthReady(true);
-            return;
-        }
-
-        const unsubscribe = onAuthStateChanged(auth!, async (user) => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUserId(user.uid);
             } else {
                 try {
-                    await signInAnonymously(auth!);
+                    await signInAnonymously(auth);
                 } catch (error) {
-                    console.error("Authentication failed:", error);
+                    console.error("Anonymous sign-in failed:", error);
                 }
             }
             setIsAuthReady(true);
@@ -42,7 +37,7 @@ export default function AdminDashboard() {
 
     // Data fetching effect
     useEffect(() => {
-        if (!isAuthReady || !db) return;
+        if (!isAuthReady) return;
 
         // Fetch Leads
         const leadsQuery = query(collection(db, getLeadsCollectionPath()));
