@@ -43,7 +43,7 @@ export default function AdminDashboard() {
                 setUserId(user.uid);
             } else {
                 try {
-                    await signInAnonymously(auth!);
+                    await signInAnonymously(auth);
                 } catch (error) {
                     console.error("Authentication failed:", error);
                 }

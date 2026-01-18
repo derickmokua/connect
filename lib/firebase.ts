@@ -9,24 +9,24 @@ const firebaseConfig = firebaseConfigStr ? JSON.parse(firebaseConfigStr) : {};
 // Set Firebase log level for debugging
 // setLogLevel('debug'); // Uncomment if needed
 
-let app;
-let db: Firestore | undefined;
-let auth: Auth | undefined;
+// Initialize Firebase
+const initializeFirebase = () => {
+    if (Object.keys(firebaseConfig).length === 0) {
+        console.warn("Firebase config not found. Running in offline/mock mode.");
+        return { app: undefined, db: undefined, auth: undefined };
+    }
 
-if (Object.keys(firebaseConfig).length > 0) {
     try {
-        if (!getApps().length) {
-            app = initializeApp(firebaseConfig);
-        } else {
-            app = getApp();
-        }
-        db = getFirestore(app);
-        auth = getAuth(app);
+        const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        return { app, db, auth };
     } catch (e) {
         console.error("Firebase init error:", e);
+        return { app: undefined, db: undefined, auth: undefined };
     }
-} else {
-    console.warn("Firebase config not found. Running in offline/mock mode.");
-}
+};
+
+const { app, db, auth } = initializeFirebase();
 
 export { app, db, auth, appId };
