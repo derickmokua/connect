@@ -29,7 +29,11 @@ export default function AdminDashboard() {
                 setUserId(user.uid);
             } else {
                 try {
-                    await signInAnonymously(auth);
+                    if (auth) {
+                        await signInAnonymously(auth);
+                    } else {
+                        console.error("Auth is undefined, cannot sign in anonymously.");
+                    }
                 } catch (error) {
                     console.error("Authentication failed:", error);
                 }
