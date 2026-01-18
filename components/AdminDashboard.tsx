@@ -19,12 +19,15 @@ export default function AdminDashboard() {
 
     // Authentication effect
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+        const authInstance = auth;
+        if (!authInstance) return;
+
+        const unsubscribe = onAuthStateChanged(authInstance, async (user) => {
             if (user) {
                 setUserId(user.uid);
             } else {
                 try {
-                    await signInAnonymously(auth);
+                    await signInAnonymously(authInstance);
                 } catch (error) {
                     console.error("Authentication failed:", error);
                 }
