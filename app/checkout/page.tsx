@@ -251,7 +251,7 @@ export default function CheckoutPage() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="space-y-1">
                                     <label className="text-sm font-medium text-gray-700">Full Name *</label>
-                                    <input required name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-xl border focus:border-[#F57C00] outline-none transition bg-gray-50 focus:bg-white" placeholder="John Doe" />
+                                    <input required name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-xl border focus:border-[#F57C00] outline-none transition bg-gray-50 focus:bg-white" placeholder="Your Name" />
                                 </div>
                                 <div className="space-y-1">
                                     <label className="text-sm font-medium text-gray-700">Email Address *</label>

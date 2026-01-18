@@ -37,7 +37,7 @@ export default function Footer() {
                         <h3 className="font-bold text-lg mb-6 text-[#FFA64D]">Expert Access</h3>
                         <ul className="space-y-4 text-gray-400 text-sm font-medium">
                             <li className="flex items-center gap-3">
-                                <Phone className="w-5 h-5 text-[#FFA64D]" /> +254 712 345 678
+                                <Phone className="w-5 h-5 text-[#FFA64D]" /> +254 716 883 375
                             </li>
                             <li className="flex items-center gap-3">
                                 <Mail className="w-5 h-5 text-[#FFA64D]" /> info@kukuconnect.com

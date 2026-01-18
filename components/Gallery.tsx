@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ZoomIn, ShieldCheck, TrendingUp, Truck } from "lucide-react";
+import Image from "next/image";
 
 type Category = "All" | "Infrastructure" | "Growth Stages" | "Success Stories";
 
@@ -109,9 +110,12 @@ export default function Gallery() {
                                 onClick={() => setSelectedItem(item)}
                                 className="group cursor-pointer rounded-3xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 relative aspect-[4/3]"
                             >
-                                <div className="absolute inset-0 flex items-center justify-center bg-gray-200 text-6xl group-hover:scale-110 transition duration-500">
-                                    {item.icon}
-                                </div>
+                                <Image
+                                    src={item.icon}
+                                    alt={item.title}
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition duration-500"
+                                />
 
                                 {/* Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end opacity-90 transition-opacity">
@@ -142,8 +146,13 @@ export default function Gallery() {
                                 className="bg-white rounded-3xl overflow-hidden max-w-2xl w-full"
                                 onClick={(e) => e.stopPropagation()}
                             >
-                                <div className="aspect-video bg-gray-100 flex items-center justify-center text-8xl relative">
-                                    {selectedItem.icon}
+                                <div className="aspect-video bg-gray-100 flex items-center justify-center relative overflow-hidden">
+                                    <Image
+                                        src={selectedItem.icon}
+                                        alt={selectedItem.title}
+                                        fill
+                                        className="object-cover"
+                                    />
                                     <button
                                         onClick={() => setSelectedItem(null)}
                                         className="absolute top-4 right-4 p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition"
