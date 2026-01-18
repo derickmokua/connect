@@ -44,7 +44,7 @@ export default function AdminDashboard() {
             } else {
                 try {
                     if (auth) {
-                        await signInAnonymously(auth);
+                        await signInAnonymously(auth as any);
                     }
                 } catch (error) {
                     console.error("Authentication failed:", error);
