@@ -19,13 +19,11 @@ export default function AdminDashboard() {
 
     // Authentication effect
     useEffect(() => {
-        // @ts-expect-error auth is guaranteed to be non-null from firebase/client
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUserId(user.uid);
             } else {
                 try {
-                    // @ts-expect-error auth is guaranteed to be non-null from firebase/client
                     await signInAnonymously(auth);
                 } catch (error) {
                     console.error("Anonymous sign-in failed:", error);
