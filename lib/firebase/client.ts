@@ -13,11 +13,40 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Singleton pattern — prevent multiple initializations
-const app: FirebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
+// Singleton pattern with guaranteed non-null returns
+let cachedApp: FirebaseApp | null = null;
+let cachedAuth: Auth | null = null;
+let cachedDb: Firestore | null = null;
 
-export const auth: Auth = getAuth(app) as Auth;
-export const db: Firestore = getFirestore(app) as Firestore;
+function getOrInitializeApp(): FirebaseApp {
+  if (cachedApp) return cachedApp;
+  const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+  cachedApp = app;
+  return app;
+}
+
+function getOrInitializeAuth(): Auth {
+  if (cachedAuth) return cachedAuth;
+  const authInstance = getAuth(getOrInitializeApp());
+  if (!authInstance) {
+    throw new Error("Failed to initialize Firebase Auth");
+  }
+  cachedAuth = authInstance;
+  return authInstance;
+}
+
+function getOrInitializeDb(): Firestore {
+  if (cachedDb) return cachedDb;
+  const dbInstance = getFirestore(getOrInitializeApp());
+  if (!dbInstance) {
+    throw new Error("Failed to initialize Firebase Firestore");
+  }
+  cachedDb = dbInstance;
+  return dbInstance;
+}
+
+export const auth: Auth = getOrInitializeAuth();
+export const db: Firestore = getOrInitializeDb();
 export const appId = firebaseConfig.appId;
 
-export { app };
+export const app: FirebaseApp = getOrInitializeApp();
