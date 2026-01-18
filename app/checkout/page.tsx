@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from "react";
@@ -7,6 +8,9 @@ import { db, appId } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import { Phone, MapPin, Loader2, CheckCircle, TrendingUp, Truck, ShieldCheck } from "lucide-react";
 import Link from "next/link";
+
+// Force dynamic rendering to avoid build-time Firebase initialization
+export const dynamic = 'force-dynamic';
 
 const getOrdersCollectionPath = () => `/artifacts/${appId}/public/data/orders`;
 
@@ -57,12 +61,6 @@ export default function CheckoutPage() {
 
         setLoading(true);
         setError(null);
-
-        if (!db) {
-            setError("System offline. Please call to place order.");
-            setLoading(false);
-            return;
-        }
 
         try {
             const orderData = {
