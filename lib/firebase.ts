@@ -11,14 +11,10 @@ const firebaseConfig = {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "1:123456789:web:abcdef123456",
 };
 
-let app: FirebaseApp;
+// Initialize app
+const app: FirebaseApp = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
-if (getApps().length === 0) {
-    app = initializeApp(firebaseConfig);
-} else {
-    app = getApps()[0];
-}
-
+// Export with explicit types (never undefined)
 export const auth: Auth = getAuth(app);
 export const db: Firestore = getFirestore(app);
-export const appId = firebaseConfig.appId;
+export const appId: string = firebaseConfig.appId;

@@ -24,15 +24,14 @@ export default function AdminDashboard() {
             return;
         }
 
-        const firebaseAuth = auth; // 🔒 narrowed to Auth
+        const firebaseAuth = auth; // 🔒 Auth (not undefined)
 
         const unsubscribe = onAuthStateChanged(firebaseAuth, async (user) => {
             if (user) {
                 setUserId(user.uid);
             } else {
                 try {
-                    // ✅ USE THE NARROWED VARIABLE
-                    await signInAnonymously(firebaseAuth);
+                    await signInAnonymously(firebaseAuth); // ✅ ONLY THIS
                 } catch (error) {
                     console.error("Authentication failed:", error);
                 }
