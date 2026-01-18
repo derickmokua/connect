@@ -46,7 +46,7 @@ export default function AdminDashboard() {
             const fetchedLeads = snapshot.docs.map((d) => ({
                 id: d.id,
                 ...d.data(),
-            }));
+            })) as any[];
             setLeads(
                 fetchedLeads.sort(
                     (a, b) =>
