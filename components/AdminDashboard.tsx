@@ -33,17 +33,20 @@ export default function AdminDashboard() {
 
 
     useEffect(() => {
-        if (!auth) {
+        // Capture safe reference for narrowing
+        const _auth = auth;
+
+        if (!_auth) {
             setIsAuthReady(true); // Offline mode
             return;
         }
 
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+        const unsubscribe = onAuthStateChanged(_auth, async (user) => {
             if (user) {
                 setUserId(user.uid);
             } else {
                 try {
-                    await signInAnonymously(auth);
+                    await signInAnonymously(_auth);
                 } catch (error) {
                     console.error("Authentication failed:", error);
                 }
