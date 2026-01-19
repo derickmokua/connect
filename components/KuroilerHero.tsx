@@ -14,19 +14,19 @@ export default function KuroilerHero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16 lg:gap-24"
+                    className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12"
                 >
-                    {/* Logo - Order 1 on Mobile (Top), Order 2 on Desktop (Right) */}
-                    <div className="md:order-2 flex-shrink-0">
+                    {/* Logo - Order 1 on Mobile (Top), Order 2 on Desktop (Right) - 50% width on Desktop */}
+                    <div className="w-full md:w-1/2 md:order-2 flex justify-center items-center">
                         <img
                             src="/images/01fba53c-6771-472b-94cf-81a31a996042_20250715_162930_0000.png"
                             alt="KukuConnect Official Logo"
-                            className="w-40 h-40 md:w-64 md:h-64 rounded-full object-cover"
+                            className="w-48 h-48 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover"
                         />
                     </div>
 
-                    {/* Content - Order 2 on Mobile, Order 1 on Desktop (Left) */}
-                    <div className="md:order-1 flex flex-col items-center md:items-start text-center md:text-left flex-1">
+                    {/* Content - Order 2 on Mobile, Order 1 on Desktop (Left) - 50% width on Desktop */}
+                    <div className="w-full md:w-1/2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFA64D]/10 rounded-full text-[#D97706] font-bold text-xs md:text-sm mb-6 border border-[#FFA64D]/20">
                             <Star className="w-3 h-3 md:w-4 md:h-4 fill-current" />
                             <span>#1 Dual-Purpose Breed</span>
