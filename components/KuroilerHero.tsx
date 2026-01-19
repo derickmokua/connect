@@ -44,7 +44,7 @@ export default function KuroilerHero() {
                             href="#contact"
                             className="w-full sm:w-64 px-8 py-4 bg-white text-[#78350F] border border-[#D97706]/20 rounded-full font-bold text-lg hover:bg-[#FFF7ED] transition-colors flex items-center justify-center shadow-sm"
                         >
-                            Speak to Expert
+                            Make Enquiries
                         </Link>
                     </div>
 

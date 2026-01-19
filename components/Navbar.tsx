@@ -46,9 +46,7 @@ export default function Navbar() {
 
                     {/* Icons */}
                     <div className="flex items-center space-x-3 md:space-x-4">
-                        <a href="tel:+254712345678" className="flex px-4 py-2 md:px-5 md:py-2.5 bg-[#8B4513] text-white rounded-full text-xs md:text-sm font-semibold hover:bg-[#6B4F4F] transition shadow-md items-center gap-2 whitespace-nowrap">
-                            <Phone className="w-3 h-3 md:w-4 md:h-4" /> Call Us
-                        </a>
+
 
                         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2 text-[#8B4513]">
                             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
