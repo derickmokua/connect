@@ -34,6 +34,7 @@ const milestones = [
     }
 ];
 
+export default function CareTimeline() {
     const [activeStep, setActiveStep] = useState(0);
     const detailsRef = useRef<HTMLDivElement>(null);
 

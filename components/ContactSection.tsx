@@ -101,7 +101,8 @@ export default function ContactSection() {
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         className="w-full px-4 py-4 bg-gray-50 border-2 border-transparent rounded-2xl focus:bg-white focus:border-[#FFA64D] outline-none text-[#8B4513] font-medium transition"
-                                        placeholder="Your Name"
+                                        placeholder="e.g. Jane Mwikali"
+                                        autoComplete="name"
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -112,7 +113,8 @@ export default function ContactSection() {
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         className="w-full px-4 py-4 bg-gray-50 border-2 border-transparent rounded-2xl focus:bg-white focus:border-[#FFA64D] outline-none text-[#8B4513] font-medium transition"
-                                        placeholder="john@example.com"
+                                        placeholder="e.g. jane@email.com"
+                                        autoComplete="email"
                                     />
                                 </div>
                             </div>
@@ -125,7 +127,7 @@ export default function ContactSection() {
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                     className="w-full px-4 py-4 bg-gray-50 border-2 border-transparent rounded-2xl focus:bg-white focus:border-[#FFA64D] outline-none text-[#8B4513] font-medium transition resize-none"
-                                    placeholder="I need advice on..."
+                                    placeholder="e.g. I want to preorder chicks for February 2026. Please advise on payment and pickup."
                                 />
                             </div>
 

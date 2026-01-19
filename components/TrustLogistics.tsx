@@ -31,7 +31,12 @@ export default function TrustLogistics() {
                             Next incubation batch hatches on:
                         </p>
                         <p className="text-2xl font-bold text-[#D97706]">Friday, 14th Jan</p>
-                        <button className="mt-4 text-sm underline text-gray-500 hover:text-[#D97706]">Pre-order to secure yours</button>
+                        <button
+                            className="mt-4 px-6 py-3 bg-gradient-to-r from-[#FFA64D] to-[#D97706] text-white font-bold rounded-2xl shadow-lg hover:scale-105 hover:from-[#FFB366] hover:to-[#B45309] transition-all text-base"
+                            onClick={() => window.location.href = '/contact'}
+                        >
+                            🐣 Pre-order to Secure Yours
+                        </button>
                     </div>
 
                     {/* Trust Item 3 */}
