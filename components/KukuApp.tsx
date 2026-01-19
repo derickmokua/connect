@@ -7,7 +7,7 @@ import KuroilerAdvantages from "./KuroilerAdvantages";
 import GrowthTimeline from "./GrowthTimeline";
 import TrustLogistics from "./TrustLogistics";
 import VaccinationScheduler from "./VaccinationScheduler";
-import ChatBubble from "./ChatBubble";
+import { Chatbot } from "./Chatbot";
 import Footer from "./Footer";
 import CareTimeline from "./CareTimeline";
 import AboutUs from "./AboutUs";
@@ -39,7 +39,7 @@ export default function KukuApp() {
                 <ContactSection />
             </main>
             <Footer />
-            <ChatBubble />
+            <Chatbot />
         </div>
     );
 }

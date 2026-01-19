@@ -3,6 +3,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface Message {
     role: "user" | "model";
@@ -12,7 +14,7 @@ interface Message {
 export function Chatbot() {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([
-        { role: "model", text: "Hello! How can I help you with your poultry farm today? 🐔" },
+        { role: "model", text: "Karibu! 🐔 I'm your KukuConnect Assistant. I'm here to help you raise healthy, profitable Kuroiler chickens. Ask me about vaccination, feeding, or disease management!" },
     ]);
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -101,9 +103,21 @@ export function Chatbot() {
                                         className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.role === "user"
                                             ? "bg-[#8B4513] text-white rounded-br-none"
                                             : "bg-white border border-gray-200 text-gray-800 rounded-bl-none shadow-sm"
-                                            }`}
+                                            } whitespace-pre-wrap break-words`}
                                     >
-                                        {msg.text}
+                                        <ReactMarkdown
+                                            remarkPlugins={[remarkGfm]}
+                                            components={{
+                                                ul: (props) => <ul className="list-disc ml-4 my-2" {...props} />,
+                                                ol: (props) => <ol className="list-decimal ml-4 my-2" {...props} />,
+                                                li: (props) => <li className="my-1" {...props} />,
+                                                p: (props) => <p className="mb-2 last:mb-0" {...props} />,
+                                                strong: (props) => <strong className="font-bold" {...props} />,
+                                                a: (props) => <a className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
+                                            }}
+                                        >
+                                            {msg.text}
+                                        </ReactMarkdown>
                                     </div>
                                 </div>
                             ))}

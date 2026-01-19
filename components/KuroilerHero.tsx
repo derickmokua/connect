@@ -46,6 +46,10 @@ export default function KuroilerHero() {
                             Speak to an Expert
                         </Link>
                     </div>
+
+                    <p className="mt-6 text-sm text-[#78350F]/70 font-medium">
+                        Need instant advice? <span className="text-[#D97706] font-bold">Chat with our Kuku Assistant</span> at the bottom right! 👇
+                    </p>
                 </motion.div>
             </div>
 
