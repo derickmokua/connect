@@ -23,16 +23,12 @@ export default function Navbar() {
                 <div className="flex justify-between items-center h-20">
 
                     {/* Logo - Breakout Style */}
-                    <div className="relative z-50">
-                        <Link href="/" className="block">
-                            <div className="w-20 h-20" /> {/* Spacer to preserve layout */}
-                            <img
-                                src="/images/01fba53c-6771-472b-94cf-81a31a996042_20250715_162930_0000.png"
-                                alt="KukuConnect Logo"
-                                className="absolute top-0 left-0 w-32 h-32 rounded-full object-cover border-4 border-[#FFFBEA] shadow-xl transform -translate-y-2"
-                            />
-                        </Link>
-                    </div>
+                    {/* Logo - Wordmark */}
+                    <Link href="/" className="flex items-center gap-2">
+                        <span className="font-extrabold text-2xl md:text-3xl text-[#8B4513] tracking-tight">
+                            Kuku<span className="text-[#FFA64D]">Connect</span>
+                        </span>
+                    </Link>
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex items-center space-x-8">

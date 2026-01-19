@@ -13,7 +13,7 @@ export default function Footer() {
                     {/* Brand */}
                     <div className="space-y-6">
                         <div className="flex items-center space-x-4">
-                            <img src="/images/01fba53c-6771-472b-94cf-81a31a996042_20250715_162930_0000.png" alt="KukuConnect Logo" className="w-24 h-24 rounded-full object-cover" />
+                            <span className="font-extrabold text-3xl text-white tracking-tight">Kuku<span className="text-[#FFA64D]">Connect</span></span>
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed font-medium">
                             The High-Yield Poultry System. We supply hardened Kuroilers and the scientific routine to ensure your success.

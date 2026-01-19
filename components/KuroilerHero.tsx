@@ -15,20 +15,29 @@ export default function KuroilerHero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
+                    {/* Hero Logo */}
+                    <div className="flex justify-center mb-8">
+                        <img
+                            src="/images/01fba53c-6771-472b-94cf-81a31a996042_20250715_162930_0000.png"
+                            alt="KukuConnect Official Logo"
+                            className="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-[#FFFBEA] shadow-2xl"
+                        />
+                    </div>
+
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFA64D]/10 rounded-full text-[#D97706] font-bold text-xs md:text-sm mb-6 border border-[#FFA64D]/20">
                         <Star className="w-3 h-3 md:w-4 md:h-4 fill-current" />
                         <span>#1 Dual-Purpose Breed</span>
                     </div>
 
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-[#431407] mb-6 leading-[1.1] tracking-tight">
-                        Big, Heavy Kuroilers. <br />
+                        Your Farm. <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D97706] to-[#B45309]">
-                            Delivered to Your Farm.
+                            Our Commitment.
                         </span>
                     </h1>
 
                     <p className="text-lg md:text-2xl text-[#78350F] mb-10 leading-relaxed max-w-2xl mx-auto opacity-90">
-                        We provide healthy, vaccinated birds and the daily routine you need to raise them successfully. No guesswork—just growth.
+                        KukuConnect delivers healthy, high-performing chicks and expert support—so your farm thrives. We’re here to help you grow, profit, and succeed, every step of the way.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
