@@ -20,12 +20,19 @@ export default function Navbar() {
     return (
         <nav className="fixed top-0 w-full bg-[#FFFBEA]/95 backdrop-blur-md z-50 shadow-sm border-b border-[#FFA64D]/10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-24">
+                <div className="flex justify-between items-center h-20">
 
-                    {/* Logo */}
-                    <Link href="/" className="flex items-center">
-                        <img src="/images/01fba53c-6771-472b-94cf-81a31a996042_20250715_162930_0000.png" alt="KukuConnect Logo" className="w-20 h-20 rounded-full object-cover" />
-                    </Link>
+                    {/* Logo - Breakout Style */}
+                    <div className="relative z-50">
+                        <Link href="/" className="block">
+                            <div className="w-20 h-20" /> {/* Spacer to preserve layout */}
+                            <img
+                                src="/images/01fba53c-6771-472b-94cf-81a31a996042_20250715_162930_0000.png"
+                                alt="KukuConnect Logo"
+                                className="absolute top-0 left-0 w-32 h-32 rounded-full object-cover border-4 border-[#FFFBEA] shadow-xl transform -translate-y-2"
+                            />
+                        </Link>
+                    </div>
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex items-center space-x-8">
