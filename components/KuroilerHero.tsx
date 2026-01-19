@@ -35,14 +35,14 @@ export default function KuroilerHero() {
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-10 justify-center">
                         <Link
                             href="#products"
-                            className="w-full sm:w-48 px-8 py-4 bg-[#D97706] text-white rounded-full font-bold text-lg hover:bg-[#B45309] transition-all shadow-xl hover:shadow-[#D97706]/20 flex items-center justify-center gap-2 group"
+                            className="w-full sm:w-64 px-8 py-4 bg-[#D97706] text-white rounded-full font-bold text-lg hover:bg-[#B45309] transition-all shadow-xl hover:shadow-[#D97706]/20 flex items-center justify-center gap-2 group"
                         >
                             Start Batch
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <Link
                             href="#contact"
-                            className="w-full sm:w-48 px-8 py-4 bg-white text-[#78350F] border border-[#D97706]/20 rounded-full font-bold text-lg hover:bg-[#FFF7ED] transition-colors flex items-center justify-center shadow-sm"
+                            className="w-full sm:w-64 px-8 py-4 bg-white text-[#78350F] border border-[#D97706]/20 rounded-full font-bold text-lg hover:bg-[#FFF7ED] transition-colors flex items-center justify-center shadow-sm"
                         >
                             Speak to Expert
                         </Link>
