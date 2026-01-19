@@ -25,7 +25,7 @@ export default function Navbar() {
                     {/* Logo - Breakout Style */}
                     {/* Logo - Wordmark */}
                     <Link href="/" className="flex items-center gap-2">
-                        <img src="/images/KukuConnect_20250716_225504_0000.png" alt="Icon" className="w-14 h-14 md:w-16 md:h-16 rounded-full" />
+                        <img src="/images/KukuConnect_20250716_225504_0000.png" alt="Icon" className="w-16 h-16 md:w-20 md:h-20 rounded-full" />
                         <span className="font-extrabold text-lg md:text-xl text-[#8B4513] tracking-tight">
                             Kuku<span className="text-[#FFA64D]">Connect</span>
                         </span>
