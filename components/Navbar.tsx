@@ -25,6 +25,7 @@ export default function Navbar() {
                     {/* Logo - Breakout Style */}
                     {/* Logo - Wordmark */}
                     <Link href="/" className="flex items-center gap-2">
+                        <img src="/images/01fba53c-6771-472b-94cf-81a31a996042_20250715_162930_0000.png" alt="Icon" className="w-8 h-8 rounded-full border border-[#FFA64D]" />
                         <span className="font-extrabold text-2xl md:text-3xl text-[#8B4513] tracking-tight">
                             Kuku<span className="text-[#FFA64D]">Connect</span>
                         </span>
@@ -36,7 +37,7 @@ export default function Navbar() {
                             <a
                                 key={link.name}
                                 href={`#${link.to}`}
-                                className="text-[#6B4F4F] hover:text-[#FFA64D] text-sm font-medium transition-colors cursor-pointer"
+                                className="text-[#6B4F4F] hover:text-[#D97706] text-sm font-semibold hover:bg-[#FFA64D]/5 px-3 py-2 rounded-full transition-all cursor-pointer"
                             >
                                 {link.name}
                             </a>
