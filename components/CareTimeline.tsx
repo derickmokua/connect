@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Thermometer, Syringe, Wheat, ChevronRight } from 'lucide-react';
 
@@ -34,8 +34,17 @@ const milestones = [
     }
 ];
 
-export default function CareTimeline() {
     const [activeStep, setActiveStep] = useState(0);
+    const detailsRef = useRef<HTMLDivElement>(null);
+
+    // Scroll details into view on mobile when activeStep changes
+    useEffect(() => {
+        if (typeof window !== 'undefined' && detailsRef.current) {
+            if (window.innerWidth < 768) { // Tailwind's md breakpoint
+                detailsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }, [activeStep]);
 
     return (
         <section className="py-12 px-4 bg-white">
@@ -81,7 +90,7 @@ export default function CareTimeline() {
                     </div>
 
                     {/* Right: Details Card */}
-                    <div className="h-auto md:h-[400px] relative">
+                    <div className="h-auto md:h-[400px] relative" ref={detailsRef}>
                         <AnimatePresence mode='wait'>
                             <motion.div
                                 key={activeStep}

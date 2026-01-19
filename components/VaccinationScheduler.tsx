@@ -95,6 +95,7 @@ export default function VaccinationScheduler() {
                                     onChange={(e) => setStartDate(e.target.value)}
                                     className="w-full p-4 rounded-2xl bg-[#FFF7E6] border-2 border-transparent focus:border-[#D97706] text-[#431407] font-bold outline-none transition"
                                 />
+                                <span className="block mt-1 text-xs text-gray-500 md:text-sm">Format: YYYY-MM-DD (e.g. 2026-01-19)</span>
                             </div>
                             <button
                                 onClick={generateSchedule}
