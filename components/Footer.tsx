@@ -12,8 +12,7 @@ export default function Footer() {
 
                     {/* Brand */}
                     <div className="space-y-6">
-                        <div className="flex flex-col items-start gap-4">
-                            <img src="/images/KukuConnect_20250716_225504_0000.png" alt="KukuConnect Logo" className="w-20 h-20 md:w-32 md:h-32 rounded-full" />
+                        <div className="flex items-center space-x-4">
                             <span className="font-extrabold text-3xl text-white tracking-tight">Kuku<span className="text-[#FFA64D]">Connect</span></span>
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed font-medium">
