@@ -23,12 +23,8 @@ export default function Navbar() {
                 <div className="flex justify-between items-center h-24">
 
                     {/* Logo */}
-                    <Link href="/" className="flex items-center space-x-2">
-                        <img src="/images/01fba53c-6771-472b-94cf-81a31a996042_20250715_162930_0000.png" alt="KukuConnect Logo" className="w-20 h-20 rounded-full object-cover border-2 border-[#8B4513]/10 shadow-md" />
-                        <div className="flex flex-col">
-                            <span className="font-bold text-2xl text-[#8B4513] leading-none">KukuConnect</span>
-                            <span className="text-xs text-[#FFA64D] tracking-widest uppercase font-semibold">Your Kuku Plug.</span>
-                        </div>
+                    <Link href="/" className="flex items-center">
+                        <img src="/images/01fba53c-6771-472b-94cf-81a31a996042_20250715_162930_0000.png" alt="KukuConnect Logo" className="w-20 h-20 rounded-full object-cover" />
                     </Link>
 
                     {/* Desktop Menu */}
