@@ -4,23 +4,27 @@
   --font-inter: var(--font-inter);
   --font-outfit: var(--font-outfit);
 
-  --color-background: #FFFCF8;
-  --color-foreground: #1E293B;
+  --color-background: #F8FAFC;
+  --color-foreground: #0F172A;
 
-  --color-primary: #F97316;
+  --color-primary: #FF6200;
   --color-primary-hover: #EA580C;
 
-  --color-secondary: #FFF7ED;
-  --color-accent: #334155;
+  --color-secondary: #0A2540;
+  --color-accent: #00BFFF;
 
-  --color-muted: #94A3B8;
+  --color-muted: #64748B;
   --color-border: #E2E8F0;
+  --color-success: #4CAF50;
+
+  --radius: 1rem;
 }
 
 :root {
-  --background: #FFFCF8;
-  --foreground: #1E293B;
-  --primary: #F97316;
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --primary: #FF6200;
+  --surface: #FFFFFF;
 }
 
 body {

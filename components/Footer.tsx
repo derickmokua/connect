@@ -6,16 +6,16 @@ import { Phone, Mail, MapPin, Facebook, Instagram, Lock, ShieldCheck } from "luc
 
 export default function Footer() {
     return (
-        <footer className="bg-slate-900 text-slate-300 pt-24 pb-12 border-t border-slate-800">
+        <footer className="bg-[#0F172A] text-slate-300 pt-24 pb-12 border-t border-slate-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
 
                     {/* Brand */}
                     <div className="space-y-6">
                         <div className="flex items-center space-x-3">
-                            <span className="font-extrabold text-3xl text-white tracking-tight">Kuku<span className="text-orange-500">Connect.</span></span>
+                            <span className="font-extrabold text-3xl text-white tracking-tight">Kuku<span className="text-[#FF8A00]">Connect.</span></span>
                         </div>
-                        <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
+                        <p className="text-slate-400 text-sm leading-relaxed max-w-xs font-medium">
                             The High-Yield Poultry System. We supply hardened Kuroilers and the scientific routine to ensure your success.
                         </p>
                     </div>
@@ -24,10 +24,10 @@ export default function Footer() {
                     <div>
                         <h3 className="font-bold text-white text-lg mb-6">System Links</h3>
                         <ul className="space-y-4 text-sm font-medium">
-                            <li><Link href="#products" className="hover:text-orange-500 transition-colors">Start Your Batch</Link></li>
-                            <li><Link href="#vaccination" className="hover:text-orange-500 transition-colors">Immunity Protocol</Link></li>
-                            <li><Link href="#care-guide" className="hover:text-orange-500 transition-colors">Success Routine</Link></li>
-                            <li><Link href="#gallery" className="hover:text-orange-500 transition-colors">Evidence Gallery</Link></li>
+                            <li><Link href="#products" className="hover:text-[#FF8A00] transition-colors">Start Your Batch</Link></li>
+                            <li><Link href="#vaccination" className="hover:text-[#FF8A00] transition-colors">Immunity Protocol</Link></li>
+                            <li><Link href="#care-guide" className="hover:text-[#FF8A00] transition-colors">Success Routine</Link></li>
+                            <li><Link href="#gallery" className="hover:text-[#FF8A00] transition-colors">Evidence Gallery</Link></li>
                         </ul>
                     </div>
 
@@ -36,13 +36,13 @@ export default function Footer() {
                         <h3 className="font-bold text-white text-lg mb-6">Expert Access</h3>
                         <ul className="space-y-4 text-sm font-medium">
                             <li className="flex items-center gap-3 hover:text-white transition-colors">
-                                <Phone className="w-5 h-5 text-orange-500" /> +254 716 883 375
+                                <Phone className="w-5 h-5 text-[#FF8A00]" /> +254 716 883 375
                             </li>
                             <li className="flex items-center gap-3 hover:text-white transition-colors">
-                                <Mail className="w-5 h-5 text-orange-500" /> info@kukuconnect.com
+                                <Mail className="w-5 h-5 text-[#FF8A00]" /> info@kukuconnect.com
                             </li>
                             <li className="flex items-center gap-3 hover:text-white transition-colors">
-                                <MapPin className="w-5 h-5 text-orange-500" /> Kitui, Kenya
+                                <MapPin className="w-5 h-5 text-[#FF8A00]" /> Kitui, Kenya
                             </li>
                         </ul>
                     </div>
@@ -50,10 +50,10 @@ export default function Footer() {
                     {/* Newsletter / Socials mock */}
                     <div>
                         <h3 className="font-bold text-white text-lg mb-6">Daily Updates</h3>
-                        <p className="text-slate-400 text-sm mb-6">Join our WhatsApp Channel for verified farming tips.</p>
+                        <p className="text-slate-400 text-sm mb-6 font-medium">Join our WhatsApp Channel for verified farming tips.</p>
                         <a
                             href="https://whatsapp.com/channel/placeholder"
-                            className="inline-flex items-center justify-center px-6 py-3.5 bg-[#25D366] text-white rounded-xl font-bold text-sm hover:bg-[#128C7E] transition-all w-full shadow-lg shadow-green-900/20 hover:shadow-green-900/30 hover:-translate-y-0.5"
+                            className="inline-flex items-center justify-center px-6 py-3.5 bg-[#4CAF50] text-white rounded-xl font-bold text-sm hover:bg-[#388E3C] transition-all w-full shadow-lg shadow-[#4CAF50]/20 hover:shadow-[#4CAF50]/30 hover:-translate-y-0.5"
                         >
                             Follow Channel
                         </a>
@@ -64,11 +64,11 @@ export default function Footer() {
                                 { Icon: Facebook, href: "#" },
                                 { Icon: Instagram, href: "#" },
                             ].map(({ Icon, href }, i) => (
-                                <a key={i} href={href} className="p-2.5 bg-slate-800 border border-slate-700 rounded-full hover:border-orange-500 hover:text-orange-500 text-slate-400 transition-all duration-300">
+                                <a key={i} href={href} className="p-2.5 bg-[#162B4D] border border-[#2A456B] rounded-full hover:border-[#FF8A00] hover:text-[#FF8A00] text-slate-400 transition-all duration-300">
                                     <Icon className="w-5 h-5" />
                                 </a>
                             ))}
-                            <a href="#" className="p-2.5 bg-slate-800 border border-slate-700 rounded-full hover:border-orange-500 hover:text-orange-500 text-slate-400 transition-all duration-300 group">
+                            <a href="#" className="p-2.5 bg-[#162B4D] border border-[#2A456B] rounded-full hover:border-[#FF8A00] hover:text-[#FF8A00] text-slate-400 transition-all duration-300 group">
                                 <svg
                                     viewBox="0 0 24 24"
                                     aria-hidden="true"
@@ -81,7 +81,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
+                <div className="border-t border-[#1E3A5F] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-500">
                     <p>© {new Date().getFullYear()} KukuConnect. All rights reserved.</p>
                     <div className="flex gap-6">
                         <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>

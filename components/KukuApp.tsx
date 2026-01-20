@@ -28,7 +28,7 @@ export default function KukuApp() {
         }
     }, []);
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-[#0F172A]">
             <Navbar />
             <main>
                 <Hero />
@@ -39,9 +39,9 @@ export default function KukuApp() {
                 <Reviews />
                 <VaccinationScheduler />
 
-                <section id="how-it-works" className="py-24 px-4 bg-slate-50 border-t border-slate-100">
+                <section id="how-it-works" className="py-24 px-4 bg-[#0F172A] border-t border-slate-800">
                     <div className="max-w-7xl mx-auto text-center">
-                        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-12">Maximum Growth</h2>
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-12">Maximum Growth</h2>
                         <CareTimeline />
                     </div>
                 </section>

@@ -48,29 +48,29 @@ export default function CareTimeline() {
     }, [activeStep]);
 
     return (
-        <section className="py-12 px-4 bg-white">
+        <section className="py-12 px-4 bg-[#FAFAFA]">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
-                    <span className="inline-block px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-wide mb-2">
+                    <span className="inline-block px-3 py-1 rounded-full bg-[#FF8A00]/10 text-[#FF8A00] text-xs font-bold uppercase tracking-wide mb-2 border border-[#FF8A00]/20">
                         Optimized for Kuroiler Genetics
                     </span>
-                    <h2 className="text-4xl font-extrabold text-slate-900 mb-4">The Success Routine</h2>
-                    <p className="text-slate-600 text-lg font-medium">A simple 3-step calendar to ensure your flock reaches its full weight.</p>
+                    <h2 className="text-4xl font-extrabold text-[#0F172A] mb-4">The Success Routine</h2>
+                    <p className="text-[#6B7280] text-lg font-medium">A simple 3-step calendar to ensure your flock reaches its full weight.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     {/* Left: Steps Selection */}
                     <div className="space-y-6 relative">
                         {/* Connection Line */}
-                        <div className="absolute left-8 top-8 bottom-8 w-1 bg-gray-100 -z-10 rounded-full"></div>
+                        <div className="absolute left-8 top-8 bottom-8 w-1 bg-slate-800 -z-10 rounded-full"></div>
 
                         {milestones.map((m, idx) => (
                             <div
                                 key={idx}
                                 onClick={() => setActiveStep(idx)}
                                 className={`flex items-center p-6 rounded-2xl cursor-pointer transition-all duration-300 border-2 ${activeStep === idx
-                                    ? `bg-white shadow-xl ${m.color} scale-105 relative z-10`
-                                    : 'bg-white border-transparent hover:bg-gray-50'
+                                    ? `bg-white shadow-xl ${m.color.replace('border-', 'border-')} scale-105 relative z-10`
+                                    : 'bg-[#FAFAFA] border-transparent hover:bg-slate-100'
                                     }`}
                             >
                                 <div className={`w-16 h-16 rounded-full flex items-center justify-center bg-white shadow-sm border ${m.color} z-10 shrink-0`}>
@@ -78,13 +78,13 @@ export default function CareTimeline() {
                                 </div>
                                 <div className="ml-6 flex-1">
                                     <div className="flex justify-between items-center mb-1">
-                                        <h3 className="font-bold text-slate-900 text-xl">{m.period}</h3>
-                                        <span className="text-xs font-bold uppercase text-slate-400 tracking-wider">Goal: {m.goal}</span>
+                                        <h3 className="font-bold text-[#0F172A] text-xl">{m.period}</h3>
+                                        <span className="text-xs font-bold uppercase text-slate-500 tracking-wider">Goal: {m.goal}</span>
                                     </div>
-                                    <p className="text-slate-500 font-medium">{m.title}</p>
+                                    <p className="text-[#6B7280] font-medium">{m.title}</p>
                                 </div>
                                 {activeStep === idx && (
-                                    <ChevronRight className="w-6 h-6 text-orange-500 animate-pulse" />
+                                    <ChevronRight className="w-6 h-6 text-[#FF8A00] animate-pulse" />
                                 )}
                             </div>
                         ))}
@@ -99,24 +99,24 @@ export default function CareTimeline() {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -20 }}
                                 transition={{ duration: 0.3 }}
-                                className="bg-orange-50/50 rounded-[2.5rem] p-6 md:p-10 shadow-lg h-full border border-orange-100 flex flex-col justify-center"
+                                className="bg-white rounded-[2.5rem] p-6 md:p-10 shadow-lg h-full border border-slate-200 flex flex-col justify-center"
                             >
                                 <div className="mb-8">
-                                    <div className="inline-block px-4 py-1.5 bg-white text-orange-600 font-bold rounded-full mb-4 text-sm uppercase tracking-wide border border-orange-100 shadow-sm">
+                                    <div className="inline-block px-4 py-1.5 bg-[#FAFAFA] text-[#FF8A00] font-bold rounded-full mb-4 text-sm uppercase tracking-wide border border-[#FF8A00]/20 shadow-sm">
                                         Goal: {milestones[activeStep].goal}
                                     </div>
-                                    <h3 className="text-3xl font-black text-slate-900 mb-4">{milestones[activeStep].title}</h3>
-                                    <p className="text-slate-600 text-lg leading-relaxed">
+                                    <h3 className="text-3xl font-black text-[#0F172A] mb-4">{milestones[activeStep].title}</h3>
+                                    <p className="text-[#6B7280] text-lg leading-relaxed">
                                         {milestones[activeStep].desc}
                                     </p>
                                 </div>
 
                                 <div className="space-y-4">
-                                    <h4 className="font-bold text-slate-900 border-b border-orange-200/50 pb-2 mb-3">Critical Actions:</h4>
+                                    <h4 className="font-bold text-[#0F172A] border-b border-slate-200 pb-2 mb-3">Critical Actions:</h4>
                                     {milestones[activeStep].focus.map((item, i) => (
                                         <div key={i} className="flex items-center gap-3">
-                                            <div className="w-2 h-2 rounded-full bg-orange-500"></div>
-                                            <span className="text-slate-700 font-medium">{item}</span>
+                                            <div className="w-2 h-2 rounded-full bg-[#FF8A00]"></div>
+                                            <span className="text-[#6B7280] font-medium">{item}</span>
                                         </div>
                                     ))}
                                 </div>

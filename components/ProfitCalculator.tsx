@@ -29,22 +29,22 @@ export default function ProfitCalculator() {
     const estimatedProfit = totalRevenue - totalExpenses;
 
     return (
-        <section id="calculator" className="py-20 px-4 bg-[#FFA64D]/5">
-            <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-[#FFA64D]/20">
+        <section id="calculator" className="py-20 px-4 bg-[#FAFAFA] border-t border-slate-200">
+            <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-slate-100">
                 <div className="text-center mb-10">
-                    <h2 className="text-3xl font-bold text-[#8B4513] mb-2">Profitability Calculator</h2>
-                    <p className="text-[#6B4F4F]">Estimate your returns based on our competitive chick prices.</p>
+                    <h2 className="text-3xl font-bold text-[#0F172A] mb-2">Profitability Calculator</h2>
+                    <p className="text-[#6B7280]">Estimate your returns based on our competitive chick prices.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Inputs */}
                     <div className="space-y-6 md:col-span-1">
                         <div>
-                            <label className="block text-sm font-bold text-[#8B4513] mb-2">Chick Age</label>
+                            <label className="block text-sm font-bold text-[#0F172A] mb-2">Chick Age</label>
                             <select
                                 value={chickAge}
                                 onChange={(e) => setChickAge(e.target.value)}
-                                className="w-full p-3 rounded-xl bg-[#FFFBEA] border border-[#FFA64D]/30 text-[#8B4513] focus:outline-none focus:border-[#FFA64D]"
+                                className="w-full p-3 rounded-xl bg-[#FAFAFA] border border-slate-200 text-[#0F172A] focus:outline-none focus:border-[#FF8A00]"
                             >
                                 {Object.keys(chickPrices).map(age => (
                                     <option key={age} value={age}>{age}</option>
@@ -52,41 +52,41 @@ export default function ProfitCalculator() {
                             </select>
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-[#8B4513] mb-2">Quantity</label>
+                            <label className="block text-sm font-bold text-[#0F172A] mb-2">Quantity</label>
                             <input
                                 type="number"
                                 value={quantity}
                                 onChange={(e) => setQuantity(Number(e.target.value))}
-                                className="w-full p-3 rounded-xl bg-[#FFFBEA] border border-[#FFA64D]/30 text-[#8B4513] focus:outline-none focus:border-[#FFA64D]"
+                                className="w-full p-3 rounded-xl bg-[#FAFAFA] border border-slate-200 text-[#0F172A] focus:outline-none focus:border-[#FF8A00]"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-[#8B4513] mb-2">Exp. Selling Price</label>
+                            <label className="block text-sm font-bold text-[#0F172A] mb-2">Exp. Selling Price</label>
                             <input
                                 type="number"
                                 value={sellingPrice}
                                 onChange={(e) => setSellingPrice(Number(e.target.value))}
-                                className="w-full p-3 rounded-xl bg-[#FFFBEA] border border-[#FFA64D]/30 text-[#8B4513] focus:outline-none focus:border-[#FFA64D]"
+                                className="w-full p-3 rounded-xl bg-[#FAFAFA] border border-slate-200 text-[#0F172A] focus:outline-none focus:border-[#FF8A00]"
                             />
                         </div>
                     </div>
 
                     {/* Results */}
-                    <div className="md:col-span-2 bg-[#FFFBEA] rounded-2xl p-6 flex flex-col justify-center space-y-4">
-                        <div className="flex justify-between items-center text-[#6B4F4F]">
+                    <div className="md:col-span-2 bg-[#FAFAFA] rounded-2xl p-6 flex flex-col justify-center space-y-4 border border-slate-100">
+                        <div className="flex justify-between items-center text-[#6B7280]">
                             <span>Cost of Chicks:</span>
                             <span className="font-bold">KES {totalCost.toLocaleString()}</span>
                         </div>
-                        <div className="flex justify-between items-center text-[#6B4F4F]">
+                        <div className="flex justify-between items-center text-[#6B7280]">
                             <span>Est. Feed Cost (to maturity):</span>
                             <span className="font-bold">KES {totalFeedCost.toLocaleString()}</span>
                         </div>
-                        <div className="h-px bg-[#FFA64D]/20 my-2"></div>
-                        <div className="flex justify-between items-center text-xl text-[#8B4513] font-bold">
+                        <div className="h-px bg-slate-200 my-2"></div>
+                        <div className="flex justify-between items-center text-xl text-[#0F172A] font-bold">
                             <span>Total Investment:</span>
                             <span>KES {totalExpenses.toLocaleString()}</span>
                         </div>
-                        <div className="flex justify-between items-center text-xl text-[#FFA64D] font-bold">
+                        <div className="flex justify-between items-center text-xl text-[#FF8A00] font-bold">
                             <span>Est. Revenue:</span>
                             <span>KES {totalRevenue.toLocaleString()}</span>
                         </div>
