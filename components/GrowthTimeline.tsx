@@ -81,11 +81,11 @@ export default function GrowthTimeline() {
     };
 
     return (
-        <section id="products" className="py-24 px-4 bg-[#FFFBEA]">
+        <section id="products" className="py-24 px-4 bg-slate-50">
             <div className="max-w-5xl mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl font-extrabold text-[#431407] mb-2">Start Your Batch</h2>
-                    <p className="text-[#78350F] text-lg">Build a profitable system in 3 simple steps.</p>
+                    <h2 className="text-4xl font-extrabold text-slate-900 mb-2">Start Your Batch</h2>
+                    <p className="text-slate-600 text-lg">Build a profitable system in 3 simple steps.</p>
                 </div>
 
                 {/* Progress Indicators */}
@@ -93,10 +93,10 @@ export default function GrowthTimeline() {
                     {/* Desktop Steps */}
                     <div className="hidden md:flex items-center gap-4">
                         {["Choose Age", "Quantity", "Success Kit", "Summary"].map((label, idx) => (
-                            <div key={idx} className={`items-center gap-2 flex ${step > idx ? "text-[#D97706]" : "text-gray-400"}`}>
+                            <div key={idx} className={`items-center gap-2 flex ${step > idx ? "text-orange-600" : "text-gray-400"}`}>
                                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm border-2 
-                                    ${step > idx ? "bg-[#D97706] text-white border-[#D97706]" :
-                                        step === idx + 1 ? "border-[#D97706] text-[#D97706]" : "border-gray-300"}`}>
+                                    ${step > idx ? "bg-orange-600 text-white border-orange-600" :
+                                        step === idx + 1 ? "border-orange-600 text-orange-600" : "border-gray-300"}`}>
                                     {idx + 1}
                                 </div>
                                 <span className="font-semibold text-sm">{label}</span>
@@ -106,12 +106,12 @@ export default function GrowthTimeline() {
                     </div>
 
                     {/* Mobile Step Counter */}
-                    <div className="md:hidden bg-[#FFF7E6] px-4 py-2 rounded-full border border-[#D97706]/20">
-                        <span className="text-[#D97706] font-bold text-sm">Step {step} of 4: {["Choose Age", "Quantity", "Success Kit", "Summary"][step - 1]}</span>
+                    <div className="md:hidden bg-orange-50 px-4 py-2 rounded-full border border-orange-200">
+                        <span className="text-orange-700 font-bold text-sm">Step {step} of 4: {["Choose Age", "Quantity", "Success Kit", "Summary"][step - 1]}</span>
                     </div>
                 </div>
 
-                <div className="bg-white rounded-[2rem] shadow-xl border border-[#D97706]/10 overflow-hidden min-h-[500px] flex flex-col">
+                <div className="bg-white rounded-[2rem] shadow-xl border border-orange-100 overflow-hidden min-h-[500px] flex flex-col">
                     <div className="p-6 md:p-12 flex-1">
                         <AnimatePresence mode="wait">
 

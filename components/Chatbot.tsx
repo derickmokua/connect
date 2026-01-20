@@ -14,7 +14,7 @@ interface Message {
 export function Chatbot() {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([
-        { role: "model", text: "Karibu! 🐔 I'm your KukuConnect Assistant. I'm here to help you raise healthy, profitable Kuroiler chickens. Ask me about vaccination, feeding, or disease management!" },
+        { role: "model", text: "Karibu! Welcome to KukuConnect. I'm your farm assistant, here to help you succeed with healthy chicks, expert advice, and practical solutions. Ask me anything about poultry farming, vaccination, feeding, or farm management!" },
     ]);
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -63,10 +63,10 @@ export function Chatbot() {
 
     return (
         <>
+
             <button
                 onClick={() => setIsOpen(true)}
-                className={`fixed bottom-6 right-6 p-4 rounded-full bg-[#8B4513] text-white shadow-lg hover:bg-[#6B4F4F] transition-all z-40 ${isOpen ? "hidden" : "flex"
-                    }`}
+                className={`fixed bottom-6 right-6 p-4 rounded-full bg-[#D97706] text-white shadow-lg hover:bg-[#B45309] hover:scale-105 transition-all z-40 ${isOpen ? "hidden" : "flex"}`}
             >
                 <MessageCircle size={28} />
             </button>
@@ -77,23 +77,23 @@ export function Chatbot() {
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="fixed bottom-6 right-6 w-full max-w-sm bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden z-50 flex flex-col h-[500px]"
+                        className="fixed bottom-1/2 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[95vw] max-w-sm bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden z-50 flex flex-col h-[500px] sm:bottom-6 sm:left-auto sm:right-6 sm:transform-none sm:translate-y-0 sm:-translate-x-0"
                     >
                         {/* Header */}
-                        <div className="bg-[#8B4513] p-4 flex justify-between items-center text-white">
+                        <div className="bg-slate-900 p-4 flex justify-between items-center text-white">
                             <h3 className="font-semibold flex items-center gap-2">
-                                <MessageCircle size={20} /> Kuku Assistant
+                                <MessageCircle size={20} className="text-orange-500" /> Kuku Assistant
                             </h3>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="p-1 hover:bg-[#6B4F4F] rounded-full transition-colors"
+                                className="p-1 hover:bg-slate-800 rounded-full transition-colors"
                             >
                                 <X size={20} />
                             </button>
                         </div>
 
                         {/* Messages */}
-                        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#FFFBEA]">
+                        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
                             {messages.map((msg, i) => (
                                 <div
                                     key={i}
@@ -101,8 +101,8 @@ export function Chatbot() {
                                 >
                                     <div
                                         className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.role === "user"
-                                            ? "bg-[#8B4513] text-white rounded-br-none"
-                                            : "bg-white border border-gray-200 text-gray-800 rounded-bl-none shadow-sm"
+                                            ? "bg-orange-600 text-white rounded-br-none"
+                                            : "bg-white border border-gray-200 text-slate-800 rounded-bl-none shadow-sm"
                                             } whitespace-pre-wrap break-words`}
                                     >
                                         <ReactMarkdown
@@ -124,7 +124,7 @@ export function Chatbot() {
                             {isLoading && (
                                 <div className="flex justify-start">
                                     <div className="bg-white p-3 rounded-2xl rounded-bl-none border border-gray-200 shadow-sm">
-                                        <Loader2 className="w-5 h-5 animate-spin text-[#8B4513]" />
+                                        <Loader2 className="w-5 h-5 animate-spin text-orange-600" />
                                     </div>
                                 </div>
                             )}
@@ -145,12 +145,12 @@ export function Chatbot() {
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     placeholder="Ask Kuku Assistant..."
-                                    className="flex-1 p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#FFA64D] text-sm"
+                                    className="flex-1 p-2 border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm text-slate-800 placeholder-slate-400"
                                 />
                                 <button
                                     type="submit"
                                     disabled={isLoading || !input.trim()}
-                                    className="p-2 bg-[#8B4513] text-white rounded-full hover:bg-[#6B4F4F] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                    className="p-2 bg-slate-900 text-white rounded-full hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                 >
                                     <Send size={18} />
                                 </button>
@@ -158,7 +158,7 @@ export function Chatbot() {
                         </div>
 
                         {/* Safety Disclaimer */}
-                        <div className="bg-gray-100 p-2 text-[10px] text-gray-500 text-center border-t border-gray-200">
+                        <div className="bg-slate-50 p-2 text-[10px] text-slate-500 text-center border-t border-slate-100">
                             I am an AI assistant. For serious veterinary emergencies, contact a local professional immediately.
                         </div>
                     </motion.div>

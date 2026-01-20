@@ -9,7 +9,6 @@ export default function KuroilerHero() {
     return (
         <section id="home" className="relative pt-24 pb-20 px-4 overflow-hidden bg-[#FFFBEA] flex flex-col justify-center min-h-[60vh]">
             <div className="max-w-7xl mx-auto relative z-10">
-
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}

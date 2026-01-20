@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import Hero from "./KuroilerHero";
 import KuroilerAdvantages from "./KuroilerAdvantages";
@@ -15,9 +15,20 @@ import Reviews from "./Reviews";
 import Gallery from "./Gallery";
 import ContactSection from "./ContactSection";
 
+
 export default function KukuApp() {
+    useEffect(() => {
+        const isMobile = typeof window !== "undefined" && /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (isMobile) {
+            // Remove hash from URL if present and scroll to top
+            if (window.location.hash) {
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+    }, []);
     return (
-        <div className="min-h-screen bg-[#FFFBEA]">
+        <div className="min-h-screen bg-white">
             <Navbar />
             <main>
                 <Hero />
@@ -28,9 +39,9 @@ export default function KukuApp() {
                 <Reviews />
                 <VaccinationScheduler />
 
-                <section id="how-it-works" className="py-20 px-4 bg-white">
+                <section id="how-it-works" className="py-24 px-4 bg-slate-50 border-t border-slate-100">
                     <div className="max-w-7xl mx-auto text-center">
-                        <h2 className="text-3xl font-bold text-[#8B4513] mb-10">Maximum Growth</h2>
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-12">Maximum Growth</h2>
                         <CareTimeline />
                     </div>
                 </section>

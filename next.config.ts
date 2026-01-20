@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -10,6 +11,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Redirects removed to restore normal routing
 };
 
 export default nextConfig;

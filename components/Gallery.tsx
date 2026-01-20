@@ -72,11 +72,11 @@ export default function Gallery() {
         <section id="gallery" className="py-24 px-4 bg-white border-t border-gray-100">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <span className="inline-block px-3 py-1 rounded-full bg-gray-100 text-gray-500 text-xs font-bold uppercase tracking-wide mb-2">
+                    <span className="inline-block px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-wide mb-2">
                         Visual Proof
                     </span>
-                    <h2 className="text-4xl font-extrabold text-[#431407] mb-4">The Evidence</h2>
-                    <p className="text-[#6B4F4F] text-lg max-w-2xl mx-auto">
+                    <h2 className="text-4xl font-extrabold text-slate-900 mb-4">The Evidence</h2>
+                    <p className="text-slate-600 text-lg max-w-2xl mx-auto">
                         Visual proof of the KukuConnect system in action. From our facility to your farm.
                     </p>
                 </div>
@@ -88,8 +88,8 @@ export default function Gallery() {
                             key={cat}
                             onClick={() => setActiveCategory(cat)}
                             className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${activeCategory === cat
-                                ? "bg-[#431407] text-white shadow-lg"
-                                : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                                ? "bg-slate-900 text-white shadow-lg"
+                                : "bg-gray-100 text-slate-500 hover:bg-gray-200"
                                 }`}
                         >
                             {cat}
@@ -119,7 +119,7 @@ export default function Gallery() {
 
                                 {/* Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end opacity-90 transition-opacity">
-                                    <span className="text-[#D97706] text-xs font-bold uppercase tracking-wider mb-1">{item.tag}</span>
+                                    <span className="text-orange-400 text-xs font-bold uppercase tracking-wider mb-1">{item.tag}</span>
                                     <h3 className="text-white font-bold text-xl flex items-center gap-2">
                                         {item.title} <ZoomIn className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                                     </h3>
@@ -136,7 +136,7 @@ export default function Gallery() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+                            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
                             onClick={() => setSelectedItem(null)}
                         >
                             <motion.div
@@ -148,8 +148,8 @@ export default function Gallery() {
                             >
                                 <div className="aspect-video bg-gray-100 flex items-center justify-center relative overflow-hidden">
                                     <Image
-                                        src={selectedItem.icon}
-                                        alt={selectedItem.title}
+                                        src={selectedItem?.icon || ""}
+                                        alt={selectedItem?.title || ""}
                                         fill
                                         className="object-cover"
                                     />
@@ -162,14 +162,14 @@ export default function Gallery() {
                                 </div>
                                 <div className="p-8">
                                     <div className="flex items-center gap-3 mb-4">
-                                        <span className="px-3 py-1 rounded-full bg-[#FFF7E6] text-[#D97706] text-xs font-bold uppercase tracking-wide">
-                                            {selectedItem.tag}
+                                        <span className="px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-wide">
+                                            {selectedItem?.tag}
                                         </span>
                                         <div className="h-px bg-gray-100 flex-1"></div>
                                     </div>
-                                    <h3 className="text-3xl font-extrabold text-[#431407] mb-4">{selectedItem.title}</h3>
-                                    <p className="text-gray-600 text-lg leading-relaxed border-l-4 border-[#D97706] pl-6">
-                                        {selectedItem.caption}
+                                    <h3 className="text-3xl font-extrabold text-slate-900 mb-4">{selectedItem?.title}</h3>
+                                    <p className="text-slate-600 text-lg leading-relaxed border-l-4 border-orange-500 pl-6">
+                                        {selectedItem?.caption}
                                     </p>
                                 </div>
                             </motion.div>
