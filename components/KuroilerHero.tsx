@@ -49,7 +49,7 @@ export default function KuroilerHero() {
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-12">
                         <Link
                             href="#products"
-                            className="px-8 py-4 bg-[#FF8A00] text-white rounded-full font-bold text-lg hover:bg-[#FF7518] shadow-lg shadow-[#FF8A00]/20 hover:shadow-xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group"
+                            className="px-6 md:px-8 py-3 md:py-4 bg-[#FF8A00] text-white rounded-full font-bold text-base md:text-lg hover:bg-[#FF7518] shadow-lg shadow-[#FF8A00]/20 hover:shadow-xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group"
                         >
                             Start Batch
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
