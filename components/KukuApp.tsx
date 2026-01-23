@@ -8,6 +8,7 @@ import KuroilerAdvantages from "./KuroilerAdvantages";
 import GrowthTimeline from "./GrowthTimeline";
 import TrustLogistics from "./TrustLogistics";
 import VaccinationScheduler from "./VaccinationScheduler";
+import ProfitCalculator from "./ProfitCalculator";
 import { Chatbot } from "./Chatbot";
 import Footer from "./Footer";
 import CareTimeline from "./CareTimeline";
@@ -39,6 +40,7 @@ export default function KukuApp() {
                 <AboutUs />
                 <Reviews />
                 <VaccinationScheduler />
+                <ProfitCalculator />
 
                 <section id="how-it-works" className="py-24 px-4 bg-[#0F172A] border-t border-slate-800">
                     <div className="max-w-7xl mx-auto text-center">

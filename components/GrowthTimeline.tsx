@@ -68,7 +68,7 @@ export default function GrowthTimeline() {
     };
 
     return (
-        <section id="wizard" className="py-24 px-4 bg-[#FAFAFA] border-t border-slate-200">
+        <section id="products" className="py-24 px-4 bg-[#FAFAFA] border-t border-slate-200">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12">
                     <h2 className="text-4xl font-extrabold text-[#0F172A] mb-2">Start Your Batch</h2>

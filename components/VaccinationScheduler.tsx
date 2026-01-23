@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, Syringe, AlertCircle, CheckCircle2, Thermometer, ShieldCheck, FileCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -17,6 +17,11 @@ const scheduleTemplate = [
 export default function VaccinationScheduler() {
     const [startDate, setStartDate] = useState("");
     const [generatedSchedule, setGeneratedSchedule] = useState<any[]>([]);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth < 768);
+    }, []);
 
     const generateSchedule = () => {
         if (!startDate) return;
@@ -94,13 +99,13 @@ export default function VaccinationScheduler() {
                                     value={startDate}
                                     onChange={(e) => setStartDate(e.target.value)}
                                     className="w-full p-4 rounded-2xl bg-[#FAFAFA] border-2 border-slate-200 focus:border-[#FF8A00] text-[#0F172A] font-bold outline-none transition placeholder:italic placeholder:text-slate-400"
-                                    placeholder={typeof window !== 'undefined' && window.innerWidth < 768 ? 'mm/dd/yyyy' : ''}
+                                    placeholder={isMobile ? 'dd/mm/yy' : ''}
                                 />
                             </div>
                             <button
                                 onClick={generateSchedule}
                                 disabled={!startDate}
-                                className="w-full md:w-auto px-8 py-4 bg-[#FF8A00] text-white rounded-full font-bold hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition hover:-translate-y-0.5"
+                                className="w-full md:w-auto px-8 py-3 md:py-4 bg-[#FF8A00] text-white rounded-full font-bold hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition hover:-translate-y-0.5"
                             >
                                 <Calendar className="w-5 h-5" /> Generate My Success Schedule
                             </button>
