@@ -51,7 +51,7 @@ export default function AboutUs() {
                     >
                         <div>
                             <span className="inline-block py-1.5 px-4 rounded-full bg-[#FF8A00]/10 text-[#FF8A00] text-sm font-bold tracking-wide uppercase border border-[#FF8A00]/20 mb-4">
-                                The KukuConnect Mission
+                                The KukuConnect Hatch Plan
                             </span>
                             <h2 className="text-4xl md:text-5xl font-extrabold text-[#0F172A] leading-tight mb-6">
                                 Standardizing Poultry <br />
@@ -61,7 +61,7 @@ export default function AboutUs() {
                                 KukuConnect was built to solve the biggest failure in local farming: the <strong>"Danger Zone"</strong> of the first 21 days. We use professional brooding systems and strict bio-security to raise chicks through their most fragile stage.
                             </p>
                             <p className="text-lg text-[#0F172A] leading-relaxed mt-4 font-bold border-l-4 border-[#FF8A00] pl-4">
-                                We don't just sell birds; we deploy a Success System to your farm.
+                                We don't just sell birds; we deploy a Golden Egg System to your coop.
                             </p>
                         </div>
 

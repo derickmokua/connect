@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, ArrowRight, ArrowLeft, ShoppingCart, Info, Minus, Plus } from "lucide-react";
 import { useCart } from "./context/CartContext";
+import { useChat } from "./context/ChatContext";
 
 type ProductType = "chick" | "mature" | "egg";
 
@@ -23,6 +24,7 @@ const productCategories: Record<string, ProductStage[]> = {
         { id: "c1", label: "Day Old", price: 110, type: "chick", desc: "Freshly hatched. Needs 24/7 heat.", features: ["Cheapest Entry", "Requires Brooder"] },
         { id: "c2", label: "1 Week Old", price: 130, type: "chick", desc: "Past critical start.", features: ["1st Gumboro Done", "Active & Alert"] },
         { id: "c3", label: "2 Weeks Old", price: 160, type: "chick", desc: "Growing fast, less heat needed.", features: ["Gumboro Vaccinated", "Strong Immunity"] },
+        { id: "c_20d", label: "20 Days Old", price: 185, type: "chick", desc: "3 Weeks minus 1 day. Optimal balance.", features: ["Strong Immunity", "Gumboro Done"] },
         { id: "c4", label: "3 Weeks Old", price: 190, type: "chick", desc: "Feathering well.", features: ["Newcastle Vaccinated", "Active Foraging"] },
         { id: "c5", label: "4 Weeks Old", price: 250, type: "chick", desc: "Hardened and ready for coop.", features: ["No Heat Needed", "Free-Range Ready"], popular: true },
     ],
@@ -44,6 +46,21 @@ export default function GrowthTimeline() {
     // Wizard State (Chicks)
     const [selectedChickStage, setSelectedChickStage] = useState<ProductStage>(productCategories.chicks[0]);
     const [chickQuantity, setChickQuantity] = useState(50);
+    const { addMessage, openChat, isOpen } = useChat();
+    const [hasTriggeredChat, setHasTriggeredChat] = useState(false);
+
+    useEffect(() => {
+        if (selectedChickStage.label === "4 Weeks Old" && !hasTriggeredChat) {
+            const timer = setTimeout(() => {
+                if (!isOpen) {
+                    addMessage("model", "I see you were looking at the 4-week-old Kuroilers; would you like me to notify the farmer to call you about delivery to Kitui?");
+                    openChat();
+                    setHasTriggeredChat(true);
+                }
+            }, 2000);
+            return () => clearTimeout(timer);
+        }
+    }, [selectedChickStage, hasTriggeredChat, isOpen, addMessage, openChat]);
     const [protocols, setProtocols] = useState({ starterPack: false, bioShield: false });
 
     const handleNext = () => setStep((prev) => Math.min(prev + 1, 4));
@@ -54,7 +71,7 @@ export default function GrowthTimeline() {
             id: selectedChickStage.id,
             title: `[BATCH] ${selectedChickStage.label}`,
             price: selectedChickStage.price,
-            image: "🐣",
+            image: "/images/chick.png",
             quantity: chickQuantity
         });
 
@@ -71,7 +88,7 @@ export default function GrowthTimeline() {
         <section id="products" className="py-24 px-4 bg-[#FAFAFA] border-t border-slate-200">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl font-extrabold text-[#0F172A] mb-2">Start Your Batch</h2>
+                    <h2 className="text-4xl font-extrabold text-[#0F172A] mb-2">Start Your Flock</h2>
                     <p className="text-[#6B7280] text-sm md:text-lg font-medium">Select a category to begin.</p>
                 </div>
 
@@ -168,8 +185,8 @@ export default function GrowthTimeline() {
                                 {step === 2 && (
                                     <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
                                         <h3 className="text-2xl font-bold text-[#0F172A] text-center md:text-left">Step 2: How many chicks?</h3>
-                                        <div className="bg-white/50 backdrop-blur-sm p-10 rounded-[2rem] border border-white/60 text-center shadow-inner max-w-2xl mx-auto">
-                                            <div className="text-7xl font-extrabold text-[#FF8A00] mb-6">{chickQuantity}</div>
+                                        <div className="bg-white/50 backdrop-blur-sm p-6 md:p-10 rounded-[2rem] border border-white/60 text-center shadow-inner max-w-2xl mx-auto overflow-hidden">
+                                            <div className="text-5xl md:text-7xl font-extrabold text-[#FF8A00] mb-6">{chickQuantity}</div>
                                             <input
                                                 type="range"
                                                 min={10}
@@ -181,9 +198,9 @@ export default function GrowthTimeline() {
                                             />
                                             <p className="text-slate-400 mt-6 font-medium">Slide to adjust (Min 10 Birds)</p>
                                         </div>
-                                        <div className="p-6 bg-[#0F172A] rounded-[2rem] shadow-lg border border-slate-700 text-center text-white max-w-2xl mx-auto">
+                                        <div className="p-6 bg-[#0F172A] rounded-[2rem] shadow-lg border border-slate-700 text-center text-white max-w-2xl mx-auto overflow-hidden">
                                             <p className="text-sm font-bold text-slate-400 uppercase tracking-wide mb-1">Total Bird Cost</p>
-                                            <p className="text-3xl font-extrabold">KES {(selectedChickStage.price * chickQuantity).toLocaleString()}</p>
+                                            <p className="text-2xl md:text-3xl font-extrabold">KES {(selectedChickStage.price * chickQuantity).toLocaleString()}</p>
                                         </div>
                                     </motion.div>
                                 )}
@@ -191,8 +208,8 @@ export default function GrowthTimeline() {
                                 {/* STEP 3: SUCCESS KITS */}
                                 {step === 3 && (
                                     <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
-                                        <h3 className="text-2xl font-bold text-[#1F2937] text-center md:text-left">Step 3: Add Success Kits</h3>
-                                        <p className="text-slate-400 text-center md:text-left">Optional add-ons to ensure your batch survives and grows.</p>
+                                        <h3 className="text-2xl font-bold text-[#1F2937] text-center md:text-left">Step 3: Add Hatch Kits</h3>
+                                        <p className="text-slate-400 text-center md:text-left">Optional add-ons to ensure your brood survives and thrives.</p>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             <div
@@ -253,9 +270,9 @@ export default function GrowthTimeline() {
                                                     {protocols.bioShield ? "VACCINES LOADED" : "NO VACCINES"}
                                                 </span>
                                             </div>
-                                            <div className="flex justify-between items-center pt-2">
-                                                <span className="text-slate-400 text-lg">TOTAL INVESTMENT</span>
-                                                <span className="font-bold text-2xl text-[#FF8A00]">KES {((selectedChickStage.price * chickQuantity) + (protocols.starterPack ? 850 : 0) + (protocols.bioShield ? 1500 : 0)).toLocaleString()}</span>
+                                            <div className="flex flex-col md:flex-row md:justify-between md:items-center pt-2 gap-2">
+                                                <span className="text-slate-400 text-sm md:text-lg">TOTAL INVESTMENT</span>
+                                                <span className="font-bold text-xl md:text-2xl text-[#FF8A00]">KES {((selectedChickStage.price * chickQuantity) + (protocols.starterPack ? 850 : 0) + (protocols.bioShield ? 1500 : 0)).toLocaleString()}</span>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -320,7 +337,7 @@ function ProductCard({ product }: { product: ProductStage }) {
             id: product.id,
             title: `[ORDER] ${product.label}`,
             price: product.price,
-            image: product.type === "egg" ? "🥚" : "🐔",
+            image: product.type === "egg" ? "/images/egg.png" : (product.label === "Mature Cock" ? "/images/cock.png" : (product.type === "mature" ? "/images/hen.png" : "/images/chick.png")),
             quantity: qty
         });
         setIsCartOpen(true);
@@ -329,8 +346,8 @@ function ProductCard({ product }: { product: ProductStage }) {
     return (
         <div className="bg-white border-2 border-slate-100 p-6 rounded-[24px] hover:border-[#FF8A00]/30 hover:shadow-xl transition-all duration-300 group">
             <div className="flex justify-between items-start mb-4">
-                <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center text-3xl shadow-inner">
-                    {product.type === "egg" ? "🥚" : "🐔"}
+                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center p-2 shadow-inner border border-slate-100 overflow-hidden">
+                    <img src={product.type === "egg" ? "/images/egg.png" : (product.label === "Mature Cock" ? "/images/cock.png" : (product.type === "mature" ? "/images/hen.png" : "/images/chick.png"))} alt={product.label} className="w-full h-full object-cover mix-blend-multiply scale-125" />
                 </div>
                 <div className="text-right">
                     <div className="font-extrabold text-2xl text-[#0F172A]">KES {product.price.toLocaleString()}</div>
@@ -349,17 +366,17 @@ function ProductCard({ product }: { product: ProductStage }) {
                 ))}
             </div>
 
-            <div className="flex items-center gap-4 pt-6 border-t border-slate-100">
-                <div className="flex items-center bg-slate-100 rounded-full px-4 py-2 gap-4">
-                    <button onClick={() => setQty(Math.max(1, qty - 1))} className="hover:text-[#FF8A00] transition"><Minus className="w-4 h-4" /></button>
-                    <span className="font-bold text-[#0F172A] w-4 text-center">{qty}</span>
-                    <button onClick={() => setQty(qty + 1)} className="hover:text-[#FF8A00] transition"><Plus className="w-4 h-4" /></button>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-6 border-t border-slate-100">
+                <div className="flex items-center justify-between sm:justify-center bg-slate-100 rounded-full px-4 py-2 gap-4">
+                    <button onClick={() => setQty(Math.max(1, qty - 1))} className="hover:text-[#FF8A00] transition p-2"><Minus className="w-5 h-5" /></button>
+                    <span className="font-bold text-[#0F172A] w-6 text-center text-lg">{qty}</span>
+                    <button onClick={() => setQty(qty + 1)} className="hover:text-[#FF8A00] transition p-2"><Plus className="w-5 h-5" /></button>
                 </div>
                 <button
                     onClick={handleAdd}
-                    className="flex-1 bg-[#0F172A] text-white py-2 md:py-3 rounded-full font-bold hover:bg-[#FF8A00] hover:shadow-lg hover:shadow-[#FF8A00]/20 transition-all flex items-center justify-center gap-2 text-sm md:text-base"
+                    className="w-full sm:w-auto flex-1 bg-[#0F172A] text-white py-3 rounded-full font-bold hover:bg-[#FF8A00] hover:shadow-lg hover:shadow-[#FF8A00]/20 transition-all flex items-center justify-center gap-2 text-base"
                 >
-                    <ShoppingCart className="w-4 h-4" /> Add
+                    <ShoppingCart className="w-5 h-5" /> Add to Cart
                 </button>
             </div>
         </div>

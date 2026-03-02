@@ -47,13 +47,13 @@ export default function ContactSection() {
                 <div className="bg-white rounded-[3rem] overflow-hidden shadow-2xl flex flex-col md:flex-row relative border border-slate-200">
 
                     {/* Info Side */}
-                    <div className="p-10 md:p-16 text-[#0F172A] bg-[#F1F5F9] md:w-2/5 flex flex-col justify-between relative overflow-hidden">
+                    <div className="p-6 sm:p-10 md:p-16 text-[#0F172A] bg-[#F1F5F9] md:w-2/5 flex flex-col justify-between relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF5C00] rounded-full blur-[100px] opacity-20 translate-x-1/2 -translate-y-1/2"></div>
 
                         <div>
-                            <h2 className="text-4xl font-extrabold mb-6 text-[#0F172A]">Expert Support</h2>
+                            <h2 className="text-4xl font-extrabold mb-6 text-[#0F172A]">Mother Hen Support</h2>
                             <p className="text-[#6B7280] mb-10 leading-relaxed text-lg">
-                                Need advice on brooding, vaccines, or scaling your farm? Our specialists are ready to help.
+                                Need advice on brooding, vaccines, or scaling your kuku? Our mother hens are ready to help.
                             </p>
 
                             <a
@@ -62,7 +62,7 @@ export default function ContactSection() {
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 px-6 py-4 bg-[#10B981] text-white rounded-2xl font-bold hover:bg-[#059669] transition shadow-lg mb-12 w-full md:w-auto justify-center"
                             >
-                                <MessageCircle className="w-6 h-6" /> Chat with a Specialist
+                                <MessageCircle className="w-6 h-6" /> Talk to us
                             </a>
 
                             <ul className="space-y-6">
@@ -89,8 +89,8 @@ export default function ContactSection() {
                     </div>
 
                     {/* Form Side */}
-                    <div className="p-10 md:p-16 bg-white md:w-3/5">
-                        <h3 className="text-3xl font-bold text-[#0F172A] mb-8">Submit Inquiry</h3>
+                    <div className="p-6 sm:p-10 md:p-16 bg-white md:w-3/5">
+                        <h3 className="text-3xl font-bold text-[#0F172A] mb-8">Send a Squawk</h3>
 
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -136,7 +136,7 @@ export default function ContactSection() {
                                 disabled={loading}
                                 className="w-full py-4 bg-[#FF8A00] text-white rounded-full font-bold text-lg hover:shadow-lg hover:shadow-[#FF8A00]/20 transition flex items-center justify-center gap-3 disabled:opacity-70 transform hover:-translate-y-1"
                             >
-                                {loading ? <Loader2 className="animate-spin" /> : <>Submit Inquiry <Send className="w-5 h-5" /></>}
+                                {loading ? <Loader2 className="animate-spin" /> : <>Send a Squawk <Send className="w-5 h-5" /></>}
                             </button>
 
                             {status === 'success' && (

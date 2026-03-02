@@ -24,7 +24,7 @@ export default function Footer() {
                     <div>
                         <h3 className="font-bold text-white text-lg mb-6">System Links</h3>
                         <ul className="space-y-4 text-sm font-medium">
-                            <li><Link href="#products" className="hover:text-[#FF8A00] transition-colors">Start Your Batch</Link></li>
+                            <li><Link href="#products" className="hover:text-[#FF8A00] transition-colors">Start Your Flock</Link></li>
                             <li><Link href="#vaccination" className="hover:text-[#FF8A00] transition-colors">Immunity Protocol</Link></li>
                             <li><Link href="#care-guide" className="hover:text-[#FF8A00] transition-colors">Success Routine</Link></li>
                             <li><Link href="#gallery" className="hover:text-[#FF8A00] transition-colors">Evidence Gallery</Link></li>

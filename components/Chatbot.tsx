@@ -5,17 +5,10 @@ import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-
-interface Message {
-    role: "user" | "model";
-    text: string;
-}
+import { useChat } from "./context/ChatContext";
 
 export function Chatbot() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [messages, setMessages] = useState<Message[]>([
-        { role: "model", text: "Karibu! Welcome to KukuConnect. I'm your farm assistant, here to help you succeed with healthy chicks, expert advice, and practical solutions. Ask me anything about poultry farming, vaccination, feeding, or farm management!" },
-    ]);
+    const { isOpen, setIsOpen, messages, addMessage } = useChat();
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -33,7 +26,7 @@ export function Chatbot() {
 
         const userMessage = input.trim();
         setInput("");
-        setMessages((prev) => [...prev, { role: "user", text: userMessage }]);
+        addMessage("user", userMessage);
         setIsLoading(true);
 
         try {
@@ -49,13 +42,10 @@ export function Chatbot() {
                 throw new Error(data.error);
             }
 
-            setMessages((prev) => [...prev, { role: "model", text: data.reply }]);
+            addMessage("model", data.reply);
         } catch (error: any) {
             console.error("Chat Error:", error);
-            setMessages((prev) => [
-                ...prev,
-                { role: "model", text: error.message || "Sorry, I'm having trouble connecting right now. Please try again later." },
-            ]);
+            addMessage("model", error.message || "Sorry, I'm having trouble connecting right now. Please try again later.");
         } finally {
             setIsLoading(false);
         }

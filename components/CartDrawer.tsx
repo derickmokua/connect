@@ -55,8 +55,12 @@ export default function CartDrawer() {
                             ) : (
                                 cart.map((item) => (
                                     <div key={item.id} className="flex gap-4 p-3 bg-gray-50 rounded-xl border">
-                                        <div className="w-20 h-20 bg-gray-200 rounded-lg flex items-center justify-center text-3xl">
-                                            {item.image}
+                                        <div className="w-20 h-20 bg-white border border-slate-100 rounded-lg flex items-center justify-center text-3xl overflow-hidden shrink-0">
+                                            {item.image.startsWith('/') ? (
+                                                <img src={item.image} alt={item.title} className="w-full h-full object-cover mix-blend-multiply scale-125" />
+                                            ) : (
+                                                <span>{item.image}</span>
+                                            )}
                                         </div>
                                         <div className="flex-1">
                                             <h3 className="font-bold text-gray-800">{item.title}</h3>
@@ -106,7 +110,7 @@ export default function CartDrawer() {
                                     onClick={() => setIsCartOpen(false)}
                                     className="block w-full py-4 bg-[#F57C00] text-white text-center rounded-xl font-bold text-lg hover:bg-[#E65100] transition shadow-lg"
                                 >
-                                    Proceed to Checkout
+                                    Request Order
                                 </Link>
                                 <button
                                     onClick={() => setIsCartOpen(false)}

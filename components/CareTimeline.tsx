@@ -68,9 +68,9 @@ export default function CareTimeline() {
                             <div
                                 key={idx}
                                 onClick={() => setActiveStep(idx)}
-                                className={`flex items-center p-6 rounded-2xl cursor-pointer transition-all duration-300 border-2 ${activeStep === idx
-                                    ? `bg-white shadow-xl ${m.color.replace('border-', 'border-')} scale-105 relative z-10`
-                                    : 'bg-[#FAFAFA] border-transparent hover:bg-slate-100'
+                                className={`flex items-center p-6 rounded-2xl cursor-pointer transition-all duration-500 border-2 ${activeStep === idx
+                                    ? `bg-white shadow-2xl ${m.color.replace('border-', 'border-')} scale-105 relative z-10 translate-x-2`
+                                    : 'bg-[#FAFAFA] border-transparent hover:bg-slate-100 hover:translate-x-1'
                                     }`}
                             >
                                 <div className={`w-16 h-16 rounded-full flex items-center justify-center bg-white shadow-sm border ${m.color} z-10 shrink-0`}>
@@ -95,13 +95,14 @@ export default function CareTimeline() {
                         <AnimatePresence mode='wait'>
                             <motion.div
                                 key={activeStep}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -20 }}
-                                transition={{ duration: 0.3 }}
-                                className="bg-white rounded-[2.5rem] p-6 md:p-10 shadow-lg h-full border border-slate-200 flex flex-col justify-center"
+                                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                                transition={{ duration: 0.4, ease: "easeOut" }}
+                                className="bg-gradient-to-br from-white to-slate-50 rounded-[2.5rem] p-6 md:p-10 shadow-2xl border border-white/60 backdrop-blur-md h-full flex flex-col justify-center relative overflow-hidden"
                             >
-                                <div className="mb-8">
+                                <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${milestones[activeStep].color.replace('border-', 'from-')} to-transparent opacity-10 rounded-full blur-2xl`}></div>
+                                <div className="mb-8 relative z-10">
                                     <div className="inline-block px-4 py-1.5 bg-[#FAFAFA] text-[#FF8A00] font-bold rounded-full mb-4 text-sm uppercase tracking-wide border border-[#FF8A00]/20 shadow-sm">
                                         Goal: {milestones[activeStep].goal}
                                     </div>

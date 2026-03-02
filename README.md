@@ -18,7 +18,6 @@ Most small-scale farmers fail because of the "Danger Zone" (the first 21 days). 
 ### 🛒 The "Start Your Batch" Engine
 A step-by-step wizard that treats poultry farming like a business plan.
 - **Stage Selector**: Choose between Day-Olds (Cheap) vs. 4-Week-Olds (Safe).
-- **Profit Calculator**: Real-time estimates of total investment.
 - **Success Kits**: One-click add-ons for Vaccines and Feed.
 
 ### 🤖 Kuku Assistant (AI Chatbot)

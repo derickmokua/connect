@@ -14,8 +14,16 @@ export default function KuroilerHero() {
                 <svg className="absolute top-0 right-0 w-[800px] h-[800px] text-[#00BFFF]/5" fill="currentColor" viewBox="0 0 100 100">
                     <path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" />
                 </svg>
-                <div className="absolute top-20 left-10 w-64 h-64 bg-[#00BFFF]/5 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#FF8A00]/5 rounded-full blur-3xl"></div>
+                <motion.div
+                    animate={{ y: [0, -30, 0], scale: [1, 1.1, 1] }}
+                    transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+                    className="absolute top-20 left-10 w-64 h-64 bg-[#00BFFF]/10 rounded-full blur-[80px]"
+                />
+                <motion.div
+                    animate={{ y: [0, 40, 0], scale: [1, 1.2, 1] }}
+                    transition={{ repeat: Infinity, duration: 10, ease: "easeInOut", delay: 1 }}
+                    className="absolute bottom-10 right-10 w-96 h-96 bg-[#FF8A00]/10 rounded-full blur-[100px]"
+                />
 
                 {/* Grid Pattern */}
                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" style={{ backgroundSize: '30px 30px' }}></div>
@@ -27,40 +35,32 @@ export default function KuroilerHero() {
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="text-left"
+                    className="text-center lg:text-left"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 mb-8 shadow-sm animate-fade-in-up">
-                        <span className="relative flex h-3 w-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                        </span>
-                        <span className="text-sm font-bold text-[#0F172A] uppercase tracking-wider">Hatchery Online • 86% Vitality Rate</span>
-                    </div>
-
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#0F172A] mb-6 leading-[1.1] tracking-tight">
-                        Your <span className="text-[#FF8A00]">Farm</span>. <br />
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-[#0F172A] mb-6 leading-[1.1] tracking-tight">
+                        Your <span className="text-[#FF8A00]">Kuku</span>. <br className="hidden md:block" />
                         Our <span className="text-[#FF8A00]">Commitment</span>.
                     </h1>
 
-                    <p className="text-lg md:text-xl text-[#6B7280] mb-10 leading-relaxed max-w-xl font-medium">
-                        KukuConnect delivers healthy, high-performing chicks and expert support – so your farm thrives. We're here to help you grow, profit, and succeed.
+                    <p className="text-lg md:text-xl text-[#6B7280] mb-10 leading-relaxed max-w-xl font-medium mx-auto lg:ml-0">
+                        KukuConnect delivers healthy, high-performing chicks and expert support – so your flock thrives. We're here to help you hatch success, grow your brood, and feather your nest.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-12">
+                    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-12 justify-center lg:justify-start">
                         <Link
                             href="#products"
                             className="px-6 md:px-8 py-3 md:py-4 bg-[#FF8A00] text-white rounded-full font-bold text-base md:text-lg hover:bg-[#FF7518] shadow-lg shadow-[#FF8A00]/20 hover:shadow-xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group"
                         >
-                            Start Batch
+                            Hatch Your Batch
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </div>
 
                     {/* Trust Badges */}
-                    <div className="flex flex-wrap gap-8 border-t border-slate-200 pt-8">
+                    <div className="flex flex-wrap gap-8 border-t border-slate-200 pt-8 justify-center lg:justify-start">
                         <div>
                             <div className="text-2xl font-bold text-[#0F172A]">15k+</div>
-                            <div className="text-sm text-slate-500 font-medium">Chicks Delivered</div>
+                            <div className="text-sm text-slate-500 font-medium">Happy Peepers</div>
                         </div>
                         <div className="w-px h-12 bg-slate-200 hidden sm:block"></div>
                         <div>
@@ -103,7 +103,7 @@ export default function KuroilerHero() {
                         <motion.div
                             animate={{ y: [0, -10, 0] }}
                             transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                            className="absolute top-10 right-0 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-20 flex items-center gap-3"
+                            className="hidden sm:flex absolute top-10 right-0 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-20 items-center gap-3"
                         >
                             <div className="bg-[#4CAF50]/10 p-2.5 rounded-xl text-[#4CAF50]">
                                 <Flask className="w-6 h-6" />
@@ -117,7 +117,7 @@ export default function KuroilerHero() {
                         <motion.div
                             animate={{ y: [0, 10, 0] }}
                             transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-                            className="absolute bottom-20 -left-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-20 flex items-center gap-3"
+                            className="hidden sm:flex absolute bottom-20 -left-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-20 items-center gap-3"
                         >
                             <div className="bg-[#FF8A00]/10 p-2.5 rounded-xl text-[#FF8A00]">
                                 <Activity className="w-6 h-6" />

@@ -6,7 +6,7 @@ import { useCart } from "@/components/context/CartContext";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db, appId } from "@/lib/firebase/client";
 import { useRouter } from "next/navigation";
-import { Phone, MapPin, Loader2, CheckCircle, TrendingUp, Truck, ShieldCheck } from "lucide-react";
+import { Phone, MapPin, Loader2, CheckCircle, TrendingUp, Truck, ShieldCheck, Plus, Minus, Trash2 } from "lucide-react";
 import Link from "next/link";
 
 // Force dynamic rendering to avoid build-time Firebase initialization
@@ -15,7 +15,7 @@ export const dynamic = 'force-dynamic';
 const getOrdersCollectionPath = () => `/artifacts/${appId}/public/data/orders`;
 
 export default function CheckoutPage() {
-    const { cart, cartTotal, clearCart } = useCart();
+    const { cart, cartTotal, clearCart, updateQuantity, removeFromCart } = useCart();
     const router = useRouter();
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -127,8 +127,7 @@ export default function CheckoutPage() {
                             </p>
                             <ul className="text-sm text-slate-600 space-y-2 list-disc pl-4">
                                 <li>Confirm your order details.</li>
-                                <li>Organize payment.</li>
-                                <li>Schedule your delivery.</li>
+                                <li>Arrange payment and delivery.</li>
                             </ul>
                             <div className="flex justify-between text-sm border-t border-slate-100 pt-3 mt-2">
                                 <span className="text-slate-500 font-bold">Total Due:</span>
@@ -172,21 +171,56 @@ export default function CheckoutPage() {
 
                         <div className="divide-y divide-gray-50">
                             {cart.map((item) => (
-                                <div key={item.id} className="flex items-start justify-between py-4 first:pt-0 last:pb-0">
-                                    <div className="flex gap-4">
+                                <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between py-4 first:pt-0 last:pb-0 gap-4">
+                                    <div className="flex gap-4 flex-1">
                                         <div className="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center text-xl shrink-0">
                                             {item.image}
                                         </div>
                                         <div>
                                             <p className="font-bold text-[#0F172A] text-sm md:text-base">{item.title}</p>
                                             <p className="text-xs text-slate-500 font-medium mt-1">
-                                                Qty: <span className="text-[#0F172A]">{item.quantity}</span>
+                                                @ KES {item.price.toLocaleString()} each
                                             </p>
                                         </div>
                                     </div>
-                                    <div className="text-right">
-                                        <p className="font-bold text-[#0F172A] text-sm md:text-base">KES {(item.price * item.quantity).toLocaleString()}</p>
-                                        <p className="text-[10px] text-slate-400">@ {item.price.toLocaleString()}</p>
+
+                                    <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
+                                        <div className="flex items-center space-x-2 bg-slate-50 rounded-lg border border-slate-200 px-2 py-1">
+                                            <button
+                                                onClick={() => {
+                                                    if (item.quantity > 1) {
+                                                        updateQuantity(item.id, item.quantity - 1);
+                                                    } else {
+                                                        removeFromCart(item.id);
+                                                    }
+                                                }}
+                                                className="p-2 hover:text-[#FF8A00] transition text-slate-400 hover:bg-slate-100 rounded touch-manipulation"
+                                                type="button"
+                                            >
+                                                <Minus className="w-4 h-4" />
+                                            </button>
+                                            <span className="text-sm font-bold w-8 text-center">{item.quantity}</span>
+                                            <button
+                                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                                className="p-2 hover:text-[#FF8A00] transition text-slate-400 hover:bg-slate-100 rounded touch-manipulation"
+                                                type="button"
+                                            >
+                                                <Plus className="w-4 h-4" />
+                                            </button>
+                                        </div>
+
+                                        <div className="text-right min-w-[80px]">
+                                            <p className="font-bold text-[#0F172A] text-sm">KES {(item.price * item.quantity).toLocaleString()}</p>
+                                        </div>
+
+                                        <button
+                                            onClick={() => removeFromCart(item.id)}
+                                            className="text-slate-300 hover:text-red-500 transition p-2 hover:bg-red-50 rounded-lg"
+                                            type="button"
+                                            title="Remove item"
+                                        >
+                                            <Trash2 className="w-4 h-4" />
+                                        </button>
                                     </div>
                                 </div>
                             ))}
@@ -229,7 +263,7 @@ export default function CheckoutPage() {
                             <span className="font-bold">KES {SHIPPING_COST.toLocaleString()}</span>
                         </div>
                         <div className="border-t border-[#D97706]/20 pt-2 flex justify-between items-center">
-                            <span className="text-[#78350F] font-bold text-lg">Total Due</span>
+                            <span className="text-[#78350F] font-bold text-lg">Estimated Total</span>
                             <span className="text-3xl font-black text-[#FF8A00]">KES {finalTotal.toLocaleString()}</span>
                         </div>
                     </div>
@@ -238,7 +272,7 @@ export default function CheckoutPage() {
 
                 {/* Secure Checkout Form (Right Column) */}
                 <div className="order-1 lg:order-2">
-                    <h2 className="text-2xl font-bold text-[#0F172A] mb-6">Secure Checkout</h2>
+                    <h2 className="text-2xl font-bold text-[#0F172A] mb-6">Complete Order Request</h2>
                     <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 space-y-6">
                         {error && (
                             <div className="p-4 bg-red-50 text-red-700 rounded-xl border border-red-200 text-sm">
@@ -298,10 +332,10 @@ export default function CheckoutPage() {
                             disabled={loading || cart.length === 0}
                             className="w-full py-4 bg-[#FF8A00] text-white rounded-full font-bold text-xl hover:bg-[#FF7518] transform transition shadow-lg disabled:opacity-50 flex items-center justify-center gap-2 shadow-[#FF8A00]/20"
                         >
-                            {loading ? <Loader2 className="animate-spin" /> : "PLACE ORDER"}
+                            {loading ? <Loader2 className="animate-spin" /> : "SUBMIT ORDER REQUEST"}
                         </button>
                         <p className="text-center text-xs text-slate-400">
-                            Securely encoded. Payment details will be reflected on the next screen.
+                            We will call you to confirm your order details and arrange payment.
                         </p>
                     </form>
 

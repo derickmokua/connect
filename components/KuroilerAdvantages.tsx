@@ -8,20 +8,20 @@ const advantages = [
     {
         icon: <ShieldCheck className="w-10 h-10" />,
         title: "Trusted Quality",
-        subtitle: "Healthy, Strong Chicks",
+        subtitle: "Healthy, Sprightly Peepers",
         desc: "Our chicks are carefully selected, vaccinated, and raised for maximum health and survival—giving you peace of mind from day one.",
     },
     {
         icon: <Scale className="w-10 h-10" />,
         title: "Expert Support",
         subtitle: "Guidance That Grows",
-        desc: "We don’t just sell chicks—we walk with you. Get real-time advice, proven tips, and ongoing support from our experienced team.",
+        desc: "We don't just supply the flock—we kuku with you. Get real-time squawks, proven tips, and ongoing support from our mother hens.",
     },
     {
         icon: <Coins className="w-10 h-10" />,
         title: "Profitable Partnership",
         subtitle: "Your Success, Our Goal",
-        desc: "We’re committed to your farm’s growth. Fair prices, honest business, and a focus on your long-term profit set us apart.",
+        desc: "We're committed to your kuku's growth. Fair prices, honest dealings, and a focus on your golden eggs set us apart.",
     }
 ];
 
@@ -31,9 +31,9 @@ export default function KuroilerAdvantages() {
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                     <span className="text-[#FF8A00] font-bold tracking-wider uppercase text-sm">Why Choose KukuConnect?</span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-[#0F172A] mt-3 mb-6">Farmers Succeed With Us</h2>
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-[#0F172A] mt-3 mb-6">Flocks Flourish With Us</h2>
                     <p className="text-[#6B7280] text-lg max-w-2xl mx-auto font-medium">
-                        Discover why more farmers trust KukuConnect for healthy chicks, expert support, and real results. We’re more than a supplier—we’re your partner in poultry success.
+                        Discover why more farmers trust KukuConnect for sprightly chicks, expert clucks, and real eggs. We're more than a supplier—we're the rooster to your flock.
                     </p>
                 </div>
 

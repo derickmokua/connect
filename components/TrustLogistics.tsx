@@ -14,7 +14,7 @@ export default function TrustLogistics() {
                         <div className="w-16 h-16 bg-[#FAFAFA] rounded-full flex items-center justify-center shadow-sm mb-4 text-[#FF8A00]">
                             <Heart className="w-8 h-8 fill-current" />
                         </div>
-                        <h3 className="text-xl font-bold text-[#0F172A] mb-2">100% Live Arrival Guarantee</h3>
+                        <h3 className="text-xl font-bold text-[#0F172A] mb-2">100% Peeping Arrival Guarantee</h3>
                         <p className="text-[#6B7280] text-sm">
                             We guarantee your day-old chicks arrive alive and healthy. If not, we replace them immediately.
                         </p>
@@ -35,7 +35,7 @@ export default function TrustLogistics() {
                             className="mt-4 px-8 py-3 bg-[#FF8A00] text-white font-bold rounded-full shadow-md hover:shadow-lg hover:bg-[#FF8C00] transition-all text-base tracking-wide"
                             onClick={() => window.location.href = '/contact'}
                         >
-                            Secure Your Batch
+                            Secure Your Brood
                         </button>
                     </div>
 
