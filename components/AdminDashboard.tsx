@@ -37,8 +37,8 @@ export default function AdminDashboard() {
                 setUserId(user.uid);
             } else {
                 try {
-                    // Fix: Explicitly using the local checked variable
-                    await signInAnonymously(firebaseAuth);
+                    // Fix: Explicitly using the local checked variable with non-null assertion
+                    await signInAnonymously(firebaseAuth!);
                 } catch (error) {
                     console.error("Anonymous sign-in failed:", error);
                 }
@@ -294,8 +294,8 @@ export default function AdminDashboard() {
                                                 <button
                                                     onClick={() => toggleContacted(lead.id, lead.contacted)}
                                                     className={`px-3 py-1.5 text-xs font-bold rounded-full transition-all flex items-center shadow-sm border ${lead.contacted
-                                                            ? 'bg-green-50 text-green-700 border-green-200 hover:bg-green-100'
-                                                            : 'bg-white text-amber-600 border-amber-200 hover:bg-amber-50'
+                                                        ? 'bg-green-50 text-green-700 border-green-200 hover:bg-green-100'
+                                                        : 'bg-white text-amber-600 border-amber-200 hover:bg-amber-50'
                                                         }`}
                                                 >
                                                     <CheckCircle className={`w-4 h-4 mr-1.5 ${lead.contacted ? 'text-green-500' : 'text-amber-400'}`} />
