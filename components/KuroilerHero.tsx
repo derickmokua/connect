@@ -26,7 +26,6 @@ export default function KuroilerHero() {
                 />
 
                 {/* Grid Pattern */}
-                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" style={{ backgroundSize: '30px 30px' }}></div>
             </div>
 
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
@@ -93,8 +92,9 @@ export default function KuroilerHero() {
                         {/* Image */}
                         <div className="relative w-full h-full z-10 transition-transform hover:scale-105 duration-700 ease-in-out">
                             <img
-                                src="/fluffy_chick.png"
+                                src="/fluffy_chick.webp"
                                 alt="Healthy Fluffy Chick"
+                                fetchPriority="high"
                                 className="object-contain w-full h-full drop-shadow-2xl"
                             />
                         </div>

@@ -55,6 +55,7 @@ export function Chatbot() {
         <>
 
             <button
+                aria-label="Contact Support"
                 onClick={() => setIsOpen(true)}
                 className={`fixed bottom-6 right-6 p-4 rounded-full bg-gradient-to-r from-[#FF8A00] to-[#FF8A00] text-white shadow-lg hover:shadow-[0_0_30px_rgba(255,98,0,0.6)] hover:scale-110 transition-all duration-300 z-40 ${isOpen ? "hidden" : "flex"} animate-bounce-slow`}
             >

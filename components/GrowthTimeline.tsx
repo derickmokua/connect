@@ -129,8 +129,8 @@ export default function GrowthTimeline() {
                                         </div>
                                     ))}
                                 </div>
-                                <div className="md:hidden bg-[#FF8A00]/10 px-4 py-2 rounded-full border border-[#FF8A00]/20">
-                                    <span className="text-[#FF8A00] font-bold text-sm">Step {step} of 4</span>
+                                <div className="md:hidden bg-[#0F172A] px-4 py-2 rounded-full border border-slate-700 shadow-sm">
+                                    <span className="text-white font-bold text-sm">Step {step} of 4</span>
                                 </div>
                             </div>
 

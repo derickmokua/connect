@@ -69,7 +69,7 @@ export default function Reviews() {
                                     {review.name.charAt(0)}
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-[#0F172A]">{review.name}</h4>
+                                    <h3 className="font-bold text-[#0F172A]">{review.name}</h3>
                                     <p className="text-xs text-[#6B7280] font-bold uppercase tracking-wide">{review.role}</p>
                                 </div>
                             </div>

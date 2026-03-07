@@ -36,7 +36,7 @@ export default function Footer() {
                         <h3 className="font-bold text-white text-lg mb-6">Expert Access</h3>
                         <ul className="space-y-4 text-sm font-medium">
                             <li className="flex items-center gap-3 hover:text-white transition-colors">
-                                <Phone className="w-5 h-5 text-[#FF8A00]" /> +254 716 883 375
+                                <Phone className="w-5 h-5 text-[#FF8A00]" /> +254 716883375
                             </li>
                             <li className="flex items-center gap-3 hover:text-white transition-colors">
                                 <Mail className="w-5 h-5 text-[#FF8A00]" /> info@kukuconnect.com
@@ -52,7 +52,9 @@ export default function Footer() {
                         <h3 className="font-bold text-white text-lg mb-6">Daily Updates</h3>
                         <p className="text-slate-400 text-sm mb-6 font-medium">Join our WhatsApp Channel for verified farming tips.</p>
                         <a
-                            href="https://whatsapp.com/channel/placeholder"
+                            href="https://whatsapp.com/channel/0029Vb7SHEpATRSeRbs3AK0X"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center justify-center px-6 py-3.5 bg-[#4CAF50] text-white rounded-xl font-bold text-sm hover:bg-[#388E3C] transition-all w-full shadow-lg shadow-[#4CAF50]/20 hover:shadow-[#4CAF50]/30 hover:-translate-y-0.5"
                         >
                             Follow Channel

@@ -2,8 +2,6 @@
 
 import React, { useState } from "react";
 import { Phone, Mail, MapPin, Send, MessageCircle, Loader2 } from "lucide-react";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db, appId } from "@/lib/firebase/client";
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -20,6 +18,9 @@ export default function ContactSection() {
         setStatus("idle");
 
         try {
+            const { db, appId } = await import("@/lib/firebase/client");
+            const { addDoc, collection, serverTimestamp } = await import("firebase/firestore");
+
             if (db) {
                 await addDoc(collection(db, `/artifacts/${appId}/public/data/leads`), {
                     ...formData,
@@ -62,7 +63,7 @@ export default function ContactSection() {
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 px-6 py-4 bg-[#10B981] text-white rounded-2xl font-bold hover:bg-[#059669] transition shadow-lg mb-12 w-full md:w-auto justify-center"
                             >
-                                <MessageCircle className="w-6 h-6" /> Talk to us
+                                <MessageCircle className="w-6 h-6" /> Chat with a specialist
                             </a>
 
                             <ul className="space-y-6">
@@ -70,7 +71,7 @@ export default function ContactSection() {
                                     <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center border border-slate-200 shadow-sm">
                                         <Phone className="w-5 h-5 text-[#FF8A00]" />
                                     </div>
-                                    <span className="font-bold tracking-wide text-[#0F172A]">+254 716 883 375</span>
+                                    <span className="font-bold tracking-wide text-[#0F172A]">+254 716883375</span>
                                 </li>
                                 <li className="flex items-center gap-4">
                                     <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center border border-slate-200 shadow-sm">
@@ -90,7 +91,7 @@ export default function ContactSection() {
 
                     {/* Form Side */}
                     <div className="p-6 sm:p-10 md:p-16 bg-white md:w-3/5">
-                        <h3 className="text-3xl font-bold text-[#0F172A] mb-8">Send a Squawk</h3>
+                        <h3 className="text-3xl font-bold text-[#0F172A] mb-8">Send a message</h3>
 
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -136,7 +137,7 @@ export default function ContactSection() {
                                 disabled={loading}
                                 className="w-full py-4 bg-[#FF8A00] text-white rounded-full font-bold text-lg hover:shadow-lg hover:shadow-[#FF8A00]/20 transition flex items-center justify-center gap-3 disabled:opacity-70 transform hover:-translate-y-1"
                             >
-                                {loading ? <Loader2 className="animate-spin" /> : <>Send a Squawk <Send className="w-5 h-5" /></>}
+                                {loading ? <Loader2 className="animate-spin" /> : <>Send a message <Send className="w-5 h-5" /></>}
                             </button>
 
                             {status === 'success' && (

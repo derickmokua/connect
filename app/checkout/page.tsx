@@ -3,16 +3,12 @@
 
 import React, { useState } from "react";
 import { useCart } from "@/components/context/CartContext";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db, appId } from "@/lib/firebase/client";
 import { useRouter } from "next/navigation";
 import { Phone, MapPin, Loader2, CheckCircle, TrendingUp, Truck, ShieldCheck, Plus, Minus, Trash2 } from "lucide-react";
 import Link from "next/link";
 
 // Force dynamic rendering to avoid build-time Firebase initialization
 export const dynamic = 'force-dynamic';
-
-const getOrdersCollectionPath = () => `/artifacts/${appId}/public/data/orders`;
 
 export default function CheckoutPage() {
     const { cart, cartTotal, clearCart, updateQuantity, removeFromCart } = useCart();
@@ -67,6 +63,10 @@ export default function CheckoutPage() {
         setError(null);
 
         try {
+            const { db, appId } = await import("@/lib/firebase/client");
+            const { addDoc, collection, serverTimestamp } = await import("firebase/firestore");
+            const getOrdersCollectionPath = () => `/artifacts/${appId}/public/data/orders`;
+
             const orderRef = await addDoc(collection(db, getOrdersCollectionPath()), {
                 customer: {
                     name: formData.name,

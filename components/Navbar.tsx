@@ -61,7 +61,7 @@ export default function Navbar() {
                         >
                             <Phone size={20} />
                         </a>
-                        <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-[#0A2540] hover:bg-slate-100 rounded-full transition">
+                        <button aria-label="Menu" onClick={() => setIsOpen(!isOpen)} className="p-2 text-[#0A2540] hover:bg-slate-100 rounded-full transition">
                             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </button>
                     </div>
@@ -87,7 +87,7 @@ export default function Navbar() {
                             className="flex items-center justify-center gap-2 w-full bg-[#FF8A00] text-white font-bold text-lg px-4 py-3 rounded-full hover:bg-[#FF8C00] transition mt-4 shadow-lg shadow-[#FF8A00]/20"
                         >
                             <Phone size={20} className="text-white" />
-                            <span>Call Us: +254 716 883 375</span>
+                            <span>Call Us: +254 716883375</span>
                         </a>
                     </div>
                 </div>
