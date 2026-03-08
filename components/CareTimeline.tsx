@@ -51,7 +51,7 @@ export default function CareTimeline() {
         <section className="py-12 px-4 bg-[#FAFAFA]">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
-                    <span className="inline-block px-3 py-1 rounded-full bg-[#FF8A00]/10 text-[#FF8A00] text-xs font-bold uppercase tracking-wide mb-2 border border-[#FF8A00]/20">
+                    <span className="inline-block px-3 py-1 rounded-full bg-[#C2410C]/10 text-[#9A3412] text-xs font-bold uppercase tracking-wide mb-2 border border-[#C2410C]/20">
                         Optimized for Kuroiler Genetics
                     </span>
                     <h2 className="text-4xl font-extrabold text-[#0F172A] mb-4">The Success Routine</h2>
@@ -103,7 +103,7 @@ export default function CareTimeline() {
                             >
                                 <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${milestones[activeStep].color.replace('border-', 'from-')} to-transparent opacity-10 rounded-full blur-2xl`}></div>
                                 <div className="mb-8 relative z-10">
-                                    <div className="inline-block px-4 py-1.5 bg-[#FAFAFA] text-[#FF8A00] font-bold rounded-full mb-4 text-sm uppercase tracking-wide border border-[#FF8A00]/20 shadow-sm">
+                                    <div className="inline-block px-4 py-1.5 bg-[#FAFAFA] text-[#C2410C] font-bold rounded-full mb-4 text-sm uppercase tracking-wide border border-[#C2410C]/20 shadow-sm">
                                         Goal: {milestones[activeStep].goal}
                                     </div>
                                     <h3 className="text-3xl font-black text-[#0F172A] mb-4">{milestones[activeStep].title}</h3>

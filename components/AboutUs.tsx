@@ -71,7 +71,7 @@ export default function AboutUs() {
                                     <ShieldCheck className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-[#0F172A] text-lg">Zero-Trust Health</h4>
+                                    <h3 className="font-bold text-[#0F172A] text-lg">Zero-Trust Health</h3>
                                     <p className="text-slate-600">Every bird is vaccinated under strict supervision. No exceptions.</p>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@ export default function AboutUs() {
                                     <Anchor className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-[#0F172A] text-lg">Hardened Assets</h4>
+                                    <h3 className="font-bold text-[#0F172A] text-lg">Hardened Assets</h3>
                                     <p className="text-slate-600">Our 4-week-old birds are ready for the coop, not the brooder.</p>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@ export default function AboutUs() {
                                     <TrendingUp className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-[#0F172A] text-lg">Economic Impact</h4>
+                                    <h3 className="font-bold text-[#0F172A] text-lg">Economic Impact</h3>
                                     <p className="text-slate-600">Empowering 500+ farmers to turn poultry into a predictable business.</p>
                                 </div>
                             </div>

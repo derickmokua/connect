@@ -72,7 +72,7 @@ export default function Gallery() {
         <section id="gallery" className="py-24 px-4 bg-[#FAFAFA] border-t border-slate-200">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <span className="inline-block px-3 py-1 rounded-full bg-[#C2410C]/10 text-[#C2410C] text-xs font-bold uppercase tracking-wide mb-2 border border-[#C2410C]/20">
+                    <span className="inline-block px-3 py-1 rounded-full bg-[#C2410C]/10 text-[#9A3412] text-xs font-bold uppercase tracking-wide mb-2 border border-[#C2410C]/20">
                         Visual Proof
                     </span>
                     <h2 className="text-4xl font-extrabold text-[#0F172A] mb-4">The Evidence</h2>
@@ -162,7 +162,7 @@ export default function Gallery() {
                                 </div>
                                 <div className="p-8">
                                     <div className="flex items-center gap-3 mb-4">
-                                        <span className="px-3 py-1 rounded-full bg-[#C2410C]/10 text-[#C2410C] text-xs font-bold uppercase tracking-wide border border-[#C2410C]/20">
+                                        <span className="px-3 py-1 rounded-full bg-[#C2410C]/10 text-[#9A3412] text-xs font-bold uppercase tracking-wide border border-[#C2410C]/20">
                                             {selectedItem?.tag}
                                         </span>
                                         <div className="h-px bg-slate-200 flex-1"></div>

@@ -55,7 +55,7 @@ export default function Footer() {
                             href="https://whatsapp.com/channel/0029Vb7SHEpATRSeRbs3AK0X"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center px-6 py-3.5 bg-[#4CAF50] text-white rounded-xl font-bold text-sm hover:bg-[#388E3C] transition-all w-full shadow-lg shadow-[#4CAF50]/20 hover:shadow-[#4CAF50]/30 hover:-translate-y-0.5"
+                            className="inline-flex items-center justify-center px-6 py-3.5 bg-[#2E7D32] text-white rounded-xl font-bold text-sm hover:bg-[#1B5E20] transition-all w-full shadow-lg shadow-[#2E7D32]/20 hover:shadow-[#2E7D32]/30 hover:-translate-y-0.5"
                         >
                             Follow Channel
                         </a>
@@ -83,7 +83,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-[#1E3A5F] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-500">
+                <div className="border-t border-[#1E3A5F] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-400">
                     <p>© {new Date().getFullYear()} KukuConnect. All rights reserved.</p>
                     <div className="flex gap-6">
                         <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>

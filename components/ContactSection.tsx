@@ -61,7 +61,7 @@ export default function ContactSection() {
                                 href="https://wa.me/254716883375"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-6 py-4 bg-[#10B981] text-white rounded-2xl font-bold hover:bg-[#059669] transition shadow-lg mb-12 w-full md:w-auto justify-center"
+                                className="inline-flex items-center gap-2 px-6 py-4 bg-[#059669] text-white rounded-2xl font-bold hover:bg-[#047857] transition shadow-lg mb-12 w-full md:w-auto justify-center"
                             >
                                 <MessageCircle className="w-6 h-6" /> Chat with a specialist
                             </a>

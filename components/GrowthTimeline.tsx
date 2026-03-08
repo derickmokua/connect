@@ -165,7 +165,7 @@ export default function GrowthTimeline() {
                                                     <p className="text-slate-600 mb-4 font-medium text-sm">{stage.desc}</p>
                                                     <div className="space-y-1">
                                                         {stage.features.map(f => (
-                                                            <div key={f} className="flex items-center gap-2 text-sm text-slate-500">
+                                                            <div key={f} className="flex items-center gap-2 text-sm text-slate-600">
                                                                 <Check className={`w-4 h-4 ${stage.popular ? "text-[#C2410C]" : "text-[#10B981]"}`} /> {f}
                                                             </div>
                                                         ))}

@@ -44,7 +44,7 @@ export default function VaccinationScheduler() {
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 text-xs font-bold border border-blue-500/20 mb-4 tracking-wide uppercase">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-700 text-xs font-bold border border-blue-500/20 mb-4 tracking-wide uppercase">
                             <ShieldCheck className="w-3 h-3" /> Zero-Trust Health
                         </div>
                         <h2 className="text-4xl md:text-5xl font-extrabold text-[#0F172A] mb-4">The Immunity Protocol</h2>
@@ -60,7 +60,7 @@ export default function VaccinationScheduler() {
                         </div>
                         <div>
                             <div className="font-extrabold text-[#0F172A]">Cold-Chain Verified</div>
-                            <div className="text-xs text-blue-500 font-medium tracking-wide uppercase">Temp Monitored 24/7</div>
+                            <div className="text-xs text-blue-700 font-medium tracking-wide uppercase">Temp Monitored 24/7</div>
                         </div>
                         <div className="h-2 w-2 bg-[#10B981] rounded-full animate-pulse ml-2"></div>
                     </div>

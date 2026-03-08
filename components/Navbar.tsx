@@ -57,7 +57,8 @@ export default function Navbar() {
                     <div className="flex items-center lg:hidden gap-4">
                         <a
                             href="tel:+254716883375"
-                            className="flex items-center justify-center w-10 h-10 bg-[#FF8A00]/10 rounded-full text-[#FF8A00] hover:bg-[#FF8A00] hover:text-white transition-all"
+                            aria-label="Call Us"
+                            className="flex items-center justify-center w-10 h-10 bg-[#C2410C]/10 rounded-full text-[#C2410C] hover:bg-[#C2410C] hover:text-white transition-all"
                         >
                             <Phone size={20} />
                         </a>
