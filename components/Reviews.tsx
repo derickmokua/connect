@@ -33,9 +33,9 @@ export default function Reviews() {
         <section id="reviews" className="py-24 px-4 bg-[#FAFAFA]">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <span className="text-[#FF8A00] font-bold tracking-wider uppercase text-sm">Flock Feedback</span>
+                    <span className="text-[#C2410C] font-bold tracking-wider uppercase text-sm">Flock Feedback</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold text-[#0F172A] mt-2 mb-4">Happy Farmers</h2>
-                    <p className="text-[#6B7280] text-lg max-w-2xl mx-auto font-medium">Don't just take our word for it. Hear from the successful farmers in our community.</p>
+                    <p className="text-slate-600 text-lg max-w-2xl mx-auto font-medium">Don't just take our word for it. Hear from the successful farmers in our community.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -65,12 +65,12 @@ export default function Reviews() {
                             <p className="text-[#0F172A]/80 mb-8 leading-relaxed relative z-10 font-medium">"{review.content}"</p>
 
                             <div className="flex items-center gap-4 mt-auto">
-                                <div className="w-12 h-12 bg-gradient-to-br from-[#FF8A00] to-[#FF8C00] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
+                                <div className="w-12 h-12 bg-gradient-to-br from-[#C2410C] to-[#ea580c] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
                                     {review.name.charAt(0)}
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-[#0F172A]">{review.name}</h3>
-                                    <p className="text-xs text-[#6B7280] font-bold uppercase tracking-wide">{review.role}</p>
+                                    <p className="text-xs text-slate-600 font-bold uppercase tracking-wide">{review.role}</p>
                                 </div>
                             </div>
                         </motion.div>

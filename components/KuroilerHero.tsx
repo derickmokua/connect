@@ -41,14 +41,14 @@ export default function KuroilerHero() {
                         Our <span className="text-[#FF8A00]">Commitment</span>.
                     </h1>
 
-                    <p className="text-lg md:text-xl text-[#6B7280] mb-10 leading-relaxed max-w-xl font-medium mx-auto lg:ml-0">
+                    <p className="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed max-w-xl font-medium mx-auto lg:ml-0">
                         KukuConnect delivers healthy, high-performing chicks and expert support – so your flock thrives. We're here to help you hatch success, grow your brood, and feather your nest.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-12 justify-center lg:justify-start">
                         <Link
                             href="#products"
-                            className="px-6 md:px-8 py-3 md:py-4 bg-[#FF8A00] text-white rounded-full font-bold text-base md:text-lg hover:bg-[#FF7518] shadow-lg shadow-[#FF8A00]/20 hover:shadow-xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group"
+                            className="px-6 md:px-8 py-3 md:py-4 bg-[#C2410C] text-white rounded-full font-bold text-base md:text-lg hover:bg-[#ea580c] shadow-lg shadow-[#C2410C]/20 hover:shadow-xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group"
                         >
                             Hatch Your Batch
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -59,17 +59,17 @@ export default function KuroilerHero() {
                     <div className="flex flex-wrap gap-8 border-t border-slate-200 pt-8 justify-center lg:justify-start">
                         <div>
                             <div className="text-2xl font-bold text-[#0F172A]">15k+</div>
-                            <div className="text-sm text-slate-500 font-medium">Happy Peepers</div>
+                            <div className="text-sm text-slate-600 font-medium">Happy Peepers</div>
                         </div>
                         <div className="w-px h-12 bg-slate-200 hidden sm:block"></div>
                         <div>
                             <div className="text-2xl font-bold text-[#0F172A]">98%</div>
-                            <div className="text-sm text-slate-500 font-medium">Survival Rate</div>
+                            <div className="text-sm text-slate-600 font-medium">Survival Rate</div>
                         </div>
                         <div className="w-px h-12 bg-slate-200 hidden sm:block"></div>
                         <div>
                             <div className="text-2xl font-bold text-[#0F172A]">24/7</div>
-                            <div className="text-sm text-slate-500 font-medium">Vet Support</div>
+                            <div className="text-sm text-slate-600 font-medium">Vet Support</div>
                         </div>
                     </div>
                 </motion.div>

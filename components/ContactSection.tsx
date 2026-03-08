@@ -53,7 +53,7 @@ export default function ContactSection() {
 
                         <div>
                             <h2 className="text-4xl font-extrabold mb-6 text-[#0F172A]">Mother Hen Support</h2>
-                            <p className="text-[#6B7280] mb-10 leading-relaxed text-lg">
+                            <p className="text-slate-600 mb-10 leading-relaxed text-lg">
                                 Need advice on brooding, vaccines, or scaling your kuku? Our mother hens are ready to help.
                             </p>
 
@@ -69,19 +69,19 @@ export default function ContactSection() {
                             <ul className="space-y-6">
                                 <li className="flex items-center gap-4">
                                     <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center border border-slate-200 shadow-sm">
-                                        <Phone className="w-5 h-5 text-[#FF8A00]" />
+                                        <Phone className="w-5 h-5 text-[#C2410C]" />
                                     </div>
                                     <span className="font-bold tracking-wide text-[#0F172A]">+254 716883375</span>
                                 </li>
                                 <li className="flex items-center gap-4">
                                     <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center border border-slate-200 shadow-sm">
-                                        <Mail className="w-5 h-5 text-[#FF8A00]" />
+                                        <Mail className="w-5 h-5 text-[#C2410C]" />
                                     </div>
                                     <span className="font-bold tracking-wide text-[#0F172A]">info@kukuconnect.com</span>
                                 </li>
                                 <li className="flex items-center gap-4">
                                     <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center border border-slate-200 shadow-sm">
-                                        <MapPin className="w-5 h-5 text-[#FF8A00]" />
+                                        <MapPin className="w-5 h-5 text-[#C2410C]" />
                                     </div>
                                     <span className="font-bold tracking-wide text-[#0F172A]">Kitui Town, Kenya</span>
                                 </li>
@@ -101,19 +101,19 @@ export default function ContactSection() {
                                         required
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        className="w-full px-4 py-4 bg-[#FAFAFA] border-2 border-slate-200 rounded-2xl focus:border-[#FF8A00] outline-none text-[#0F172A] font-medium transition placeholder-slate-400"
+                                        className="w-full px-4 py-4 bg-[#FAFAFA] border-2 border-slate-200 rounded-2xl focus:border-[#C2410C] outline-none text-[#0F172A] font-medium transition placeholder-slate-400"
                                         placeholder="e.g. Jane Mwikali"
                                         autoComplete="name"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-[#6B7280] uppercase tracking-wider">Email Address</label>
+                                    <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Email Address</label>
                                     <input
                                         required
                                         type="email"
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        className="w-full px-4 py-4 bg-[#FAFAFA] border-2 border-slate-200 rounded-2xl focus:border-[#FF8A00] outline-none text-[#0F172A] font-medium transition placeholder-slate-400"
+                                        className="w-full px-4 py-4 bg-[#FAFAFA] border-2 border-slate-200 rounded-2xl focus:border-[#C2410C] outline-none text-[#0F172A] font-medium transition placeholder-slate-400"
                                         placeholder="e.g. jane@email.com"
                                         autoComplete="email"
                                     />
@@ -121,13 +121,13 @@ export default function ContactSection() {
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-bold text-[#6B7280] uppercase tracking-wider">Subject / Question</label>
+                                <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Subject / Question</label>
                                 <textarea
                                     required
                                     rows={4}
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    className="w-full px-4 py-4 bg-[#FAFAFA] border-2 border-slate-200 rounded-2xl focus:border-[#FF8A00] outline-none text-[#0F172A] font-medium transition resize-none placeholder-slate-400"
+                                    className="w-full px-4 py-4 bg-[#FAFAFA] border-2 border-slate-200 rounded-2xl focus:border-[#C2410C] outline-none text-[#0F172A] font-medium transition resize-none placeholder-slate-400"
                                     placeholder="e.g. I want to preorder chicks for February 2026. Please advise on payment and pickup."
                                 />
                             </div>
@@ -135,7 +135,7 @@ export default function ContactSection() {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full py-4 bg-[#FF8A00] text-white rounded-full font-bold text-lg hover:shadow-lg hover:shadow-[#FF8A00]/20 transition flex items-center justify-center gap-3 disabled:opacity-70 transform hover:-translate-y-1"
+                                className="w-full py-4 bg-[#C2410C] text-white rounded-full font-bold text-lg hover:shadow-lg hover:shadow-[#C2410C]/20 transition flex items-center justify-center gap-3 disabled:opacity-70 transform hover:-translate-y-1"
                             >
                                 {loading ? <Loader2 className="animate-spin" /> : <>Send a message <Send className="w-5 h-5" /></>}
                             </button>

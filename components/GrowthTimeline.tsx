@@ -100,8 +100,8 @@ export default function GrowthTimeline() {
                             onClick={() => setActiveCategory(cat)}
                             className={`px-4 md:px-8 py-2 md:py-3 rounded-full font-bold text-xs md:text-base capitalize transition-all duration-300 shadow-sm
                                 ${activeCategory === cat
-                                    ? "bg-[#FF8A00] text-white shadow-[#FF8A00]/25 shadow-lg scale-105"
-                                    : "bg-white text-slate-500 hover:bg-slate-50 border border-slate-200"}`}
+                                    ? "bg-[#C2410C] text-white shadow-[#C2410C]/25 shadow-lg scale-105"
+                                    : "bg-white text-slate-600 hover:bg-slate-50 border border-slate-200"}`}
                         >
                             {cat === "mature" ? "Mature" : cat}
                         </button>
@@ -138,7 +138,7 @@ export default function GrowthTimeline() {
                                 {/* STEP 1: CHOSE AGE */}
                                 {step === 1 && (
                                     <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
-                                        <h3 className="text-2xl font-bold text-[#1F2937] text-center md:text-left">Step 1: Choose Chick Age</h3>
+                                        <h2 className="text-2xl font-bold text-[#1F2937] text-center md:text-left">Step 1: Choose Chick Age</h2>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             {productCategories.chicks.map((stage) => (
                                                 <button
@@ -160,18 +160,18 @@ export default function GrowthTimeline() {
 
                                                     <div className="flex justify-between items-start mb-2 mt-1">
                                                         <span className={`font-bold text-lg ${stage.popular ? "text-[#0F172A]" : "text-[#1F2937]"}`}>{stage.label}</span>
-                                                        <span className="font-bold text-[#FF8A00]">KES {stage.price}</span>
+                                                        <span className="font-bold text-[#C2410C]">KES {stage.price}</span>
                                                     </div>
-                                                    <p className="text-slate-400 mb-4 font-medium text-sm">{stage.desc}</p>
+                                                    <p className="text-slate-600 mb-4 font-medium text-sm">{stage.desc}</p>
                                                     <div className="space-y-1">
                                                         {stage.features.map(f => (
                                                             <div key={f} className="flex items-center gap-2 text-sm text-slate-500">
-                                                                <Check className={`w-4 h-4 ${stage.popular ? "text-[#FF8A00]" : "text-[#10B981]"}`} /> {f}
+                                                                <Check className={`w-4 h-4 ${stage.popular ? "text-[#C2410C]" : "text-[#10B981]"}`} /> {f}
                                                             </div>
                                                         ))}
                                                     </div>
                                                     {selectedChickStage.id === stage.id && !stage.popular && (
-                                                        <div className="absolute top-0 right-0 p-2 bg-[#FF8A00] text-white rounded-bl-2xl shadow-sm">
+                                                        <div className="absolute top-0 right-0 p-2 bg-[#C2410C] text-white rounded-bl-2xl shadow-sm">
                                                             <Check className="w-4 h-4" />
                                                         </div>
                                                     )}
@@ -184,9 +184,9 @@ export default function GrowthTimeline() {
                                 {/* STEP 2: QUANTITY */}
                                 {step === 2 && (
                                     <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
-                                        <h3 className="text-2xl font-bold text-[#0F172A] text-center md:text-left">Step 2: How many chicks?</h3>
+                                        <h2 className="text-2xl font-bold text-[#0F172A] text-center md:text-left">Step 2: How many chicks?</h2>
                                         <div className="bg-white/50 backdrop-blur-sm p-6 md:p-10 rounded-[2rem] border border-white/60 text-center shadow-inner max-w-2xl mx-auto overflow-hidden">
-                                            <div className="text-5xl md:text-7xl font-extrabold text-[#FF8A00] mb-6">{chickQuantity}</div>
+                                            <div className="text-5xl md:text-7xl font-extrabold text-[#C2410C] mb-6">{chickQuantity}</div>
                                             <input
                                                 type="range"
                                                 min={10}
@@ -208,8 +208,8 @@ export default function GrowthTimeline() {
                                 {/* STEP 3: SUCCESS KITS */}
                                 {step === 3 && (
                                     <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
-                                        <h3 className="text-2xl font-bold text-[#1F2937] text-center md:text-left">Step 3: Add Hatch Kits</h3>
-                                        <p className="text-slate-400 text-center md:text-left">Optional add-ons to ensure your brood survives and thrives.</p>
+                                        <h2 className="text-2xl font-bold text-[#1F2937] text-center md:text-left">Step 3: Add Hatch Kits</h2>
+                                        <p className="text-slate-600 text-center md:text-left">Optional add-ons to ensure your brood survives and thrives.</p>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             <div
@@ -250,7 +250,7 @@ export default function GrowthTimeline() {
                                 {/* STEP 4: SUMMARY */}
                                 {step === 4 && (
                                     <motion.div key="step4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
-                                        <h3 className="text-2xl font-bold text-[#1F2937] text-center md:text-left">Step 4: Confirm Batch</h3>
+                                        <h2 className="text-2xl font-bold text-[#1F2937] text-center md:text-left">Step 4: Confirm Batch</h2>
 
                                         <div className="bg-[#0F172A] text-white rounded-[24px] p-8 space-y-4 font-mono text-sm relative overflow-hidden border border-slate-700 shadow-xl max-w-2xl mx-auto">
                                             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF8A00] to-[#FF6B00]"></div>
@@ -292,14 +292,14 @@ export default function GrowthTimeline() {
                                 {step < 4 ? (
                                     <button
                                         onClick={handleNext}
-                                        className="flex items-center gap-2 bg-[#FF8A00] text-white px-6 md:px-8 py-2 md:py-3 text-sm md:text-base rounded-full font-bold hover:shadow-lg hover:shadow-[#FF8A00]/20 transition transform hover:-translate-y-0.5"
+                                        className="flex items-center gap-2 bg-[#C2410C] text-white px-6 md:px-8 py-2 md:py-3 text-sm md:text-base rounded-full font-bold hover:shadow-lg hover:shadow-[#FF8A00]/20 transition transform hover:-translate-y-0.5"
                                     >
                                         Continue <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                                     </button>
                                 ) : (
                                     <button
                                         onClick={handleAddChickToCart}
-                                        className="flex items-center gap-2 bg-[#FF8A00] text-white px-6 md:px-8 py-2 md:py-3 text-sm md:text-base rounded-full font-bold hover:bg-[#ff7b00] transition shadow-lg shadow-[#FF8A00]/20 transform hover:-translate-y-0.5"
+                                        className="flex items-center gap-2 bg-[#C2410C] text-white px-6 md:px-8 py-2 md:py-3 text-sm md:text-base rounded-full font-bold hover:bg-[#ff7b00] transition shadow-lg shadow-[#FF8A00]/20 transform hover:-translate-y-0.5"
                                     >
                                         <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" /> Add to Cart
                                     </button>

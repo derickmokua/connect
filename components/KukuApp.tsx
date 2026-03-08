@@ -5,16 +5,18 @@ import Navbar from "./Navbar";
 import Hero from "./KuroilerHero";
 import KuroilerAdvantages from "./KuroilerAdvantages";
 
-import GrowthTimeline from "./GrowthTimeline";
-import TrustLogistics from "./TrustLogistics";
-import VaccinationScheduler from "./VaccinationScheduler";
-import { Chatbot } from "./Chatbot";
-import Footer from "./Footer";
-import CareTimeline from "./CareTimeline";
-import AboutUs from "./AboutUs";
-import Reviews from "./Reviews";
-import Gallery from "./Gallery";
-import ContactSection from "./ContactSection";
+import dynamic from "next/dynamic";
+
+const GrowthTimeline = dynamic(() => import("./GrowthTimeline"));
+const TrustLogistics = dynamic(() => import("./TrustLogistics"));
+const VaccinationScheduler = dynamic(() => import("./VaccinationScheduler"));
+const CareTimeline = dynamic(() => import("./CareTimeline"));
+const Reviews = dynamic(() => import("./Reviews"));
+const Gallery = dynamic(() => import("./Gallery"));
+const ContactSection = dynamic(() => import("./ContactSection"));
+const AboutUs = dynamic(() => import("./AboutUs"));
+const Footer = dynamic(() => import("./Footer"));
+const Chatbot = dynamic(() => import("./Chatbot").then(mod => mod.Chatbot));
 
 
 export default function KukuApp() {

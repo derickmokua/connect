@@ -22,7 +22,7 @@ export default function AboutUs() {
                             <span className="text-8xl block">👨‍🌾</span>
                             <div>
                                 <h3 className="text-2xl font-bold text-[#0F172A]">Kitui Hardened</h3>
-                                <p className="text-[#6B7280] font-medium">Locally raised and climate-adapted for specific Kenyan farm conditions.</p>
+                                <p className="text-slate-600 font-medium">Locally raised and climate-adapted for specific Kenyan farm conditions.</p>
                             </div>
                         </div>
 
@@ -33,10 +33,10 @@ export default function AboutUs() {
                                 <Eye className="w-8 h-8 text-[#FF8A00]" />
                                 <div>
                                     <h4 className="font-bold text-lg">The 100% Transparency Rule</h4>
-                                    <span className="text-xs text-[#6B7280] uppercase tracking-widest font-bold">Open Door Policy</span>
+                                    <span className="text-xs text-slate-600 uppercase tracking-widest font-bold">Open Door Policy</span>
                                 </div>
                             </div>
-                            <p className="text-[#6B7280] text-sm leading-relaxed font-medium">
+                            <p className="text-slate-600 text-sm leading-relaxed font-medium">
                                 "See the System." We believe in the quality of our infrastructure. Farmers are welcome to visit our Kitui facility to see exactly how their birds are raised and vaccinated.
                             </p>
                         </div>
@@ -55,12 +55,12 @@ export default function AboutUs() {
                             </span>
                             <h2 className="text-4xl md:text-5xl font-extrabold text-[#0F172A] leading-tight mb-6">
                                 Standardizing Poultry <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF8A00] to-[#FF8A00]">Success.</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C2410C] to-[#C2410C]">Success.</span>
                             </h2>
-                            <p className="text-lg text-[#6B7280] leading-relaxed font-medium">
+                            <p className="text-lg text-slate-600 leading-relaxed font-medium">
                                 KukuConnect was built to solve the biggest failure in local farming: the <strong>"Danger Zone"</strong> of the first 21 days. We use professional brooding systems and strict bio-security to raise chicks through their most fragile stage.
                             </p>
-                            <p className="text-lg text-[#0F172A] leading-relaxed mt-4 font-bold border-l-4 border-[#FF8A00] pl-4">
+                            <p className="text-lg text-[#0F172A] leading-relaxed mt-4 font-bold border-l-4 border-[#C2410C] pl-4">
                                 We don't just sell birds; we deploy a Golden Egg System to your coop.
                             </p>
                         </div>
@@ -72,17 +72,17 @@ export default function AboutUs() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-[#0F172A] text-lg">Zero-Trust Health</h4>
-                                    <p className="text-[#6B7280]">Every bird is vaccinated under strict supervision. No exceptions.</p>
+                                    <p className="text-slate-600">Every bird is vaccinated under strict supervision. No exceptions.</p>
                                 </div>
                             </div>
 
                             <div className="flex items-start gap-4">
-                                <div className="p-3 bg-[#FF8A00]/10 rounded-xl text-[#FF8A00] shrink-0 border border-[#FF8A00]/20">
+                                <div className="p-3 bg-[#FF8A00]/10 rounded-xl text-[#C2410C] shrink-0 border border-[#FF8A00]/20">
                                     <Anchor className="w-6 h-6" />
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-[#0F172A] text-lg">Hardened Assets</h4>
-                                    <p className="text-[#6B7280]">Our 4-week-old birds are ready for the coop, not the brooder.</p>
+                                    <p className="text-slate-600">Our 4-week-old birds are ready for the coop, not the brooder.</p>
                                 </div>
                             </div>
 
@@ -92,12 +92,12 @@ export default function AboutUs() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-[#0F172A] text-lg">Economic Impact</h4>
-                                    <p className="text-[#6B7280]">Empowering 500+ farmers to turn poultry into a predictable business.</p>
+                                    <p className="text-slate-600">Empowering 500+ farmers to turn poultry into a predictable business.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="pt-6 border-l-4 border-[#FF8A00] pl-6 bg-white p-6 rounded-r-2xl shadow-sm border-t border-r border-b border-slate-100">
+                        <div className="pt-6 border-l-4 border-[#C2410C] pl-6 bg-white p-6 rounded-r-2xl shadow-sm border-t border-r border-b border-slate-100">
                             <p className="italic text-[#0F172A] text-lg font-bold">
                                 "Success isn't measured in sales; it's measured by the survival rate on your farm."
                             </p>

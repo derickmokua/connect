@@ -72,11 +72,11 @@ export default function Gallery() {
         <section id="gallery" className="py-24 px-4 bg-[#FAFAFA] border-t border-slate-200">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <span className="inline-block px-3 py-1 rounded-full bg-[#FF8A00]/10 text-[#FF8A00] text-xs font-bold uppercase tracking-wide mb-2 border border-[#FF8A00]/20">
+                    <span className="inline-block px-3 py-1 rounded-full bg-[#C2410C]/10 text-[#C2410C] text-xs font-bold uppercase tracking-wide mb-2 border border-[#C2410C]/20">
                         Visual Proof
                     </span>
                     <h2 className="text-4xl font-extrabold text-[#0F172A] mb-4">The Evidence</h2>
-                    <p className="text-[#6B7280] text-lg max-w-2xl mx-auto">
+                    <p className="text-slate-600 text-lg max-w-2xl mx-auto">
                         Visual proof of the KukuConnect system in action. From our facility to your farm.
                     </p>
                 </div>
@@ -88,8 +88,8 @@ export default function Gallery() {
                             key={cat}
                             onClick={() => setActiveCategory(cat)}
                             className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${activeCategory === cat
-                                ? "bg-[#FF6200] text-white shadow-lg"
-                                : "bg-white text-[#6B7280] hover:bg-slate-100 hover:text-[#1F2937] border border-slate-200"
+                                ? "bg-[#C2410C] text-white shadow-lg"
+                                : "bg-white text-slate-600 hover:bg-slate-100 hover:text-[#1F2937] border border-slate-200"
                                 }`}
                         >
                             {cat}
@@ -108,7 +108,7 @@ export default function Gallery() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 onClick={() => setSelectedItem(item)}
-                                className="group cursor-pointer rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-[#FF6200]/10 transition-all duration-300 relative aspect-[4/3]"
+                                className="group cursor-pointer rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-[#C2410C]/10 transition-all duration-300 relative aspect-[4/3]"
                             >
                                 <Image
                                     src={item.icon}
@@ -119,7 +119,7 @@ export default function Gallery() {
 
                                 {/* Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#1F2937] via-[#1F2937]/40 to-transparent p-6 flex flex-col justify-end opacity-90 transition-opacity">
-                                    <span className="text-[#FF6200] text-xs font-bold uppercase tracking-wider mb-1">{item.tag}</span>
+                                    <span className="text-[#C2410C] text-xs font-bold uppercase tracking-wider mb-1">{item.tag}</span>
                                     <h3 className="text-white font-bold text-xl flex items-center gap-2">
                                         {item.title} <ZoomIn className="w-4 h-4 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                                     </h3>
@@ -162,13 +162,13 @@ export default function Gallery() {
                                 </div>
                                 <div className="p-8">
                                     <div className="flex items-center gap-3 mb-4">
-                                        <span className="px-3 py-1 rounded-full bg-[#FF6200]/10 text-[#FF6200] text-xs font-bold uppercase tracking-wide border border-[#FF6200]/20">
+                                        <span className="px-3 py-1 rounded-full bg-[#C2410C]/10 text-[#C2410C] text-xs font-bold uppercase tracking-wide border border-[#C2410C]/20">
                                             {selectedItem?.tag}
                                         </span>
                                         <div className="h-px bg-slate-200 flex-1"></div>
                                     </div>
                                     <h3 className="text-3xl font-extrabold text-[#1F2937] mb-4">{selectedItem?.title}</h3>
-                                    <p className="text-[#6B7280] text-lg leading-relaxed border-l-4 border-[#FF6200] pl-6">
+                                    <p className="text-slate-600 text-lg leading-relaxed border-l-4 border-[#C2410C] pl-6">
                                         {selectedItem?.caption}
                                     </p>
                                 </div>

@@ -44,11 +44,11 @@ export default function VaccinationScheduler() {
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-bold border border-blue-500/20 mb-4 tracking-wide uppercase">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 text-xs font-bold border border-blue-500/20 mb-4 tracking-wide uppercase">
                             <ShieldCheck className="w-3 h-3" /> Zero-Trust Health
                         </div>
                         <h2 className="text-4xl md:text-5xl font-extrabold text-[#0F172A] mb-4">The Immunity Protocol</h2>
-                        <p className="text-[#6B7280] text-lg max-w-2xl">
+                        <p className="text-slate-600 text-lg max-w-2xl">
                             We don't believe in "luck" when it comes to bird survival. Our Immunity Protocol is a hardened defense system built to protect your investment from Day 1 to Market.
                         </p>
                     </div>
@@ -69,43 +69,43 @@ export default function VaccinationScheduler() {
                 {/* 3 Pillars */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                     <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
-                        <Syringe className="w-8 h-8 text-[#FF8A00] mb-4" />
+                        <Syringe className="w-8 h-8 text-[#C2410C] mb-4" />
                         <h3 className="font-bold text-[#0F172A] text-lg mb-2">Vetted Vaccines</h3>
-                        <p className="text-[#6B7280] text-sm">We only use high-grade vaccines, kept at strict temperatures (Cold Chain) until they reach the bird.</p>
+                        <p className="text-slate-600 text-sm">We only use high-grade vaccines, kept at strict temperatures (Cold Chain) until they reach the bird.</p>
                     </div>
                     <div className="bg-[#0F172A] text-white p-6 rounded-3xl shadow-lg relative overflow-hidden border border-slate-800">
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-[#FF8A00]/20 rounded-bl-full"></div>
-                        <Calendar className="w-8 h-8 text-[#FF8A00] mb-4" />
+                        <div className="absolute top-0 right-0 w-20 h-20 bg-[#C2410C]/20 rounded-bl-full"></div>
+                        <Calendar className="w-8 h-8 text-[#C2410C] mb-4" />
                         <h3 className="font-bold text-white text-lg mb-2">The Success Schedule</h3>
                         <p className="text-slate-400 text-sm">A precision-timed routine that tells you exactly when to protect and when to boost.</p>
                     </div>
                     <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
-                        <FileCheck className="w-8 h-8 text-[#FF8A00] mb-4" />
+                        <FileCheck className="w-8 h-8 text-[#C2410C] mb-4" />
                         <h3 className="font-bold text-[#0F172A] text-lg mb-2">Digital Verification</h3>
-                        <p className="text-[#6B7280] text-sm">Every bird we sell is backed by a verified health log. No guesswork.</p>
+                        <p className="text-slate-600 text-sm">Every bird we sell is backed by a verified health log. No guesswork.</p>
                     </div>
                 </div>
 
                 {/* Generator */}
                 <div className="bg-white rounded-[2.5rem] shadow-xl p-8 md:p-12 border border-slate-200 relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#FF8A00] to-[#FF8A00]"></div>
+                    <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#C2410C] to-[#C2410C]"></div>
 
                     <div className="max-w-3xl mx-auto">
                         <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-end mb-8">
                             <div className="flex-1 w-full">
-                                <label className="block text-sm font-bold text-[#6B7280] mb-2 uppercase tracking-wide">Arrival Date</label>
+                                <label className="block text-sm font-bold text-slate-600 mb-2 uppercase tracking-wide">Arrival Date</label>
                                 <input
                                     type="date"
                                     value={startDate}
                                     onChange={(e) => setStartDate(e.target.value)}
-                                    className="w-full p-4 rounded-2xl bg-[#FAFAFA] border-2 border-slate-200 focus:border-[#FF8A00] text-[#0F172A] font-bold outline-none transition placeholder:italic placeholder:text-slate-400"
+                                    className="w-full p-4 rounded-2xl bg-[#FAFAFA] border-2 border-slate-200 focus:border-[#C2410C] text-[#0F172A] font-bold outline-none transition placeholder:italic placeholder:text-slate-400"
                                     placeholder={isMobile ? 'dd/mm/yy' : ''}
                                 />
                             </div>
                             <button
                                 onClick={generateSchedule}
                                 disabled={!startDate}
-                                className="w-full md:w-auto px-8 py-3 md:py-4 bg-[#FF8A00] text-white rounded-full font-bold hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition hover:-translate-y-0.5"
+                                className="w-full md:w-auto px-8 py-3 md:py-4 bg-[#C2410C] text-white rounded-full font-bold hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition hover:-translate-y-0.5"
                             >
                                 <Calendar className="w-5 h-5" /> Generate My Success Schedule
                             </button>
@@ -120,14 +120,14 @@ export default function VaccinationScheduler() {
                                     className="space-y-6"
                                 >
                                     <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-100">
-                                        <div className="flex items-center gap-2 text-[#FF8A00] font-bold">
+                                        <div className="flex items-center gap-2 text-[#C2410C] font-bold">
                                             <CheckCircle2 className="w-5 h-5" />
                                             <span>Protocol Active</span>
                                         </div>
                                         <div className="flex gap-2">
                                             <button
                                                 onClick={() => window.print()}
-                                                className="px-4 py-2 bg-white text-[#FF8A00] font-bold rounded-xl hover:bg-slate-50 transition border border-slate-200"
+                                                className="px-4 py-2 bg-white text-[#C2410C] font-bold rounded-xl hover:bg-slate-50 transition border border-slate-200"
                                             >
                                                 Print Protocol
                                             </button>
@@ -145,22 +145,22 @@ export default function VaccinationScheduler() {
 
                                     <div className="space-y-3">
                                         {generatedSchedule.map((item, idx) => (
-                                            <div key={idx} className="flex flex-col md:flex-row gap-4 p-5 rounded-2xl bg-[#FAFAFA] border border-slate-200 items-start md:items-center hover:border-[#FF8A00]/50 transition-colors group">
+                                            <div key={idx} className="flex flex-col md:flex-row gap-4 p-5 rounded-2xl bg-[#FAFAFA] border border-slate-200 items-start md:items-center hover:border-[#C2410C]/50 transition-colors group">
                                                 <div className="flex-shrink-0 w-20">
                                                     <div className="text-xs font-bold text-slate-400 uppercase mb-1">Day</div>
                                                     <div className="text-2xl font-black text-[#0F172A] leading-none">{item.day}</div>
                                                 </div>
 
-                                                <div className="flex-shrink-0 w-36 font-bold text-[#FF8A00] bg-white border border-slate-200 py-2 px-4 rounded-xl text-center text-sm shadow-sm group-hover:border-[#FF8A00]/30 transition-colors">
+                                                <div className="flex-shrink-0 w-36 font-bold text-[#C2410C] bg-white border border-slate-200 py-2 px-4 rounded-xl text-center text-sm shadow-sm group-hover:border-[#C2410C]/30 transition-colors">
                                                     {item.date}
                                                 </div>
 
                                                 <div className="flex-1">
-                                                    <h4 className="font-bold text-[#0F172A] text-lg mb-1">
+                                                    <h3 className="font-bold text-[#0F172A] text-lg mb-1">
                                                         {item.title}
-                                                    </h4>
-                                                    <div className="flex items-center gap-2 text-sm text-[#6B7280]">
-                                                        <span className="font-semibold text-[#FF8A00]">{item.type}</span>
+                                                    </h3>
+                                                    <div className="flex items-center gap-2 text-sm text-slate-600">
+                                                        <span className="font-semibold text-[#C2410C]">{item.type}</span>
                                                         <span>•</span>
                                                         <span>{item.note}</span>
                                                     </div>

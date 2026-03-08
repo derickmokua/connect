@@ -13,7 +13,7 @@ export default function Footer() {
                     {/* Brand */}
                     <div className="space-y-6">
                         <div className="flex items-center space-x-3">
-                            <span className="font-extrabold text-3xl text-white tracking-tight">Kuku<span className="text-[#FF8A00]">Connect.</span></span>
+                            <span className="font-extrabold text-3xl text-white tracking-tight">Kuku<span className="text-[#C2410C]">Connect.</span></span>
                         </div>
                         <p className="text-slate-400 text-sm leading-relaxed max-w-xs font-medium">
                             The High-Yield Poultry System. We supply hardened Kuroilers and the scientific routine to ensure your success.
@@ -24,10 +24,10 @@ export default function Footer() {
                     <div>
                         <h3 className="font-bold text-white text-lg mb-6">System Links</h3>
                         <ul className="space-y-4 text-sm font-medium">
-                            <li><Link href="#products" className="hover:text-[#FF8A00] transition-colors">Start Your Flock</Link></li>
-                            <li><Link href="#vaccination" className="hover:text-[#FF8A00] transition-colors">Immunity Protocol</Link></li>
-                            <li><Link href="#care-guide" className="hover:text-[#FF8A00] transition-colors">Success Routine</Link></li>
-                            <li><Link href="#gallery" className="hover:text-[#FF8A00] transition-colors">Evidence Gallery</Link></li>
+                            <li><Link href="#products" className="hover:text-[#C2410C] transition-colors">Start Your Flock</Link></li>
+                            <li><Link href="#vaccination" className="hover:text-[#C2410C] transition-colors">Immunity Protocol</Link></li>
+                            <li><Link href="#care-guide" className="hover:text-[#C2410C] transition-colors">Success Routine</Link></li>
+                            <li><Link href="#gallery" className="hover:text-[#C2410C] transition-colors">Evidence Gallery</Link></li>
                         </ul>
                     </div>
 
@@ -36,13 +36,13 @@ export default function Footer() {
                         <h3 className="font-bold text-white text-lg mb-6">Expert Access</h3>
                         <ul className="space-y-4 text-sm font-medium">
                             <li className="flex items-center gap-3 hover:text-white transition-colors">
-                                <Phone className="w-5 h-5 text-[#FF8A00]" /> +254 716883375
+                                <Phone className="w-5 h-5 text-[#C2410C]" /> +254 716883375
                             </li>
                             <li className="flex items-center gap-3 hover:text-white transition-colors">
-                                <Mail className="w-5 h-5 text-[#FF8A00]" /> info@kukuconnect.com
+                                <Mail className="w-5 h-5 text-[#C2410C]" /> info@kukuconnect.com
                             </li>
                             <li className="flex items-center gap-3 hover:text-white transition-colors">
-                                <MapPin className="w-5 h-5 text-[#FF8A00]" /> Kitui, Kenya
+                                <MapPin className="w-5 h-5 text-[#C2410C]" /> Kitui, Kenya
                             </li>
                         </ul>
                     </div>
@@ -62,15 +62,15 @@ export default function Footer() {
 
                         <div className="flex gap-4 mt-8">
                             {[
-                                { Icon: Mail, href: "mailto:info@kukuconnect.com" },
-                                { Icon: Facebook, href: "#" },
-                                { Icon: Instagram, href: "#" },
-                            ].map(({ Icon, href }, i) => (
-                                <a key={i} href={href} className="p-2.5 bg-[#162B4D] border border-[#2A456B] rounded-full hover:border-[#FF8A00] hover:text-[#FF8A00] text-slate-400 transition-all duration-300">
+                                { Icon: Mail, href: "mailto:info@kukuconnect.com", label: "Email Us" },
+                                { Icon: Facebook, href: "#", label: "Facebook Page" },
+                                { Icon: Instagram, href: "#", label: "Instagram Profile" },
+                            ].map(({ Icon, href, label }, i) => (
+                                <a key={i} href={href} aria-label={label} className="p-2.5 bg-[#162B4D] border border-[#2A456B] rounded-full hover:border-[#C2410C] hover:text-[#C2410C] text-slate-400 transition-all duration-300">
                                     <Icon className="w-5 h-5" />
                                 </a>
                             ))}
-                            <a href="#" className="p-2.5 bg-[#162B4D] border border-[#2A456B] rounded-full hover:border-[#FF8A00] hover:text-[#FF8A00] text-slate-400 transition-all duration-300 group">
+                            <a href="#" aria-label="X Profile" className="p-2.5 bg-[#162B4D] border border-[#2A456B] rounded-full hover:border-[#C2410C] hover:text-[#C2410C] text-slate-400 transition-all duration-300 group">
                                 <svg
                                     viewBox="0 0 24 24"
                                     aria-hidden="true"
