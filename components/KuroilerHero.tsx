@@ -91,11 +91,13 @@ export default function KuroilerHero() {
 
                         {/* Image */}
                         <div className="relative w-full h-full z-10 transition-transform hover:scale-105 duration-700 ease-in-out">
-                            <img
+                            <Image
                                 src="/fluffy_chick.webp"
                                 alt="Healthy Fluffy Chick"
-                                fetchPriority="high"
-                                className="object-contain w-full h-full drop-shadow-2xl"
+                                priority
+                                fill
+                                sizes="(max-width: 768px) 100vw, 600px"
+                                className="object-contain drop-shadow-2xl"
                             />
                         </div>
 

@@ -16,7 +16,7 @@ const Gallery = dynamic(() => import("./Gallery"));
 const ContactSection = dynamic(() => import("./ContactSection"));
 const AboutUs = dynamic(() => import("./AboutUs"));
 const Footer = dynamic(() => import("./Footer"));
-const Chatbot = dynamic(() => import("./Chatbot").then(mod => mod.Chatbot));
+const Chatbot = dynamic(() => import("./Chatbot").then(mod => mod.Chatbot), { ssr: false });
 
 
 export default function KukuApp() {
