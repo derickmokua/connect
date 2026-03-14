@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Loader2 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useChat } from "./context/ChatContext";
@@ -64,7 +64,7 @@ export function Chatbot() {
 
             <AnimatePresence>
                 {isOpen && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -152,7 +152,7 @@ export function Chatbot() {
                         <div className="bg-white p-2 text-[10px] text-slate-400 text-center border-t border-slate-100">
                             I am an AI assistant. For serious veterinary emergencies, contact a local professional immediately.
                         </div>
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
         </>

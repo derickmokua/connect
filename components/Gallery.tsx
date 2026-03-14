@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { X, ZoomIn, ShieldCheck, TrendingUp, Truck } from "lucide-react";
 import Image from "next/image";
 
@@ -98,10 +98,10 @@ export default function Gallery() {
                 </div>
 
                 {/* Grid */}
-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <m.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <AnimatePresence>
                         {filteredItems.map((item) => (
-                            <motion.div
+                            <m.div
                                 layout
                                 key={item.id}
                                 initial={{ opacity: 0, scale: 0.9 }}
@@ -124,22 +124,22 @@ export default function Gallery() {
                                         {item.title} <ZoomIn className="w-4 h-4 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                                     </h3>
                                 </div>
-                            </motion.div>
+                            </m.div>
                         ))}
                     </AnimatePresence>
-                </motion.div>
+                </m.div>
 
                 {/* Lightbox */}
                 <AnimatePresence>
                     {selectedItem && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
                             onClick={() => setSelectedItem(null)}
                         >
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, y: 50 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: 50 }}
@@ -172,8 +172,8 @@ export default function Gallery() {
                                         {selectedItem?.caption}
                                     </p>
                                 </div>
-                            </motion.div>
-                        </motion.div>
+                            </m.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
             </div>

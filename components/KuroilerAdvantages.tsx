@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ShieldCheck, Scale, Coins } from "lucide-react";
 
 const advantages = [
@@ -39,7 +39,7 @@ export default function KuroilerAdvantages() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {advantages.map((adv, idx) => (
-                        <motion.div
+                        <m.div
                             key={idx}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ export default function KuroilerAdvantages() {
                             <p className="text-slate-600 text-lg leading-relaxed font-medium">
                                 {adv.desc}
                             </p>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             </div>

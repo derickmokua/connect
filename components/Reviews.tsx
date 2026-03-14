@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Star, Quote } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const reviews = [
     {
@@ -40,7 +40,7 @@ export default function Reviews() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {reviews.map((review, idx) => (
-                        <motion.div
+                        <m.div
                             key={review.id}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ export default function Reviews() {
                                     <p className="text-xs text-slate-600 font-bold uppercase tracking-wide">{review.role}</p>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             </div>

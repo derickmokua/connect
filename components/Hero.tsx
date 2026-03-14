@@ -1,14 +1,14 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 
 export default function Hero() {
     return (
         <section id="home" className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 px-4 overflow-hidden text-center bg-[#0F172A]">
             <div className="max-w-5xl mx-auto z-10 relative">
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
@@ -38,7 +38,7 @@ export default function Hero() {
                             Learn More
                         </Link>
                     </div>
-                </motion.div>
+                </m.div>
             </div>
 
             {/* Background Decorative Elements */}

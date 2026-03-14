@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { CheckCircle, Phone, MessageCircle } from "lucide-react";
 
 const products = {
@@ -78,7 +78,7 @@ export default function ProductShowcase() {
 
 function ProductCard({ product }: { product: any }) {
     return (
-        <motion.div
+        <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -123,6 +123,6 @@ function ProductCard({ product }: { product: any }) {
                     <MessageCircle className="w-5 h-5" /> Squawk to Order
                 </a>
             </div>
-        </motion.div>
+        </m.div>
     )
 }

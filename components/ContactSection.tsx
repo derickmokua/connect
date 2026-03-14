@@ -77,7 +77,7 @@ export default function ContactSection() {
                                     <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center border border-slate-200 shadow-sm">
                                         <Mail className="w-5 h-5 text-[#C2410C]" />
                                     </div>
-                                    <span className="font-bold tracking-wide text-[#0F172A]">info@kukuconnect.com</span>
+                                    <span className="font-bold tracking-wide text-[#0F172A]">kukuconnect@outlook.com</span>
                                 </li>
                                 <li className="flex items-center gap-4">
                                     <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center border border-slate-200 shadow-sm">

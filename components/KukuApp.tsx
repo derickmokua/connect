@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "./Navbar";
 import Hero from "./KuroilerHero";
 import KuroilerAdvantages from "./KuroilerAdvantages";
@@ -16,20 +14,9 @@ const Gallery = dynamic(() => import("./Gallery"));
 const ContactSection = dynamic(() => import("./ContactSection"));
 const AboutUs = dynamic(() => import("./AboutUs"));
 const Footer = dynamic(() => import("./Footer"));
-const Chatbot = dynamic(() => import("./Chatbot").then(mod => mod.Chatbot), { ssr: false });
-
+const Chatbot = dynamic(() => import("./Chatbot").then(mod => mod.Chatbot));
 
 export default function KukuApp() {
-    useEffect(() => {
-        const isMobile = typeof window !== "undefined" && /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        if (isMobile) {
-            // Remove hash from URL if present and scroll to top
-            if (window.location.hash) {
-                history.replaceState(null, '', window.location.pathname + window.location.search);
-            }
-            window.scrollTo({ top: 0, behavior: 'auto' });
-        }
-    }, []);
     return (
         <div className="min-h-screen bg-[#0F172A]">
             <Navbar />

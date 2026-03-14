@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ShieldCheck, Anchor, TrendingUp, Eye } from "lucide-react";
 
 export default function AboutUs() {
@@ -11,7 +11,7 @@ export default function AboutUs() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
                     {/* Image/Visual Side */}
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -40,10 +40,10 @@ export default function AboutUs() {
                                 "See the System." We believe in the quality of our infrastructure. Farmers are welcome to visit our Kitui facility to see exactly how their birds are raised and vaccinated.
                             </p>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                     {/* Content Side */}
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -102,7 +102,7 @@ export default function AboutUs() {
                                 "Success isn't measured in sales; it's measured by the survival rate on your farm."
                             </p>
                         </div>
-                    </motion.div>
+                    </m.div>
                 </div>
             </div>
         </section>

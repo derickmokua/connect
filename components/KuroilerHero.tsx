@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Star, CheckCircle2, FlaskRound as Flask, Activity } from "lucide-react";
 import Image from "next/image";
@@ -14,12 +14,12 @@ export default function KuroilerHero() {
                 <svg className="absolute top-0 right-0 w-[800px] h-[800px] text-[#00BFFF]/5" fill="currentColor" viewBox="0 0 100 100">
                     <path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" />
                 </svg>
-                <motion.div
+                <m.div
                     animate={{ y: [0, -30, 0], scale: [1, 1.1, 1] }}
                     transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
                     className="absolute top-20 left-10 w-64 h-64 bg-[#00BFFF]/10 rounded-full blur-[80px]"
                 />
-                <motion.div
+                <m.div
                     animate={{ y: [0, 40, 0], scale: [1, 1.2, 1] }}
                     transition={{ repeat: Infinity, duration: 10, ease: "easeInOut", delay: 1 }}
                     className="absolute bottom-10 right-10 w-96 h-96 bg-[#FF8A00]/10 rounded-full blur-[100px]"
@@ -30,7 +30,7 @@ export default function KuroilerHero() {
 
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
                 {/* Text Content */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
@@ -72,10 +72,10 @@ export default function KuroilerHero() {
                             <div className="text-sm text-slate-600 font-medium">Vet Support</div>
                         </div>
                     </div>
-                </motion.div>
+                </m.div>
 
                 {/* Hero Image */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, x: 30, scale: 0.95 }}
                     animate={{ opacity: 1, x: 0, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
@@ -95,6 +95,7 @@ export default function KuroilerHero() {
                                 src="/fluffy_chick.webp"
                                 alt="Healthy Fluffy Chick"
                                 priority
+                                fetchPriority="high"
                                 fill
                                 sizes="(max-width: 768px) 100vw, 600px"
                                 className="object-contain drop-shadow-2xl"
@@ -102,7 +103,7 @@ export default function KuroilerHero() {
                         </div>
 
                         {/* Floating Tech Elements */}
-                        <motion.div
+                        <m.div
                             animate={{ y: [0, -10, 0] }}
                             transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
                             className="hidden sm:flex absolute top-10 right-0 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-20 items-center gap-3"
@@ -114,9 +115,9 @@ export default function KuroilerHero() {
                                 <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">DNA Verified</div>
                                 <div className="text-[#0A2540] font-bold">Pure Breed</div>
                             </div>
-                        </motion.div>
+                        </m.div>
 
-                        <motion.div
+                        <m.div
                             animate={{ y: [0, 10, 0] }}
                             transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
                             className="hidden sm:flex absolute bottom-20 -left-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-20 items-center gap-3"
@@ -128,9 +129,9 @@ export default function KuroilerHero() {
                                 <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">Health Status</div>
                                 <div className="text-[#0A2540] font-bold">Optimal Growth</div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     </div>
-                </motion.div>
+                </m.div>
             </div>
         </section>
     );

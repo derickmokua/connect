@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Check, ArrowRight, ArrowLeft, ShoppingCart, Info, Minus, Plus } from "lucide-react";
 import { useCart } from "./context/CartContext";
 import { useChat } from "./context/ChatContext";
@@ -137,7 +137,7 @@ export default function GrowthTimeline() {
                             <AnimatePresence mode="wait">
                                 {/* STEP 1: CHOSE AGE */}
                                 {step === 1 && (
-                                    <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
+                                    <m.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
                                         <h2 className="text-2xl font-bold text-[#1F2937] text-center md:text-left">Step 1: Choose Chick Age</h2>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             {productCategories.chicks.map((stage) => (
@@ -178,12 +178,12 @@ export default function GrowthTimeline() {
                                                 </button>
                                             ))}
                                         </div>
-                                    </motion.div>
+                                    </m.div>
                                 )}
 
                                 {/* STEP 2: QUANTITY */}
                                 {step === 2 && (
-                                    <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
+                                    <m.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
                                         <h2 className="text-2xl font-bold text-[#0F172A] text-center md:text-left">Step 2: How many chicks?</h2>
                                         <div className="bg-white/50 backdrop-blur-sm p-6 md:p-10 rounded-[2rem] border border-white/60 text-center shadow-inner max-w-2xl mx-auto overflow-hidden">
                                             <div className="text-5xl md:text-7xl font-extrabold text-[#C2410C] mb-6">{chickQuantity}</div>
@@ -202,12 +202,12 @@ export default function GrowthTimeline() {
                                             <p className="text-sm font-bold text-slate-400 uppercase tracking-wide mb-1">Total Bird Cost</p>
                                             <p className="text-2xl md:text-3xl font-extrabold">KES {(selectedChickStage.price * chickQuantity).toLocaleString()}</p>
                                         </div>
-                                    </motion.div>
+                                    </m.div>
                                 )}
 
                                 {/* STEP 3: SUCCESS KITS */}
                                 {step === 3 && (
-                                    <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
+                                    <m.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
                                         <h2 className="text-2xl font-bold text-[#1F2937] text-center md:text-left">Step 3: Add Hatch Kits</h2>
                                         <p className="text-slate-600 text-center md:text-left">Optional add-ons to ensure your brood survives and thrives.</p>
 
@@ -244,12 +244,12 @@ export default function GrowthTimeline() {
                                                 <div className="font-bold text-[#FF8A00] text-lg whitespace-nowrap">+ 1,500 KES</div>
                                             </div>
                                         </div>
-                                    </motion.div>
+                                    </m.div>
                                 )}
 
                                 {/* STEP 4: SUMMARY */}
                                 {step === 4 && (
-                                    <motion.div key="step4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
+                                    <m.div key="step4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
                                         <h2 className="text-2xl font-bold text-[#1F2937] text-center md:text-left">Step 4: Confirm Batch</h2>
 
                                         <div className="bg-[#0F172A] text-white rounded-[24px] p-8 space-y-4 font-mono text-sm relative overflow-hidden border border-slate-700 shadow-xl max-w-2xl mx-auto">
@@ -275,7 +275,7 @@ export default function GrowthTimeline() {
                                                 <span className="font-bold text-xl md:text-2xl text-[#FF8A00]">KES {((selectedChickStage.price * chickQuantity) + (protocols.starterPack ? 850 : 0) + (protocols.bioShield ? 1500 : 0)).toLocaleString()}</span>
                                             </div>
                                         </div>
-                                    </motion.div>
+                                    </m.div>
                                 )}
                             </AnimatePresence>
 
@@ -311,7 +311,7 @@ export default function GrowthTimeline() {
                     {/* OPTION 2: MATURE & EGGS (SIMPLE GRID) */}
                     {activeCategory !== "chicks" && (
                         <div className="p-6 md:p-12">
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
@@ -319,7 +319,7 @@ export default function GrowthTimeline() {
                                 {productCategories[activeCategory].map((product) => (
                                     <ProductCard key={product.id} product={product} />
                                 ))}
-                            </motion.div>
+                            </m.div>
                         </div>
                     )}
                 </div>

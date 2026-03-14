@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Calendar, Syringe, AlertCircle, CheckCircle2, Thermometer, ShieldCheck, FileCheck } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from "framer-motion";
 
 const scheduleTemplate = [
     { day: 1, title: "Marek's Disease", type: "Hatchery", note: "Usually given at hatchery. Give multivitamins & glucose on arrival." },
@@ -113,7 +113,7 @@ export default function VaccinationScheduler() {
 
                         <AnimatePresence>
                             {generatedSchedule.length > 0 && (
-                                <motion.div
+                                <m.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
                                     exit={{ opacity: 0, height: 0 }}
@@ -172,7 +172,7 @@ export default function VaccinationScheduler() {
                                     <div className="text-center pt-8">
                                         <p className="text-[#0F172A] font-bold text-lg">Stop reacting to disease. Start preventing it.</p>
                                     </div>
-                                </motion.div>
+                                </m.div>
                             )}
                         </AnimatePresence>
                     </div>

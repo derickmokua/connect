@@ -2,9 +2,14 @@
 
 import React from "react";
 import Link from "next/link";
-import { Phone, Mail, MapPin, Facebook, Instagram, Lock, ShieldCheck } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram, MessageCircle } from "lucide-react";
+import { useChat } from "./context/ChatContext";
+
+const SOCIAL_ICON_CLASS =
+    "p-2.5 bg-[#162B4D] border border-[#2A456B] rounded-full hover:border-[#C2410C] hover:text-[#C2410C] text-slate-400 transition-all duration-300 flex items-center justify-center";
 
 export default function Footer() {
+    const { openChat } = useChat();
     return (
         <footer className="bg-[#0F172A] text-slate-300 pt-24 pb-12 border-t border-slate-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,11 +40,14 @@ export default function Footer() {
                     <div>
                         <h3 className="font-bold text-white text-lg mb-6">Expert Access</h3>
                         <ul className="space-y-4 text-sm font-medium">
+                            <li className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer" onClick={openChat}>
+                                <MessageCircle className="w-5 h-5 text-[#C2410C]" /> Ask KukuAssistant
+                            </li>
                             <li className="flex items-center gap-3 hover:text-white transition-colors">
                                 <Phone className="w-5 h-5 text-[#C2410C]" /> +254 716883375
                             </li>
                             <li className="flex items-center gap-3 hover:text-white transition-colors">
-                                <Mail className="w-5 h-5 text-[#C2410C]" /> info@kukuconnect.com
+                                <Mail className="w-5 h-5 text-[#C2410C]" /> kukuconnect@outlook.com
                             </li>
                             <li className="flex items-center gap-3 hover:text-white transition-colors">
                                 <MapPin className="w-5 h-5 text-[#C2410C]" /> Kitui, Kenya
@@ -47,7 +55,7 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Newsletter / Socials mock */}
+                    {/* Socials */}
                     <div>
                         <h3 className="font-bold text-white text-lg mb-6">Daily Updates</h3>
                         <p className="text-slate-400 text-sm mb-6 font-medium">Join our WhatsApp Channel for verified farming tips.</p>
@@ -60,25 +68,37 @@ export default function Footer() {
                             Follow Channel
                         </a>
 
-                        <div className="flex gap-4 mt-8">
-                            {[
-                                { Icon: Mail, href: "mailto:info@kukuconnect.com", label: "Email Us" },
-                                { Icon: Facebook, href: "#", label: "Facebook Page" },
-                                { Icon: Instagram, href: "#", label: "Instagram Profile" },
-                            ].map(({ Icon, href, label }, i) => (
-                                <a key={i} href={href} aria-label={label} className="p-2.5 bg-[#162B4D] border border-[#2A456B] rounded-full hover:border-[#C2410C] hover:text-[#C2410C] text-slate-400 transition-all duration-300">
-                                    <Icon className="w-5 h-5" />
-                                </a>
-                            ))}
-                            <a href="#" aria-label="X Profile" className="p-2.5 bg-[#162B4D] border border-[#2A456B] rounded-full hover:border-[#C2410C] hover:text-[#C2410C] text-slate-400 transition-all duration-300 group">
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    aria-hidden="true"
-                                    className="w-5 h-5 fill-current"
-                                >
+                        <div className="flex flex-wrap gap-3 mt-8">
+
+                            {/* Email */}
+                            <a href="mailto:kukuconnect@outlook.com" aria-label="Email Us" className={SOCIAL_ICON_CLASS}>
+                                <Mail className="w-5 h-5" />
+                            </a>
+
+                            {/* Facebook */}
+                            <a href="https://www.facebook.com/profile.php?id=61579134113044" target="_blank" rel="noopener noreferrer" aria-label="Facebook Page" className={SOCIAL_ICON_CLASS}>
+                                <Facebook className="w-5 h-5" />
+                            </a>
+
+                            {/* Instagram */}
+                            <a href="https://www.instagram.com/kukuconnet/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className={SOCIAL_ICON_CLASS}>
+                                <Instagram className="w-5 h-5" />
+                            </a>
+
+                            {/* TikTok */}
+                            <a href="https://www.tiktok.com/@kuku_connect" target="_blank" rel="noopener noreferrer" aria-label="TikTok Profile" className={SOCIAL_ICON_CLASS}>
+                                <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 h-5 fill-current">
+                                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.16 8.16 0 0 0 4.77 1.52V6.82a4.85 4.85 0 0 1-1-.13z"/>
+                                </svg>
+                            </a>
+
+                            {/* X (Twitter) */}
+                            <a href="https://x.com/Kuku_Connect" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter) Profile" className={SOCIAL_ICON_CLASS}>
+                                <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 h-5 fill-current">
                                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                                 </svg>
                             </a>
+
                         </div>
                     </div>
                 </div>
