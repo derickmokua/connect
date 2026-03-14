@@ -68,7 +68,7 @@ export default function Footer() {
                             Follow Channel
                         </a>
 
-                        <div className="flex flex-wrap gap-3 mt-8">
+                        <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-8">
 
                             {/* Email */}
                             <a href="mailto:kukuconnect@outlook.com" aria-label="Email Us" className={SOCIAL_ICON_CLASS}>
