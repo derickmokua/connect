@@ -2,10 +2,12 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, MessageCircle } from "lucide-react";
+import { useChat } from "./context/ChatContext";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const { openChat } = useChat();
 
     const links = [
         { name: "Home", to: "home" },
@@ -43,7 +45,14 @@ export default function Navbar() {
                     </div>
 
                     {/* Call Us Button (Desktop) */}
-                    <div className="hidden lg:flex items-center ml-4">
+                    <div className="hidden lg:flex items-center ml-4 gap-3">
+                        <button
+                            onClick={openChat}
+                            className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-[#0F172A] px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm"
+                        >
+                            <MessageCircle size={16} className="text-[#FF8A00]" />
+                            <span>Assistant</span>
+                        </button>
                         <a
                             href="tel:+254716883375"
                             className="flex items-center gap-2 bg-[#FF8A00] hover:bg-[#FF8C00] text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg hover:shadow-[#FF8A00]/20 hover:-translate-y-0.5"
@@ -54,7 +63,14 @@ export default function Navbar() {
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <div className="flex items-center lg:hidden gap-4">
+                    <div className="flex items-center lg:hidden gap-3">
+                        <button
+                            aria-label="Assistant"
+                            onClick={openChat}
+                            className="flex items-center justify-center w-10 h-10 bg-slate-100 rounded-full text-[#FF8A00] hover:bg-slate-200 transition-all shadow-sm"
+                        >
+                            <MessageCircle size={20} />
+                        </button>
                         <a
                             href="tel:+254716883375"
                             aria-label="Call Us"
@@ -83,9 +99,16 @@ export default function Navbar() {
                                 {link.name}
                             </a>
                         ))}
+                        <button
+                            onClick={() => { openChat(); setIsOpen(false); }}
+                            className="flex items-center justify-center gap-2 w-full bg-slate-100 text-[#0F172A] font-bold text-lg px-4 py-3 rounded-full hover:bg-slate-200 transition shadow-sm mt-4"
+                        >
+                            <MessageCircle size={20} className="text-[#FF8A00]" />
+                            <span>Ask KukuAssistant</span>
+                        </button>
                         <a
                             href="tel:+254716883375"
-                            className="flex items-center justify-center gap-2 w-full bg-[#FF8A00] text-white font-bold text-lg px-4 py-3 rounded-full hover:bg-[#FF8C00] transition mt-4 shadow-lg shadow-[#FF8A00]/20"
+                            className="flex items-center justify-center gap-2 w-full bg-[#FF8A00] text-white font-bold text-lg px-4 py-3 rounded-full hover:bg-[#FF8C00] transition mt-2 shadow-lg shadow-[#FF8A00]/20"
                         >
                             <Phone size={20} className="text-white" />
                             <span>Call Us: +254 716883375</span>
