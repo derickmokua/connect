@@ -51,7 +51,7 @@ export default function Navbar() {
                             className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-[#0F172A] px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm"
                         >
                             <MessageCircle size={16} className="text-[#FF8A00]" />
-                            <span>Assistant</span>
+                            <span>AI Assistant</span>
                         </button>
                         <a
                             href="tel:+254716883375"
@@ -64,13 +64,6 @@ export default function Navbar() {
 
                     {/* Mobile Menu Button */}
                     <div className="flex items-center lg:hidden gap-3">
-                        <button
-                            aria-label="Assistant"
-                            onClick={openChat}
-                            className="flex items-center justify-center w-10 h-10 bg-slate-100 rounded-full text-[#FF8A00] hover:bg-slate-200 transition-all shadow-sm"
-                        >
-                            <MessageCircle size={20} />
-                        </button>
                         <a
                             href="tel:+254716883375"
                             aria-label="Call Us"
