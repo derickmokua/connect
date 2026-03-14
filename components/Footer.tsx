@@ -104,12 +104,8 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-[#1E3A5F] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-400">
+                <div className="border-t border-[#1E3A5F] pt-8 flex justify-center items-center gap-4 text-xs font-bold text-slate-400">
                     <p>© {new Date().getFullYear()} KukuConnect. All rights reserved.</p>
-                    <div className="flex gap-6">
-                        <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-slate-300 transition-colors">Terms of Service</a>
-                    </div>
                 </div>
             </div>
         </footer>
