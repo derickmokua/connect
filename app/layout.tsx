@@ -60,8 +60,7 @@ export const metadata: Metadata = {
 
 
 
-import MobileRedirect from "@/components/MobileRedirect";
-
+// layout metadata end
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -71,7 +70,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-[#FFFCF8] text-slate-800`}>
         <Providers>
-          <MobileRedirect />
           {children}
         </Providers>
       </body>

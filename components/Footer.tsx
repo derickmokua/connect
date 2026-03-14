@@ -9,7 +9,6 @@ const SOCIAL_ICON_CLASS =
     "p-2.5 bg-[#162B4D] border border-[#2A456B] rounded-full hover:border-[#C2410C] hover:text-[#C2410C] text-slate-400 transition-all duration-300 flex items-center justify-center";
 
 export default function Footer() {
-    const { openChat } = useChat();
     return (
         <footer className="bg-[#0F172A] text-slate-300 pt-24 pb-12 border-t border-slate-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,10 +28,10 @@ export default function Footer() {
                     <div>
                         <h3 className="font-bold text-white text-lg mb-6">System Links</h3>
                         <ul className="space-y-4 text-sm font-medium">
-                            <li><Link href="#products" className="hover:text-[#C2410C] transition-colors">Start Your Flock</Link></li>
-                            <li><Link href="#vaccination" className="hover:text-[#C2410C] transition-colors">Immunity Protocol</Link></li>
-                            <li><Link href="#care-guide" className="hover:text-[#C2410C] transition-colors">Success Routine</Link></li>
-                            <li><Link href="#gallery" className="hover:text-[#C2410C] transition-colors">Evidence Gallery</Link></li>
+                            <li><Link href="/#products" className="hover:text-[#C2410C] transition-colors">Start Your Flock</Link></li>
+                            <li><Link href="/#vaccination" className="hover:text-[#C2410C] transition-colors">Immunity Protocol</Link></li>
+                            <li><Link href="/#care-guide" className="hover:text-[#C2410C] transition-colors">Success Routine</Link></li>
+                            <li><Link href="/#gallery" className="hover:text-[#C2410C] transition-colors">Evidence Gallery</Link></li>
                         </ul>
                     </div>
 
@@ -40,8 +39,10 @@ export default function Footer() {
                     <div>
                         <h3 className="font-bold text-white text-lg mb-6">Expert Access</h3>
                         <ul className="space-y-4 text-sm font-medium">
-                            <li className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer" onClick={openChat}>
-                                <MessageCircle className="w-5 h-5 text-[#C2410C]" /> Ask KukuAssistant
+                            <li className="flex items-center hover:text-white transition-colors">
+                                <Link href="/assistant" className="flex items-center gap-3 w-full">
+                                    <MessageCircle className="w-5 h-5 text-[#C2410C]" /> AI Assistant
+                                </Link>
                             </li>
                             <li className="flex items-center gap-3 hover:text-white transition-colors">
                                 <Phone className="w-5 h-5 text-[#C2410C]" /> +254 716883375

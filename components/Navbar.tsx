@@ -10,13 +10,13 @@ export default function Navbar() {
     const { openChat } = useChat();
 
     const links = [
-        { name: "Home", to: "home" },
-        { name: "Products", to: "products" },
-        { name: "About us", to: "about" },
-        { name: "How it works", to: "how-it-works" },
-        { name: "Reviews", to: "reviews" },
-        { name: "Gallery", to: "gallery" },
-        { name: "Contact", to: "contact" },
+        { name: "Home", to: "/#home" },
+        { name: "Products", to: "/#products" },
+        { name: "About us", to: "/#about" },
+        { name: "How it works", to: "/#how-it-works" },
+        { name: "Reviews", to: "/#reviews" },
+        { name: "Gallery", to: "/#gallery" },
+        { name: "Contact", to: "/#contact" },
     ];
 
     return (
@@ -34,25 +34,18 @@ export default function Navbar() {
                     {/* Desktop Menu */}
                     <div className="hidden lg:flex items-center space-x-1">
                         {links.map((link) => (
-                            <a
+                            <Link
                                 key={link.name}
-                                href={`#${link.to}`}
+                                href={link.to}
                                 className="text-[#0F172A] hover:text-[#FF8A00] text-sm font-bold px-4 py-2 rounded-full transition-all cursor-pointer hover:bg-slate-100"
                             >
                                 {link.name}
-                            </a>
+                            </Link>
                         ))}
                     </div>
 
                     {/* Call Us Button (Desktop) */}
                     <div className="hidden lg:flex items-center ml-4 gap-3">
-                        <button
-                            onClick={openChat}
-                            className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-[#0F172A] px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm"
-                        >
-                            <MessageCircle size={16} className="text-[#FF8A00]" />
-                            <span>AI Assistant</span>
-                        </button>
                         <a
                             href="tel:+254716883375"
                             className="flex items-center gap-2 bg-[#FF8A00] hover:bg-[#FF8C00] text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg hover:shadow-[#FF8A00]/20 hover:-translate-y-0.5"
@@ -83,22 +76,23 @@ export default function Navbar() {
                 <div className="lg:hidden bg-white border-t border-slate-200 absolute w-full shadow-xl">
                     <div className="px-4 py-6 space-y-4">
                         {links.map((link) => (
-                            <a
+                            <Link
                                 key={link.name}
-                                href={`#${link.to}`}
+                                href={link.to}
                                 onClick={() => setIsOpen(false)}
                                 className="block text-[#0A2540] hover:text-[#FF8A00] font-bold text-lg px-4 py-3 hover:bg-slate-50 rounded-xl transition"
                             >
                                 {link.name}
-                            </a>
+                            </Link>
                         ))}
-                        <button
-                            onClick={() => { openChat(); setIsOpen(false); }}
+                        <Link
+                            href="/assistant"
+                            onClick={() => setIsOpen(false)}
                             className="flex items-center justify-center gap-2 w-full bg-slate-100 text-[#0F172A] font-bold text-lg px-4 py-3 rounded-full hover:bg-slate-200 transition shadow-sm mt-4"
                         >
                             <MessageCircle size={20} className="text-[#FF8A00]" />
-                            <span>Ask KukuAssistant</span>
-                        </button>
+                            <span>AI Assistant</span>
+                        </Link>
                         <a
                             href="tel:+254716883375"
                             className="flex items-center justify-center gap-2 w-full bg-[#FF8A00] text-white font-bold text-lg px-4 py-3 rounded-full hover:bg-[#FF8C00] transition mt-2 shadow-lg shadow-[#FF8A00]/20"
