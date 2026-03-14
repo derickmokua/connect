@@ -36,10 +36,14 @@ const milestones = [
 
 export default function CareTimeline() {
     const [activeStep, setActiveStep] = useState(0);
-    const detailsRef = useRef<HTMLDivElement>(null);
+    const isFirstMount = useRef(true);
 
     // Scroll details into view on mobile when activeStep changes
     useEffect(() => {
+        if (isFirstMount.current) {
+            isFirstMount.current = false;
+            return;
+        }
         if (typeof window !== 'undefined' && detailsRef.current) {
             if (window.innerWidth < 768) { // Tailwind's md breakpoint
                 detailsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });

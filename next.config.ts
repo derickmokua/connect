@@ -43,6 +43,15 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  async redirects() {
+    return [
+      {
+        source: '/assistant',
+        destination: '/?assistant=true',
+        permanent: false,
+      },
+    ]
+  },
 };
 
 export default nextConfig;
