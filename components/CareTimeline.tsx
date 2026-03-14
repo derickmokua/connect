@@ -37,6 +37,7 @@ const milestones = [
 export default function CareTimeline() {
     const [activeStep, setActiveStep] = useState(0);
     const isFirstMount = useRef(true);
+    const detailsRef = useRef<HTMLDivElement>(null);
 
     // Scroll details into view on mobile when activeStep changes
     useEffect(() => {
