@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
-import { Check, ArrowRight, ArrowLeft, ShoppingCart, Info, Minus, Plus } from "lucide-react";
-import { useCart } from "./context/CartContext";
+import { Check, ArrowRight, ArrowLeft, Info, Minus, Plus, MessageCircle } from "lucide-react";
 import { useChat } from "./context/ChatContext";
 
 type ProductType = "chick" | "mature" | "egg";
@@ -38,8 +37,10 @@ const productCategories: Record<string, ProductStage[]> = {
     ]
 };
 
+const ORDER_APP_URL =
+    process.env.NEXT_PUBLIC_ORDER_URL || "https://app.kukuconnect.co.ke/order";
+
 export default function GrowthTimeline() {
-    const { addToCart, setIsCartOpen } = useCart();
     const [step, setStep] = useState(1);
     const [activeCategory, setActiveCategory] = useState<"chicks" | "mature" | "eggs">("chicks");
 
@@ -65,24 +66,6 @@ export default function GrowthTimeline() {
 
     const handleNext = () => setStep((prev) => Math.min(prev + 1, 4));
     const handleBack = () => setStep((prev) => Math.max(prev - 1, 1));
-
-    const handleAddChickToCart = () => {
-        addToCart({
-            id: selectedChickStage.id,
-            title: `[BATCH] ${selectedChickStage.label}`,
-            price: selectedChickStage.price,
-            image: "/images/chick.png",
-            quantity: chickQuantity
-        });
-
-        if (protocols.starterPack) {
-            addToCart({ id: `kit-feed-${selectedChickStage.id}`, title: `[KIT] Starter Feed Pack`, price: 850, image: "📦", quantity: 1 });
-        }
-        if (protocols.bioShield) {
-            addToCart({ id: `kit-bio-${selectedChickStage.id}`, title: `[KIT] Bio-Shield Vaccine Kit`, price: 1500, image: "💉", quantity: 1 });
-        }
-        setIsCartOpen(true);
-    };
 
     return (
         <section id="products" className="py-24 px-4 bg-[#FAFAFA] border-t border-slate-200">
@@ -297,12 +280,12 @@ export default function GrowthTimeline() {
                                         Continue <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                                     </button>
                                 ) : (
-                                    <button
-                                        onClick={handleAddChickToCart}
-                                        className="flex items-center gap-2 bg-[#C2410C] text-white px-6 md:px-8 py-2 md:py-3 text-sm md:text-base rounded-full font-bold hover:bg-[#ff7b00] transition shadow-lg shadow-[#FF8A00]/20 transform hover:-translate-y-0.5"
+                                    <a
+                                        href={ORDER_APP_URL}
+                                        className="flex items-center gap-2 bg-[#C2410C] text-white px-6 md:px-8 py-2 md:py-3 text-sm md:text-base rounded-full font-bold hover:bg-[#ea580c] transition shadow-lg shadow-[#FF8A00]/20 transform hover:-translate-y-0.5"
                                     >
-                                        <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" /> Add to Cart
-                                    </button>
+                                        Order on App <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                                    </a>
                                 )}
                             </div>
                         </div>
@@ -329,18 +312,11 @@ export default function GrowthTimeline() {
 }
 
 function ProductCard({ product }: { product: ProductStage }) {
-    const { addToCart, setIsCartOpen } = useCart();
     const [qty, setQty] = useState(1);
 
-    const handleAdd = () => {
-        addToCart({
-            id: product.id,
-            title: `[ORDER] ${product.label}`,
-            price: product.price,
-            image: product.type === "egg" ? "/images/egg.png" : (product.label === "Mature Cock" ? "/images/cock.png" : (product.type === "mature" ? "/images/hen.png" : "/images/chick.png")),
-            quantity: qty
-        });
-        setIsCartOpen(true);
+    const getWhatsAppUrl = (label: string, quantity: number) => {
+        const text = `Habari KukuConnect, ninataka kuagiza ${label} (Idadi: ${quantity})`;
+        return `https://wa.me/254716883375?text=${encodeURIComponent(text)}`;
     };
 
     return (
@@ -372,12 +348,14 @@ function ProductCard({ product }: { product: ProductStage }) {
                     <span className="font-bold text-[#0F172A] w-6 text-center text-lg">{qty}</span>
                     <button onClick={() => setQty(qty + 1)} className="hover:text-[#FF8A00] transition p-2"><Plus className="w-5 h-5" /></button>
                 </div>
-                <button
-                    onClick={handleAdd}
+                <a
+                    href={getWhatsAppUrl(product.label, qty)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full sm:w-auto flex-1 bg-[#0F172A] text-white py-3 rounded-full font-bold hover:bg-[#FF8A00] hover:shadow-lg hover:shadow-[#FF8A00]/20 transition-all flex items-center justify-center gap-2 text-base"
                 >
-                    <ShoppingCart className="w-5 h-5" /> Add to Cart
-                </button>
+                    <MessageCircle className="w-5 h-5" /> Order on WhatsApp
+                </a>
             </div>
         </div>
     )

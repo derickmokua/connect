@@ -3,6 +3,7 @@
 import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
 import { getAuth, type Auth } from "firebase/auth";
 import { getFirestore, type Firestore } from "firebase/firestore";
+import { getStorage, type FirebaseStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -17,6 +18,7 @@ const firebaseConfig = {
 let cachedApp: FirebaseApp | null = null;
 let cachedAuth: Auth | null = null;
 let cachedDb: Firestore | null = null;
+let cachedStorage: FirebaseStorage | null = null;
 
 function getOrInitializeApp(): FirebaseApp {
   if (cachedApp) return cachedApp;
@@ -45,8 +47,23 @@ function getOrInitializeDb(): Firestore {
   return dbInstance;
 }
 
+function getOrInitializeStorage(): FirebaseStorage {
+  if (cachedStorage) return cachedStorage;
+  const storageInstance = getStorage(getOrInitializeApp());
+  if (!storageInstance) {
+    throw new Error("Failed to initialize Firebase Storage");
+  }
+  cachedStorage = storageInstance;
+  return storageInstance;
+}
+
 export const auth: Auth = getOrInitializeAuth();
 export const db: Firestore = getOrInitializeDb();
+export const storage: FirebaseStorage = getOrInitializeStorage();
 export const appId = firebaseConfig.appId;
 
 export const app: FirebaseApp = getOrInitializeApp();
+
+/** Shared Firestore path used across public collections */
+export const getPublicCollectionPath = (collectionName: string) =>
+  `/artifacts/${appId}/public/data/${collectionName}`;

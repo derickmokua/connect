@@ -2,25 +2,25 @@
 
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { onAuthStateChanged, signInAnonymously } from "firebase/auth";
-import { collection, query, onSnapshot, doc, updateDoc } from "firebase/firestore";
-import { Users, Shield, Phone, BarChart, Save, CheckCircle } from "lucide-react";
+import { collection, query, onSnapshot, doc, updateDoc, orderBy, limit } from "firebase/firestore";
+import { Users, Shield, Phone, BarChart, Save, CheckCircle, Star, MessageSquareQuote, XCircle } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
-import { auth, db, appId } from "@/lib/firebase/client";
+import { auth, db, getPublicCollectionPath } from "@/lib/firebase/client";
 
-const getPublicCollectionPath = (collectionName: string) =>
-    `/artifacts/${appId}/public/data/${collectionName}`;
-const getLeadsCollectionPath = () =>
-    `/artifacts/${appId}/public/data/leads`;
+const getLeadsCollectionPath = () => getPublicCollectionPath("leads");
 
 export default function AdminDashboard() {
     const [isAuthReady, setIsAuthReady] = useState(false);
     const [userId, setUserId] = useState<string | null>(null);
     const [leads, setLeads] = useState<any[]>([]);
     const [products, setProducts] = useState<any[]>([]);
+    const [reviews, setReviews] = useState<any[]>([]);
     const [editingStocks, setEditingStocks] = useState<{ [key: string]: number }>({});
+    const [reviewFilter, setReviewFilter] = useState<"all" | "pending" | "approved" | "rejected">("pending");
 
     // Ref to prevent notification on mount
     const initialLoadLeads = useRef(true);
+    const initialLoadReviews = useRef(true);
 
     // 1. Authentication effect with fix for Type Error
     useEffect(() => {
@@ -97,9 +97,63 @@ export default function AdminDashboard() {
             setProducts(fetchedProducts);
         });
 
+        // Fetch customer reviews
+        let unsubscribeReviews = () => {};
+        try {
+            const reviewsQuery = query(
+                collection(db, getPublicCollectionPath("reviews")),
+                orderBy("createdAt", "desc"),
+                limit(100)
+            );
+            unsubscribeReviews = onSnapshot(
+                reviewsQuery,
+                (snapshot) => {
+                    const fetched = snapshot.docs.map((d) => ({
+                        id: d.id,
+                        ...d.data(),
+                    }));
+
+                    if (!initialLoadReviews.current) {
+                        const newPending = snapshot
+                            .docChanges()
+                            .filter((c) => c.type === "added" && c.doc.data()?.status === "pending");
+                        if (newPending.length > 0) {
+                            toast.success(`${newPending.length} new review(s) to moderate`, {
+                                icon: "⭐",
+                                style: { borderRadius: "10px", background: "#333", color: "#fff" },
+                            });
+                        }
+                    } else {
+                        initialLoadReviews.current = false;
+                    }
+
+                    setReviews(fetched);
+                },
+                () => {
+                    // Fallback without orderBy if index missing
+                    const simple = query(collection(db, getPublicCollectionPath("reviews")), limit(100));
+                    unsubscribeReviews = onSnapshot(simple, (snapshot) => {
+                        const fetched = snapshot.docs.map((d) => ({
+                            id: d.id,
+                            ...d.data(),
+                        }));
+                        fetched.sort((a: any, b: any) => {
+                            const ta = a.createdAt?.toDate?.()?.getTime?.() || 0;
+                            const tb = b.createdAt?.toDate?.()?.getTime?.() || 0;
+                            return tb - ta;
+                        });
+                        setReviews(fetched);
+                    });
+                }
+            );
+        } catch (e) {
+            console.error("Reviews subscription failed:", e);
+        }
+
         return () => {
             unsubscribeLeads();
             unsubscribeProducts();
+            unsubscribeReviews();
         };
     }, [isAuthReady]);
 
@@ -147,6 +201,34 @@ export default function AdminDashboard() {
         }
     };
 
+    const setReviewStatus = async (reviewId: string, status: "approved" | "rejected" | "pending") => {
+        try {
+            if (!db) return;
+            const reviewRef = doc(db, getPublicCollectionPath("reviews"), reviewId);
+            await updateDoc(reviewRef, { status });
+            toast.success(
+                status === "approved"
+                    ? "Review published on the site."
+                    : status === "rejected"
+                      ? "Review rejected."
+                      : "Review set back to pending."
+            );
+        } catch (error) {
+            toast.error("Failed to update review.");
+            console.error("Error updating review:", error);
+        }
+    };
+
+    const pendingReviewsCount = useMemo(
+        () => reviews.filter((r) => r.status === "pending").length,
+        [reviews]
+    );
+
+    const filteredReviews = useMemo(() => {
+        if (reviewFilter === "all") return reviews;
+        return reviews.filter((r) => (r.status || "pending") === reviewFilter);
+    }, [reviews, reviewFilter]);
+
     // 5. Render States
     if (!isAuthReady) {
         return (
@@ -186,7 +268,7 @@ export default function AdminDashboard() {
                     </span>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
                     <StatCard
                         title="Total Leads"
                         value={leads.length}
@@ -197,6 +279,12 @@ export default function AdminDashboard() {
                         title="Live Stock (Chicks)"
                         value={totalChicks.toLocaleString("en-KE")}
                         icon={<Shield />}
+                        color="bg-white"
+                    />
+                    <StatCard
+                        title="Pending Reviews"
+                        value={pendingReviewsCount}
+                        icon={<MessageSquareQuote />}
                         color="bg-white"
                     />
                     <StatCard
@@ -236,6 +324,144 @@ export default function AdminDashboard() {
                                 </div>
                             );
                         })}
+                    </div>
+                </div>
+
+                {/* Customer Reviews Moderation */}
+                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-10">
+                    <div className="p-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-gray-50">
+                        <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
+                            Customer Reviews
+                        </h2>
+                        <div className="flex flex-wrap items-center gap-2">
+                            {(["pending", "approved", "rejected", "all"] as const).map((f) => (
+                                <button
+                                    key={f}
+                                    type="button"
+                                    onClick={() => setReviewFilter(f)}
+                                    className={`px-3 py-1.5 text-xs font-bold rounded-full capitalize transition border ${
+                                        reviewFilter === f
+                                            ? "bg-amber-500 text-white border-amber-500"
+                                            : "bg-white text-gray-600 border-gray-200 hover:border-amber-300"
+                                    }`}
+                                >
+                                    {f}
+                                    {f === "pending" && pendingReviewsCount > 0
+                                        ? ` (${pendingReviewsCount})`
+                                        : ""}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="divide-y divide-gray-100">
+                        {filteredReviews.length === 0 ? (
+                            <div className="p-10 text-center text-gray-400">
+                                No {reviewFilter === "all" ? "" : reviewFilter + " "}reviews yet.
+                            </div>
+                        ) : (
+                            filteredReviews.map((review) => (
+                                <div
+                                    key={review.id}
+                                    className="p-6 hover:bg-amber-50/20 transition-colors"
+                                >
+                                    <div className="flex flex-col lg:flex-row lg:items-start gap-4 justify-between">
+                                        <div className="min-w-0 flex-1">
+                                            <div className="flex flex-wrap items-center gap-2 mb-2">
+                                                <span className="font-bold text-gray-900 text-lg">
+                                                    {review.name}
+                                                </span>
+                                                <span
+                                                    className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                                                        review.status === "approved"
+                                                            ? "bg-green-100 text-green-700"
+                                                            : review.status === "rejected"
+                                                              ? "bg-red-100 text-red-700"
+                                                              : "bg-amber-100 text-amber-700"
+                                                    }`}
+                                                >
+                                                    {review.status || "pending"}
+                                                </span>
+                                                <div className="flex gap-0.5">
+                                                    {[...Array(5)].map((_, i) => (
+                                                        <Star
+                                                            key={i}
+                                                            className={`w-3.5 h-3.5 ${
+                                                                i < (review.rating || 0)
+                                                                    ? "text-amber-400 fill-amber-400"
+                                                                    : "text-gray-200"
+                                                            }`}
+                                                        />
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <p className="text-xs text-gray-500 font-medium mb-2 uppercase tracking-wide">
+                                                {review.role || "Customer"}
+                                                {review.phone ? ` · ${review.phone}` : ""}
+                                                {review.createdAt?.toDate
+                                                    ? ` · ${review.createdAt.toDate().toLocaleString("en-KE")}`
+                                                    : ""}
+                                            </p>
+                                            <p className="text-gray-700 font-medium leading-relaxed mb-3">
+                                                &ldquo;{review.content}&rdquo;
+                                            </p>
+                                            {Array.isArray(review.photos) && review.photos.length > 0 && (
+                                                <div className="flex flex-wrap gap-2">
+                                                    {review.photos.map((url: string, i: number) => (
+                                                        <a
+                                                            key={`${review.id}-img-${i}`}
+                                                            href={url}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="block w-16 h-16 rounded-lg overflow-hidden border border-gray-200 hover:border-amber-400"
+                                                        >
+                                                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                                                            <img
+                                                                src={url}
+                                                                alt={`Review photo ${i + 1}`}
+                                                                className="w-full h-full object-cover"
+                                                            />
+                                                        </a>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="flex flex-wrap gap-2 shrink-0">
+                                            {review.status !== "approved" && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setReviewStatus(review.id, "approved")}
+                                                    className="px-3 py-1.5 text-xs font-bold rounded-full bg-green-50 text-green-700 border border-green-200 hover:bg-green-100 flex items-center gap-1.5"
+                                                >
+                                                    <CheckCircle className="w-4 h-4" />
+                                                    Approve
+                                                </button>
+                                            )}
+                                            {review.status !== "rejected" && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setReviewStatus(review.id, "rejected")}
+                                                    className="px-3 py-1.5 text-xs font-bold rounded-full bg-red-50 text-red-700 border border-red-200 hover:bg-red-100 flex items-center gap-1.5"
+                                                >
+                                                    <XCircle className="w-4 h-4" />
+                                                    Reject
+                                                </button>
+                                            )}
+                                            {review.status !== "pending" && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setReviewStatus(review.id, "pending")}
+                                                    className="px-3 py-1.5 text-xs font-bold rounded-full bg-white text-amber-700 border border-amber-200 hover:bg-amber-50"
+                                                >
+                                                    Mark pending
+                                                </button>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        )}
                     </div>
                 </div>
 

@@ -54,13 +54,16 @@ export function Chatbot() {
     return (
         <>
 
-            <button
-                aria-label="Contact Support"
-                onClick={() => setIsOpen(true)}
-                className={`fixed bottom-6 right-6 p-4 rounded-full bg-gradient-to-r from-[#FF8A00] to-[#FF8A00] text-white shadow-lg hover:shadow-[0_0_30px_rgba(255,98,0,0.6)] hover:scale-110 transition-all duration-300 z-40 ${isOpen ? "hidden" : "flex"} animate-bounce-slow`}
-            >
-                <MessageCircle size={28} />
-            </button>
+            <div className={`fixed bottom-6 right-6 z-40 ${isOpen ? "hidden" : "flex"} flex-col items-end`}>
+                <button
+                    aria-label="Contact Support"
+                    onClick={() => setIsOpen(true)}
+                    className="relative group p-4 rounded-[1.5rem] bg-gradient-to-r from-[#C2410C] to-[#ea580c] text-white shadow-lg shadow-[#C2410C]/30 hover:shadow-2xl hover:shadow-[#C2410C]/50 hover:-translate-y-1 transition-all duration-300"
+                >
+                    <div className="absolute inset-0 bg-white/20 rounded-[1.5rem] scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                    <MessageCircle size={28} className="relative z-10" />
+                </button>
+            </div>
 
             <AnimatePresence>
                 {isOpen && (
@@ -68,16 +71,20 @@ export function Chatbot() {
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="fixed bottom-1/2 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[95vw] max-w-sm bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden z-50 flex flex-col h-[500px] sm:bottom-6 sm:left-auto sm:right-6 sm:transform-none sm:translate-y-0 sm:-translate-x-0"
+                        className="fixed bottom-1/2 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[95vw] max-w-sm bg-white rounded-[2rem] shadow-2xl shadow-slate-300/50 border border-slate-100 overflow-hidden z-50 flex flex-col h-[550px] sm:bottom-6 sm:left-auto sm:right-6 sm:transform-none sm:translate-y-0 sm:-translate-x-0"
                     >
                         {/* Header */}
-                        <div className="bg-white p-4 flex justify-between items-center text-[#0F172A] border-b border-slate-200 shadow-sm z-10">
-                            <h3 className="font-bold flex items-center gap-2">
-                                <MessageCircle size={20} className="text-[#FF8A00]" /> Kuku Assistant
+                        <div className="bg-white/80 backdrop-blur-md p-5 flex justify-between items-center text-[#0F172A] border-b border-slate-100 shadow-sm z-10 relative">
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#C2410C] to-[#ea580c]"></div>
+                            <h3 className="font-extrabold flex items-center gap-3 text-lg">
+                                <div className="bg-[#C2410C]/10 p-2 rounded-xl text-[#C2410C]">
+                                    <MessageCircle size={20} />
+                                </div>
+                                Kuku Assistant
                             </h3>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="p-1 hover:bg-slate-100 rounded-full transition-colors text-slate-500 hover:text-[#0F172A]"
+                                className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-400 hover:text-[#0F172A]"
                             >
                                 <X size={20} />
                             </button>
@@ -91,9 +98,9 @@ export function Chatbot() {
                                     className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                                 >
                                     <div
-                                        className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.role === "user"
-                                            ? "bg-[#FF8A00] text-white rounded-br-none shadow-md"
-                                            : "bg-white border border-slate-200 text-[#0F172A] rounded-bl-none shadow-sm"
+                                        className={`max-w-[85%] p-4 text-[15px] leading-relaxed ${msg.role === "user"
+                                            ? "bg-gradient-to-r from-[#C2410C] to-[#ea580c] text-white rounded-[1.5rem] rounded-br-sm shadow-md"
+                                            : "bg-white border border-slate-100 text-[#0F172A] rounded-[1.5rem] rounded-bl-sm shadow-sm"
                                             } whitespace-pre-wrap break-words`}
                                     >
                                         <ReactMarkdown
@@ -114,8 +121,8 @@ export function Chatbot() {
                             ))}
                             {isLoading && (
                                 <div className="flex justify-start">
-                                    <div className="bg-white p-3 rounded-2xl rounded-bl-none border border-slate-200 shadow-sm">
-                                        <Loader2 className="w-5 h-5 animate-spin text-[#FF8A00]" />
+                                    <div className="bg-white p-4 rounded-[1.5rem] rounded-bl-sm border border-slate-100 shadow-sm">
+                                        <Loader2 className="w-5 h-5 animate-spin text-[#C2410C]" />
                                     </div>
                                 </div>
                             )}
@@ -123,27 +130,27 @@ export function Chatbot() {
                         </div>
 
                         {/* Input */}
-                        <div className="p-4 bg-white border-t border-slate-200">
+                        <div className="p-4 bg-white border-t border-slate-100">
                             <form
                                 onSubmit={(e) => {
                                     e.preventDefault();
                                     sendMessage();
                                 }}
-                                className="flex items-center gap-2"
+                                className="flex items-center gap-2 relative"
                             >
                                 <input
                                     type="text"
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     placeholder="Ask Kuku Assistant..."
-                                    className="flex-1 p-2 bg-[#F1F5F9] border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#FF8A00] text-sm text-[#0F172A] placeholder-slate-400"
+                                    className="flex-1 py-3 pl-5 pr-12 bg-[#FAFAFA] border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#C2410C]/20 focus:border-[#C2410C]/50 text-[15px] text-[#0F172A] placeholder-slate-400 transition-all shadow-inner"
                                 />
                                 <button
                                     type="submit"
                                     disabled={isLoading || !input.trim()}
-                                    className="p-2 bg-[#FF8A00] text-white rounded-full hover:bg-[#FF8A00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                    className="absolute right-1.5 p-2 bg-gradient-to-r from-[#C2410C] to-[#ea580c] text-white rounded-full hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 disabled:shadow-none disabled:cursor-not-allowed transition-all duration-300"
                                 >
-                                    <Send size={18} />
+                                    <Send size={18} className="relative z-10 -ml-0.5" />
                                 </button>
                             </form>
                         </div>

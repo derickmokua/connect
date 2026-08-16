@@ -9,13 +9,13 @@ const advantages = [
         icon: <ShieldCheck className="w-10 h-10" />,
         title: "Trusted Quality",
         subtitle: "Healthy, Sprightly Peepers",
-        desc: "Our chicks are carefully selected, vaccinated, and raised for maximum health and survival—giving you peace of mind from day one.",
+        desc: "Our chicks are carefully selected, vaccinated, and raised for maximum health and survival, giving you peace of mind from day one.",
     },
     {
         icon: <Scale className="w-10 h-10" />,
         title: "Expert Support",
         subtitle: "Guidance That Grows",
-        desc: "We don't just supply the flock—we kuku with you. Get real-time squawks, proven tips, and ongoing support from our mother hens.",
+        desc: "We don't just supply the flock; we kuku with you. Get real-time squawks, proven tips, and ongoing support from our mother hens.",
     },
     {
         icon: <Coins className="w-10 h-10" />,
@@ -33,7 +33,7 @@ export default function KuroilerAdvantages() {
                     <span className="text-[#C2410C] font-bold tracking-wider uppercase text-sm">Why Choose KukuConnect?</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold text-[#0F172A] mt-3 mb-6">Flocks Flourish With Us</h2>
                     <p className="text-slate-600 text-lg max-w-2xl mx-auto font-medium">
-                        Discover why more farmers trust KukuConnect for sprightly chicks, expert clucks, and real eggs. We're more than a supplier—we're the rooster to your flock.
+                        Discover why more farmers trust KukuConnect for sprightly chicks, expert clucks, and real eggs. We're more than a supplier, we're the rooster to your flock.
                     </p>
                 </div>
 
@@ -45,9 +45,9 @@ export default function KuroilerAdvantages() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
                             viewport={{ once: true }}
-                            className={`p-8 rounded-[2rem] border border-white/50 shadow-xl hover:shadow-2xl hover:shadow-[#C2410C]/10 transition-all duration-300 group bg-white/70 backdrop-blur-md relative overflow-hidden hover:-translate-y-2 hover:border-[#C2410C]/50`}
+                            className={`p-8 rounded-[2.5rem] border border-slate-200 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-[#C2410C]/20 transition-all duration-300 group bg-white relative overflow-hidden hover:-translate-y-2 hover:border-[#C2410C]/30`}
                         >
-                            <div className="absolute top-0 left-0 w-full h-1 bg-[#C2410C] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                             <div className={`bg-[#C2410C]/5 text-[#C2410C] w-20 h-20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                                 {adv.icon}
                             </div>

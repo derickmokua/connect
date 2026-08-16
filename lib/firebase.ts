@@ -2,4 +2,4 @@
 // This file is kept for backwards compatibility only
 // All client components should import from @/lib/firebase/client
 
-export { auth, db, appId, app } from "./firebase/client";
+export { auth, db, storage, appId, app, getPublicCollectionPath } from "./firebase/client";

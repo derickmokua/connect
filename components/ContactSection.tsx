@@ -1,47 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
-import { Phone, Mail, MapPin, Send, MessageCircle, Loader2 } from "lucide-react";
+import React from "react";
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+
+function WhatsAppIcon(props: React.SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+        </svg>
+    );
+}
 
 export default function ContactSection() {
-    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-    const [loading, setLoading] = useState(false);
-    const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
-        // Basic validation
-        if (!formData.name || !formData.email || !formData.message) return;
-
-        setLoading(true);
-        setStatus("idle");
-
-        try {
-            const { db, appId } = await import("@/lib/firebase/client");
-            const { addDoc, collection, serverTimestamp } = await import("firebase/firestore");
-
-            if (db) {
-                await addDoc(collection(db, `/artifacts/${appId}/public/data/leads`), {
-                    ...formData,
-                    createdAt: serverTimestamp(),
-                    type: "contact_form"
-                });
-                setStatus("success");
-                setFormData({ name: "", email: "", message: "" });
-            } else {
-                // Fallback if DB not ready (or mock mode)
-                console.log("DB not ready, logging lead:", formData);
-                setStatus("success");
-            }
-        } catch (error) {
-            console.error("Error submitting lead:", error);
-            setStatus("error");
-        } finally {
-            setLoading(false);
-        }
-    };
-
     return (
         <section id="contact" className="py-24 px-4 bg-[#FAFAFA] border-t border-slate-200">
             <div className="max-w-6xl mx-auto">
@@ -56,15 +26,6 @@ export default function ContactSection() {
                             <p className="text-slate-600 mb-10 leading-relaxed text-lg">
                                 Need advice on brooding, vaccines, or scaling your kuku? Our mother hens are ready to help.
                             </p>
-
-                            <a
-                                href="https://wa.me/254716883375"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-6 py-4 bg-[#059669] text-white rounded-2xl font-bold hover:bg-[#047857] transition shadow-lg mb-12 w-full md:w-auto justify-center"
-                            >
-                                <MessageCircle className="w-6 h-6" /> Chat with a specialist
-                            </a>
 
                             <ul className="space-y-6">
                                 <li className="flex items-center gap-4">
@@ -89,64 +50,26 @@ export default function ContactSection() {
                         </div>
                     </div>
 
-                    {/* Form Side */}
-                    <div className="p-6 sm:p-10 md:p-16 bg-white md:w-3/5">
-                        <h3 className="text-3xl font-bold text-[#0F172A] mb-8">Send a message</h3>
+                    {/* Form Side (Replaced with WhatsApp CTA) */}
+                    <div className="p-6 sm:p-10 md:p-16 bg-white md:w-3/5 flex flex-col justify-center items-center text-center relative">
+                        <div className="w-24 h-24 bg-gradient-to-tr from-[#C2410C]/10 to-[#FF8A00]/10 rounded-[2rem] flex items-center justify-center mb-8 border border-[#C2410C]/20 shadow-sm relative group">
+                            <div className="absolute inset-0 bg-[#C2410C]/5 rounded-[2rem] scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                            <WhatsAppIcon className="w-11 h-11 text-[#C2410C] relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                        </div>
+                        
+                        <p className="text-[#0F172A] text-2xl md:text-3xl font-extrabold mb-12 max-w-md leading-snug">
+                            Message our team directly on WhatsApp for immediate assistance, orders, and inquiries.
+                        </p>
 
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-bold text-[#6B7280] uppercase tracking-wider">Your Name</label>
-                                    <input
-                                        required
-                                        value={formData.name}
-                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        className="w-full px-4 py-4 bg-[#FAFAFA] border-2 border-slate-200 rounded-2xl focus:border-[#C2410C] outline-none text-[#0F172A] font-medium transition placeholder-slate-400"
-                                        placeholder="e.g. Jane Mwikali"
-                                        autoComplete="name"
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Email Address</label>
-                                    <input
-                                        required
-                                        type="email"
-                                        value={formData.email}
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        className="w-full px-4 py-4 bg-[#FAFAFA] border-2 border-slate-200 rounded-2xl focus:border-[#C2410C] outline-none text-[#0F172A] font-medium transition placeholder-slate-400"
-                                        placeholder="e.g. jane@email.com"
-                                        autoComplete="email"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Subject / Question</label>
-                                <textarea
-                                    required
-                                    rows={4}
-                                    value={formData.message}
-                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    className="w-full px-4 py-4 bg-[#FAFAFA] border-2 border-slate-200 rounded-2xl focus:border-[#C2410C] outline-none text-[#0F172A] font-medium transition resize-none placeholder-slate-400"
-                                    placeholder="e.g. I want to preorder chicks for February 2026. Please advise on payment and pickup."
-                                />
-                            </div>
-
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="w-full py-4 bg-[#C2410C] text-white rounded-full font-bold text-lg hover:shadow-lg hover:shadow-[#C2410C]/20 transition flex items-center justify-center gap-3 disabled:opacity-70 transform hover:-translate-y-1"
-                            >
-                                {loading ? <Loader2 className="animate-spin" /> : <>Send a message <Send className="w-5 h-5" /></>}
-                            </button>
-
-                            {status === 'success' && (
-                                <p className="text-green-400 text-center text-sm font-bold bg-green-500/10 py-3 rounded-xl border border-green-500/20">Inquiry submitted successfully! A specialist will respond shortly.</p>
-                            )}
-                            {status === 'error' && (
-                                <p className="text-red-400 text-center text-sm font-bold bg-red-500/10 py-3 rounded-xl border border-red-500/20">Something went wrong. Please try again.</p>
-                            )}
-                        </form>
+                        <a
+                            href="https://wa.me/254716883375?text=Habari%20KukuConnect"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-[#C2410C] to-[#ea580c] text-white rounded-full font-bold text-lg shadow-lg shadow-[#C2410C]/30 hover:shadow-2xl hover:shadow-[#C2410C]/40 transition-all duration-300 hover:-translate-y-1 group"
+                        >
+                            <WhatsAppIcon className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
+                            Message on WhatsApp
+                        </a>
                     </div>
                 </div>
             </div>

@@ -11,16 +11,15 @@ export default function Navbar() {
 
     const links = [
         { name: "Home", to: "/#home" },
-        { name: "Products", to: "/#products" },
+        { name: "Prices", to: "/#products" },
         { name: "About us", to: "/#about" },
         { name: "How it works", to: "/#how-it-works" },
         { name: "Reviews", to: "/#reviews" },
-        { name: "Gallery", to: "/#gallery" },
         { name: "Contact", to: "/#contact" },
     ];
 
     return (
-        <nav className="fixed top-0 w-full bg-[#FAFAFA]/90 backdrop-blur-md z-50 border-b border-slate-200 transition-all duration-300">
+        <nav className="fixed top-0 w-full bg-[#FAFAFA]/90 backdrop-blur-xl z-50 border-b border-slate-200 transition-all duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
 
@@ -44,8 +43,17 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    {/* Call Us Button (Desktop) */}
+                    {/* Order + Call (Desktop) */}
                     <div className="hidden lg:flex items-center ml-4 gap-3">
+                        <a
+                            href={
+                                process.env.NEXT_PUBLIC_ORDER_URL ||
+                                "https://app.kukuconnect.co.ke/order"
+                            }
+                            className="flex items-center gap-2 bg-[#C2410C] hover:bg-[#ea580c] text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                        >
+                            <span>Order</span>
+                        </a>
                         <a
                             href="tel:+254716883375"
                             className="flex items-center gap-2 bg-[#FF8A00] hover:bg-[#FF8C00] text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg hover:shadow-[#FF8A00]/20 hover:-translate-y-0.5"
@@ -58,13 +66,22 @@ export default function Navbar() {
                     {/* Mobile Menu Button */}
                     <div className="flex items-center lg:hidden gap-3">
                         <a
+                            href={
+                                process.env.NEXT_PUBLIC_ORDER_URL ||
+                                "https://app.kukuconnect.co.ke/order"
+                            }
+                            className="px-3 py-2 bg-[#C2410C] text-white text-xs font-bold rounded-full"
+                        >
+                            Order
+                        </a>
+                        <a
                             href="tel:+254716883375"
                             aria-label="Call Us"
                             className="flex items-center justify-center w-10 h-10 bg-[#C2410C]/10 rounded-full text-[#C2410C] hover:bg-[#C2410C] hover:text-white transition-all"
                         >
                             <Phone size={20} />
                         </a>
-                        <button aria-label="Menu" onClick={() => setIsOpen(!isOpen)} className="p-2 text-[#0A2540] hover:bg-slate-100 rounded-full transition">
+                        <button aria-label="Menu" onClick={() => setIsOpen(!isOpen)} className="p-2 text-[#0F172A] hover:bg-slate-200 rounded-full transition">
                             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </button>
                     </div>
@@ -80,7 +97,7 @@ export default function Navbar() {
                                 key={link.name}
                                 href={link.to}
                                 onClick={() => setIsOpen(false)}
-                                className="block text-[#0A2540] hover:text-[#FF8A00] font-bold text-lg px-4 py-3 hover:bg-slate-50 rounded-xl transition"
+                                className="block text-[#0F172A] hover:text-[#FF8A00] font-bold text-lg px-4 py-3 hover:bg-slate-50 rounded-xl transition"
                             >
                                 {link.name}
                             </Link>
@@ -88,11 +105,21 @@ export default function Navbar() {
                         <Link
                             href="/assistant"
                             onClick={() => setIsOpen(false)}
-                            className="flex items-center justify-center gap-2 w-full bg-slate-100 text-[#0F172A] font-bold text-lg px-4 py-3 rounded-full hover:bg-slate-200 transition shadow-sm mt-4"
+                            className="flex items-center justify-center gap-2 w-full bg-slate-50 text-[#0F172A] border border-slate-200 font-bold text-lg px-4 py-3 rounded-full hover:bg-slate-100 transition shadow-sm mt-4"
                         >
                             <MessageCircle size={20} className="text-[#FF8A00]" />
                             <span>AI Assistant</span>
                         </Link>
+                        <a
+                            href={
+                                process.env.NEXT_PUBLIC_ORDER_URL ||
+                                "https://app.kukuconnect.co.ke/order"
+                            }
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center justify-center gap-2 w-full bg-[#C2410C] text-white font-bold text-lg px-4 py-3 rounded-full hover:bg-[#ea580c] transition mt-2 shadow-lg"
+                        >
+                            Order chicks
+                        </a>
                         <a
                             href="tel:+254716883375"
                             className="flex items-center justify-center gap-2 w-full bg-[#FF8A00] text-white font-bold text-lg px-4 py-3 rounded-full hover:bg-[#FF8C00] transition mt-2 shadow-lg shadow-[#FF8A00]/20"

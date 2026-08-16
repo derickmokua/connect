@@ -5,12 +5,11 @@ import KuroilerAdvantages from "./KuroilerAdvantages";
 
 import dynamic from "next/dynamic";
 
-const GrowthTimeline = dynamic(() => import("./GrowthTimeline"));
+const OrderCta = dynamic(() => import("./OrderCta"));
 const TrustLogistics = dynamic(() => import("./TrustLogistics"));
 const VaccinationScheduler = dynamic(() => import("./VaccinationScheduler"));
 const CareTimeline = dynamic(() => import("./CareTimeline"));
 const Reviews = dynamic(() => import("./Reviews"));
-const Gallery = dynamic(() => import("./Gallery"));
 const ContactSection = dynamic(() => import("./ContactSection"));
 const AboutUs = dynamic(() => import("./AboutUs"));
 const Footer = dynamic(() => import("./Footer"));
@@ -23,7 +22,8 @@ export default function KukuApp() {
             <main>
                 <Hero />
                 <KuroilerAdvantages />
-                <GrowthTimeline />
+                {/* Price cards only — cart & payment on app.kukuconnect.co.ke */}
+                <OrderCta />
                 <TrustLogistics />
                 <AboutUs />
                 <Reviews />
@@ -37,7 +37,6 @@ export default function KukuApp() {
                     </div>
                 </section>
 
-                <Gallery />
                 <ContactSection />
             </main>
             <Footer />
